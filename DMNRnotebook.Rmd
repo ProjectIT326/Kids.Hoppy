@@ -4,6 +4,7 @@ output: html_notebook
 ---
 
 #Encoding is a step for preparing datasets for data mining(machine learning)
+#Converting categorical or non-numeric data into a numerical format, which is necessary for compatibility with machine learning 
 ```{r}
 Hobby_Data$Olympiad_Participation = factor(Hobby_Data$Olympiad_Participation,levels = c("No", "Yes"), labels = c(0, 1))
 Hobby_Data$Scholarship = factor(Hobby_Data$Scholarship , levels = c("No", "Yes"), labels = c(0, 1))
@@ -16,6 +17,9 @@ Hobby_Data$Fant_arts = factor(Hobby_Data$Fant_arts, levels = c("No", "Yes"), lab
 Hobby_Data$Won_arts = factor(Hobby_Data$Won_arts, levels = c("No", "Maybe", "Yes"), labels = c(0, 2, 1))
 Hobby_Data$Fav_sub = factor(Hobby_Data$Fav_sub, levels = c("Science", "Mathematics", "History/Geography", "Any language"), labels = c(1, 2, 3, 4))
 ```
+
+#Normalization and Discetization
+#We don't need to use normalization and discetization in our dataset.Since our dataset doesn’t have numeric attributes and normalization involves mathematical operations, which can result in meaningless and erroneous values,Also, applying discretization leads to loss of information and makes intervals and relationships that don't exist between values.
 
 
 
