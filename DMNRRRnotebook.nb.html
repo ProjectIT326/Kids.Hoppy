@@ -1763,8 +1763,8 @@ to preprocess and analyze the data.</p>
 <p><strong>General information about the data set:</strong></p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3RyKGRhdGFzZXQpXG5gYGAifQ== -->
-<pre class="r"><code>str(dataset)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3RyKEhvYmJ5X0RhdGEpXG5gYGAifQ== -->
+<pre class="r"><code>str(Hobby_Data)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -1774,37 +1774,99 @@ to preprocess and analyze the data.</p>
 </ul>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2FtcGxlKGRhdGFzZXQpXG5gYGAifQ== -->
-<pre class="r"><code>sample(dataset)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3VtbWFyeSAoSG9iYnlfRGF0YSRHcmFzcF9wb3cpXG5gYGAifQ== -->
+<pre class="r"><code>summary (Hobby_Data$Grasp_pow)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgTWluLiAxc3QgUXUuICBNZWRpYW4gICAgTWVhbiAzcmQgUXUuICAgIE1heC4gXG4gICAxLjAwICAgIDMuMDAgICAgMy4wMCAgICAzLjQ4ICAgIDQuMDAgICAgNi4wMCBcbiJ9 -->
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   1.00    3.00    3.00    3.48    4.00    6.00 </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubW9kZShIb2JieV9EYXRhJEdyYXNwX3BvdylcbmBgYCJ9 -->
+<pre class="r"><code>mode(Hobby_Data$Grasp_pow)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwibnVtZXJpY1wiXG4ifQ== -->
+<pre><code>[1] &quot;numeric&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWVhbihIb2JieV9EYXRhJEdyYXNwX3BvdylcbmBgYCJ9 -->
+<pre class="r"><code>mean(Hobby_Data$Grasp_pow)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDMuNDgwMzI1XG4ifQ== -->
+<pre><code>[1] 3.480325</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWVhbihIb2JieV9EYXRhJFRpbWVfc3BydClcbmBgYCJ9 -->
+<pre class="r"><code>mean(Hobby_Data$Time_sprt)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDMuMDMzNzI5XG4ifQ== -->
+<pre><code>[1] 3.033729</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3VtbWFyeShIb2JieV9EYXRhJFRpbWVfc3BydClcbmBgYCJ9 -->
+<pre class="r"><code>summary(Hobby_Data$Time_sprt)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgTWluLiAxc3QgUXUuICBNZWRpYW4gICAgTWVhbiAzcmQgUXUuICAgIE1heC4gXG4gIDEuMDAwICAgMi4wMDAgICAzLjAwMCAgIDMuMDM0ICAgNC4wMDAgICA2LjAwMCBcbiJ9 -->
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  1.000   2.000   3.000   3.034   4.000   6.000 </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3VtbWFyeShIb2JieV9EYXRhJFRpbWVfYXJ0KVxuYGBgIn0= -->
+<pre class="r"><code>summary(Hobby_Data$Time_art)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgTWluLiAxc3QgUXUuICBNZWRpYW4gICAgTWVhbiAzcmQgUXUuICAgIE1heC4gXG4gIDEuMDAwICAgMS4wMDAgICAyLjAwMCAgIDIuMjM0ICAgMy4wMDAgICA2LjAwMCBcbiJ9 -->
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  1.000   1.000   2.000   2.234   3.000   6.000 </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubW9kZShIb2JieV9EYXRhJFRpbWVfYXJ0KVxuYGBgIn0= -->
+<pre class="r"><code>mode(Hobby_Data$Time_art)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwibnVtZXJpY1wiXG4ifQ== -->
+<pre><code>[1] &quot;numeric&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuTW9kZSA8LSBmdW5jdGlvbihIb2JieV9EYXRhKSB7XG4gIHV4IDwtIHVuaXF1ZShIb2JieV9EYXRhKVxuICB1eFt3aGljaC5tYXgodGFidWxhdGUobWF0Y2goSG9iYnlfRGF0YSwgdXgpKSldXG59IFxuXG5tb2RlczwtTW9kZShIb2JieV9EYXRhKVxuXG5cbnN0ciggbW9kZXMpXG5gYGAifQ== -->
+<pre class="r"><code>Mode &lt;- function(Hobby_Data) {
+  ux &lt;- unique(Hobby_Data)
+  ux[which.max(tabulate(match(Hobby_Data, ux)))]
+} 
+
+modes&lt;-Mode(Hobby_Data)
+
+
+str( modes)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoidGliYmxlIFsyNDkgw5cgMV0gKFMzOiB0YmxfZGYvdGJsL2RhdGEuZnJhbWUpXG4gJCBPbHltcGlhZF9QYXJ0aWNpcGF0aW9uOiBGYWN0b3Igdy8gMiBsZXZlbHMgXCIwXCIsXCIxXCI6IE5BIE5BIE5BIE5BIE5BIE5BIE5BIE5BIE5BIE5BIC4uLlxuIn0= -->
+<pre><code>tibble [249 × 1] (S3: tbl_df/tbl/data.frame)
+ $ Olympiad_Participation: Factor w/ 2 levels &quot;0&quot;,&quot;1&quot;: NA NA NA NA NA NA NA NA NA NA ...</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIFxuXG5gYGAifQ== -->
+<pre class="r"><code> 
+</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Statistical measures :</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5cbm1vZGUoZGF0YXNldCRHcmFzcF9wb3cpXG5tZWFuKGRhdGFzZXQkR3Jhc3BfcG93KVxuXG5tZWFuKGRhdGFzZXQkVGltZV9zcHJ0KVxuXG5tb2RlKGRhdGFzZXQkVGltZV9zcHJ0KVxuXG5cblxubW9kZShkYXRhc2V0JFRpbWVfYXJ0KVxuXG5Nb2RlIDwtIGZ1bmN0aW9uKGRhdGFzZXQpIHtcbiAgdXggPC0gdW5pcXVlKGRhdGFzZXQpXG4gIHV4W3doaWNoLm1heCh0YWJ1bGF0ZShtYXRjaChkYXRhc2V0LCB1eCkpKV1cbn0gXG5cbm1vZGVzPC1Nb2RlKGRhdGFzZXQpXG5wcmludChNb2RlKVxuXG5tZWFuKGRhdGFzZXQkVGltZV9hcnQpXG5cblxuIFxuXG5gYGAifQ== -->
-<pre class="r"><code>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3VtbWFyeSAoSG9iYnlfRGF0YSRHcmFzcF9wb3cpXG5cbm1vZGUoSG9iYnlfRGF0YSRHcmFzcF9wb3cpXG5tZWFuKEhvYmJ5X0RhdGEkR3Jhc3BfcG93KVxuXG5tZWFuKEhvYmJ5X0RhdGEkVGltZV9zcHJ0KVxuXG5zdW1tYXJ5KEhvYmJ5X0RhdGEkVGltZV9zcHJ0KVxuXG5cbnN1bW1hcnkoSG9iYnlfRGF0YSRUaW1lX2FydClcbm1vZGUoSG9iYnlfRGF0YSRUaW1lX2FydClcblxuTW9kZSA8LSBmdW5jdGlvbihIb2JieV9EYXRhKSB7XG4gIHV4IDwtIHVuaXF1ZShIb2JieV9EYXRhKVxuICB1eFt3aGljaC5tYXgodGFidWxhdGUobWF0Y2goSG9iYnlfRGF0YSwgdXgpKSldXG59IFxuXG5tb2RlczwtTW9kZShIb2JieV9EYXRhKVxuXG5cbnN0ciggbW9kZXMpXG5cblxuXG4gXG5cbmBgYCJ9 -->
+<pre class="r"><code>summary (Hobby_Data$Grasp_pow)
 
-mode(dataset$Grasp_pow)
-mean(dataset$Grasp_pow)
+mode(Hobby_Data$Grasp_pow)
+mean(Hobby_Data$Grasp_pow)
 
-mean(dataset$Time_sprt)
+mean(Hobby_Data$Time_sprt)
 
-mode(dataset$Time_sprt)
+summary(Hobby_Data$Time_sprt)
 
 
+summary(Hobby_Data$Time_art)
+mode(Hobby_Data$Time_art)
 
-mode(dataset$Time_art)
-
-Mode &lt;- function(dataset) {
-  ux &lt;- unique(dataset)
-  ux[which.max(tabulate(match(dataset, ux)))]
+Mode &lt;- function(Hobby_Data) {
+  ux &lt;- unique(Hobby_Data)
+  ux[which.max(tabulate(match(Hobby_Data, ux)))]
 } 
 
-modes&lt;-Mode(dataset)
-print(Mode)
+modes&lt;-Mode(Hobby_Data)
 
-mean(dataset$Time_art)
+
+str( modes)
+
 
 
  
@@ -1823,26 +1885,26 @@ and standardising formats.</p>
 </ul>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2V0d2QoXCIvVXNlcnMvOTY2NTMvRG9jdW1lbnRzL0dpdEh1Yi9LaWRzSG9iYnkvRGF0YXNldFwiKVxuXG5cbmRhdGFzZXQgPSByZWFkLmNzdignSG9iYnlfRGF0YS5jc3YnKVxuXG5kYXRhc2V0ID0gcmVhZC5jc3YoXCJIb2JieV9EYXRhLmNzdlwiKVxuXG5WaWV3KGRhdGFzZXQpXG5cbnN0cihkYXRhc2V0KVxuYGBgIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2V0d2QoXCIvVXNlcnMvOTY2NTMvRG9jdW1lbnRzL0dpdEh1Yi9LaWRzSG9iYnkvRGF0YXNldFwiKVxuXG5cblxuVmlldyhIb2JieV9EYXRhKVxuXG5zdHIoSG9iYnlfRGF0YSlcbmBgYCJ9 -->
 <pre class="r"><code>setwd(&quot;/Users/96653/Documents/GitHub/KidsHobby/Dataset&quot;)
 
 
-dataset = read.csv(&#39;Hobby_Data.csv&#39;)
 
-dataset = read.csv(&quot;Hobby_Data.csv&quot;)
+View(Hobby_Data)
 
-View(dataset)
-
-str(dataset)</code></pre>
+str(Hobby_Data)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p><strong>1- check missing value :</strong></p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaXMubmEoZGF0YXNldClcbmBgYCJ9 -->
-<pre class="r"><code>is.na(dataset)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3VtKGlzLm5hKEhvYmJ5X0RhdGEpKVxuYGBgIn0= -->
+<pre class="r"><code>sum(is.na(Hobby_Data))</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDE2MDEwXG4ifQ== -->
+<pre><code>[1] 16010</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <ul>
@@ -1850,8 +1912,17 @@ str(dataset)</code></pre>
 </ul>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3VtKGlzLm5hKGRhdGFzZXQpKVxuYGBgIn0= -->
-<pre class="r"><code>sum(is.na(dataset))</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuSG9iYnlfRGF0YSRPbHltcGlhZF9QYXJ0aWNpcGF0aW9uID0gZmFjdG9yKEhvYmJ5X0RhdGEkT2x5bXBpYWRfUGFydGljaXBhdGlvbixsZXZlbHMgPSBjKFwiTm9cIiwgXCJZZXNcIiksIGxhYmVscyA9IGMoMCwgMSkpXG5Ib2JieV9EYXRhJFNjaG9sYXJzaGlwID0gZmFjdG9yKEhvYmJ5X0RhdGEkU2Nob2xhcnNoaXAgLCBsZXZlbHMgPSBjKFwiTm9cIiwgXCJZZXNcIiksIGxhYmVscyA9IGMoMCwgMSkpXG5Ib2JieV9EYXRhJFNjaG9vbCA9IGZhY3RvcihIb2JieV9EYXRhJFNjaG9vbCwgbGV2ZWxzID0gYyhcIk5vXCIsIFwiWWVzXCIpLCBsYWJlbHMgPSBjKDAsIDEpKVxuSG9iYnlfRGF0YSRQcm9qZWN0cyA9IGZhY3RvcihIb2JieV9EYXRhJFByb2plY3RzLCBsZXZlbHMgPSBjKFwiTm9cIiwgXCJZZXNcIiksIGxhYmVscyA9IGMoMCwgMSkpXG5Ib2JieV9EYXRhJE1lZGFscyA9IGZhY3RvcihIb2JieV9EYXRhJE1lZGFscywgbGV2ZWxzID0gYyhcIk5vXCIsIFwiWWVzXCIpLCBsYWJlbHMgPSBjKDAsIDEpKVxuSG9iYnlfRGF0YSRDYXJlZXJfc3BydCA9IGZhY3RvcihIb2JieV9EYXRhJENhcmVlcl9zcHJ0LCBsZXZlbHMgPSBjKFwiTm9cIiwgXCJZZXNcIiksIGxhYmVscyA9IGMoMCwgMSkpXG5Ib2JieV9EYXRhJEFjdF9zcHJ0ID0gZmFjdG9yKEhvYmJ5X0RhdGEkQWN0X3NwcnQsIGxldmVscyA9IGMoXCJOb1wiLCBcIlllc1wiKSwgbGFiZWxzID0gYygwLCAxKSlcbkhvYmJ5X0RhdGEkRmFudF9hcnRzID0gZmFjdG9yKEhvYmJ5X0RhdGEkRmFudF9hcnRzLCBsZXZlbHMgPSBjKFwiTm9cIiwgXCJZZXNcIiksIGxhYmVscyA9IGMoMCwgMSkpXG5Ib2JieV9EYXRhJFdvbl9hcnRzID0gZmFjdG9yKEhvYmJ5X0RhdGEkV29uX2FydHMsIGxldmVscyA9IGMoXCJOb1wiLCBcIk1heWJlXCIsIFwiWWVzXCIpLCBsYWJlbHMgPSBjKDAsIDIsIDEpKVxuSG9iYnlfRGF0YSRGYXZfc3ViID0gZmFjdG9yKEhvYmJ5X0RhdGEkRmF2X3N1YiwgbGV2ZWxzID0gYyhcIlNjaWVuY2VcIiwgXCJNYXRoZW1hdGljc1wiLCBcIkhpc3RvcnkvR2VvZ3JhcGh5XCIsIFwiQW55IGxhbmd1YWdlXCIpLCBsYWJlbHMgPSBjKDEsIDIsIDMsIDQpKVxuYGBgIn0= -->
+<pre class="r"><code>Hobby_Data$Olympiad_Participation = factor(Hobby_Data$Olympiad_Participation,levels = c(&quot;No&quot;, &quot;Yes&quot;), labels = c(0, 1))
+Hobby_Data$Scholarship = factor(Hobby_Data$Scholarship , levels = c(&quot;No&quot;, &quot;Yes&quot;), labels = c(0, 1))
+Hobby_Data$School = factor(Hobby_Data$School, levels = c(&quot;No&quot;, &quot;Yes&quot;), labels = c(0, 1))
+Hobby_Data$Projects = factor(Hobby_Data$Projects, levels = c(&quot;No&quot;, &quot;Yes&quot;), labels = c(0, 1))
+Hobby_Data$Medals = factor(Hobby_Data$Medals, levels = c(&quot;No&quot;, &quot;Yes&quot;), labels = c(0, 1))
+Hobby_Data$Career_sprt = factor(Hobby_Data$Career_sprt, levels = c(&quot;No&quot;, &quot;Yes&quot;), labels = c(0, 1))
+Hobby_Data$Act_sprt = factor(Hobby_Data$Act_sprt, levels = c(&quot;No&quot;, &quot;Yes&quot;), labels = c(0, 1))
+Hobby_Data$Fant_arts = factor(Hobby_Data$Fant_arts, levels = c(&quot;No&quot;, &quot;Yes&quot;), labels = c(0, 1))
+Hobby_Data$Won_arts = factor(Hobby_Data$Won_arts, levels = c(&quot;No&quot;, &quot;Maybe&quot;, &quot;Yes&quot;), labels = c(0, 2, 1))
+Hobby_Data$Fav_sub = factor(Hobby_Data$Fav_sub, levels = c(&quot;Science&quot;, &quot;Mathematics&quot;, &quot;History/Geography&quot;, &quot;Any language&quot;), labels = c(1, 2, 3, 4))</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -1864,233 +1935,141 @@ numerical format, which is necessary for compatibility with machine
 learning</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuSG9iYnlfRGF0YSRPbHltcGlhZF9QYXJ0aWNpcGF0aW9uID0gZmFjdG9yKEhvYmJ5X0RhdGEkT2x5bXBpYWRfUGFydGljaXBhdGlvbixsZXZlbHMgPSBjKFxcTm9cXCwgXFxZZXNcXCksIGxhYmVscyA9IGMoMCwgMSkpXG5Ib2JieV9EYXRhJFNjaG9sYXJzaGlwID0gZmFjdG9yKEhvYmJ5X0RhdGEkU2Nob2xhcnNoaXAgLCBsZXZlbHMgPSBjKFxcTm9cXCwgXFxZZXNcXCksIGxhYmVscyA9IGMoMCwgMSkpXG5Ib2JieV9EYXRhJFNjaG9vbCA9IGZhY3RvcihIb2JieV9EYXRhJFNjaG9vbCwgbGV2ZWxzID0gYyhcXE5vXFwsIFxcWWVzXFwpLCBsYWJlbHMgPSBjKDAsIDEpKVxuSG9iYnlfRGF0YSRQcm9qZWN0cyA9IGZhY3RvcihIb2JieV9EYXRhJFByb2plY3RzLCBsZXZlbHMgPSBjKFxcTm9cXCwgXFxZZXNcXCksIGxhYmVscyA9IGMoMCwgMSkpXG5Ib2JieV9EYXRhJE1lZGFscyA9IGZhY3RvcihIb2JieV9EYXRhJE1lZGFscywgbGV2ZWxzID0gYyhcXE5vXFwsIFxcWWVzXFwpLCBsYWJlbHMgPSBjKDAsIDEpKVxuSG9iYnlfRGF0YSRDYXJlZXJfc3BydCA9IGZhY3RvcihIb2JieV9EYXRhJENhcmVlcl9zcHJ0LCBsZXZlbHMgPSBjKFxcTm9cXCwgXFxZZXNcXCksIGxhYmVscyA9IGMoMCwgMSkpXG5Ib2JieV9EYXRhJEFjdF9zcHJ0ID0gZmFjdG9yKEhvYmJ5X0RhdGEkQWN0X3NwcnQsIGxldmVscyA9IGMoXFxOb1xcLCBcXFllc1xcKSwgbGFiZWxzID0gYygwLCAxKSlcbkhvYmJ5X0RhdGEkRmFudF9hcnRzID0gZmFjdG9yKEhvYmJ5X0RhdGEkRmFudF9hcnRzLCBsZXZlbHMgPSBjKFxcTm9cXCwgXFxZZXNcXCksIGxhYmVscyA9IGMoMCwgMSkpXG5Ib2JieV9EYXRhJFdvbl9hcnRzID0gZmFjdG9yKEhvYmJ5X0RhdGEkV29uX2FydHMsIGxldmVscyA9IGMoXFxOb1xcLCBcXE1heWJlXFwsIFxcWWVzXFwpLCBsYWJlbHMgPSBjKDAsIDIsIDEpKVxuSG9iYnlfRGF0YSRGYXZfc3ViID0gZmFjdG9yKEhvYmJ5X0RhdGEkRmF2X3N1YiwgbGV2ZWxzID0gYyhcXFNjaWVuY2VcXCwgXFxNYXRoZW1hdGljc1xcLCBcXEhpc3RvcnkvR2VvZ3JhcGh5XFwsIFxcQW55IGxhbmd1YWdlXFwpLCBsYWJlbHMgPSBjKDEsIDIsIDMsIDQpKVxuYGBgXG5gYGAifQ== -->
-<pre class="r"><code>```r
-Hobby_Data$Olympiad_Participation = factor(Hobby_Data$Olympiad_Participation,levels = c(\No\, \Yes\), labels = c(0, 1))
-Hobby_Data$Scholarship = factor(Hobby_Data$Scholarship , levels = c(\No\, \Yes\), labels = c(0, 1))
-Hobby_Data$School = factor(Hobby_Data$School, levels = c(\No\, \Yes\), labels = c(0, 1))
-Hobby_Data$Projects = factor(Hobby_Data$Projects, levels = c(\No\, \Yes\), labels = c(0, 1))
-Hobby_Data$Medals = factor(Hobby_Data$Medals, levels = c(\No\, \Yes\), labels = c(0, 1))
-Hobby_Data$Career_sprt = factor(Hobby_Data$Career_sprt, levels = c(\No\, \Yes\), labels = c(0, 1))
-Hobby_Data$Act_sprt = factor(Hobby_Data$Act_sprt, levels = c(\No\, \Yes\), labels = c(0, 1))
-Hobby_Data$Fant_arts = factor(Hobby_Data$Fant_arts, levels = c(\No\, \Yes\), labels = c(0, 1))
-Hobby_Data$Won_arts = factor(Hobby_Data$Won_arts, levels = c(\No\, \Maybe\, \Yes\), labels = c(0, 2, 1))
-Hobby_Data$Fav_sub = factor(Hobby_Data$Fav_sub, levels = c(\Science\, \Mathematics\, \History/Geography\, \Any language\), labels = c(1, 2, 3, 4))</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-chunk-end --&gt;
-
-
-&lt;!-- rnb-text-begin --&gt;
-
-
-#Normalization and Discetization
-#We don&#39;t need to use normalization and discetization in our dataset.Since our dataset doesn’t have numeric attributes and normalization involves mathematical operations, which can result in meaningless and erroneous values,Also, applying discretization leads to loss of information and makes intervals and relationships that don&#39;t exist between values.
-
-
-
-Feature Selection
-Feature selection is the process of selecting a subset of relevant features from a larger set of available features. The main objective of feature selection is to improve the performance and efficiency of machine learning models. By selecting the most informative and influential features while discarding irrelevant or redundant ones to improves model performance.
-
-1-Rank Features By Importance
-The provided code performs a sequence of steps to analyze the importance of different features selection in predicting kids hobbies using a Random Forest model.
-
-# Ensure the results are repeatable by setting a seed
-
-&lt;!-- rnb-text-end --&gt;
-
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuc2V0LnNlZWQoNylcblxuYGBgXG5gYGAifQ== --&gt;
-
-```r
-```r
-set.seed(7)
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2V0LnNlZWQoNylcblxuYGBgIn0= -->
+<pre class="r"><code>set.seed(7)
 </code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-chunk-end --&gt;
-
-
-&lt;!-- rnb-text-begin --&gt;
-
-
-
-# Load the necessary libraries
-
-&lt;!-- rnb-text-end --&gt;
-
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuaW5zdGFsbC5wYWNrYWdlcyhcXGNhcmV0XFwpXG5gYGBcbmBgYCJ9 --&gt;
-
-```r
-```r
-install.packages(\caret\)</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-output-begin eyJkYXRhIjoiV0FSTklORzogUnRvb2xzIGlzIHJlcXVpcmVkIHRvIGJ1aWxkIFIgcGFja2FnZXMgYnV0IGlzIG5vdCBjdXJyZW50bHkgaW5zdGFsbGVkLiBQbGVhc2UgZG93bmxvYWQgYW5kIGluc3RhbGwgdGhlIGFwcHJvcHJpYXRlIHZlcnNpb24gb2YgUnRvb2xzIGJlZm9yZSBwcm9jZWVkaW5nOlxuXG5odHRwczovL2NyYW4ucnN0dWRpby5jb20vYmluL3dpbmRvd3MvUnRvb2xzL1xuSW5zdGFsbGluZyBwYWNrYWdlIGludG8g4oCYQzovVXNlcnMvd2V4YTAvQXBwRGF0YS9Mb2NhbC9SL3dpbi1saWJyYXJ5LzQuM+KAmVxuKGFzIOKAmGxpYuKAmSBpcyB1bnNwZWNpZmllZClcbnRyeWluZyBVUkwgJ2h0dHBzOi8vY3Jhbi5yc3R1ZGlvLmNvbS9iaW4vd2luZG93cy9jb250cmliLzQuMy9jYXJldF82LjAtOTQuemlwJ1xuQ29udGVudCB0eXBlICdhcHBsaWNhdGlvbi96aXAnIGxlbmd0aCAzNTc2OTAyIGJ5dGVzICgzLjQgTUIpXG5kb3dubG9hZGVkIDMuNCBNQlxucGFja2FnZSDigJhjYXJldOKAmSBzdWNjZXNzZnVsbHkgdW5wYWNrZWQgYW5kIE1ENSBzdW1zIGNoZWNrZWRcblxuVGhlIGRvd25sb2FkZWQgYmluYXJ5IHBhY2thZ2VzIGFyZSBpblxuXHRDOlxcVXNlcnNcXHdleGEwXFxBcHBEYXRhXFxMb2NhbFxcVGVtcFxcUnRtcEU3OVFyU1xcZG93bmxvYWRlZF9wYWNrYWdlc1xuIn0= --&gt;
-</code></pre>
-<p>WARNING: Rtools is required to build R packages but is not currently
-installed. Please download and install the appropriate version of Rtools
-before proceeding:</p>
-<p><a href="https://cran.rstudio.com/bin/windows/Rtools/" class="uri">https://cran.rstudio.com/bin/windows/Rtools/</a> Installing
-package into ‘C:/Users/wexa0/AppData/Local/R/win-library/4.3’ (as ‘lib’
-is unspecified) trying URL ‘<a href="https://cran.rstudio.com/bin/windows/contrib/4.3/caret_6.0-94.zip" class="uri">https://cran.rstudio.com/bin/windows/contrib/4.3/caret_6.0-94.zip</a>’
-Content type ‘application/zip’ length 3576902 bytes (3.4 MB) downloaded
-3.4 MB package ‘caret’ successfully unpacked and MD5 sums checked</p>
-<p>The downloaded binary packages are in C:79QrS_packages</p>
-<pre><code>
-
-
-&lt;!-- rnb-output-end --&gt;
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuaW5zdGFsbC5wYWNrYWdlcyhcXHJhbmRvbUZvcmVzdFxcKVxuYGBgXG5gYGAifQ== --&gt;
-
-```r
-```r
-install.packages(\randomForest\)</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-output-begin eyJkYXRhIjoiV0FSTklORzogUnRvb2xzIGlzIHJlcXVpcmVkIHRvIGJ1aWxkIFIgcGFja2FnZXMgYnV0IGlzIG5vdCBjdXJyZW50bHkgaW5zdGFsbGVkLiBQbGVhc2UgZG93bmxvYWQgYW5kIGluc3RhbGwgdGhlIGFwcHJvcHJpYXRlIHZlcnNpb24gb2YgUnRvb2xzIGJlZm9yZSBwcm9jZWVkaW5nOlxuXG5odHRwczovL2NyYW4ucnN0dWRpby5jb20vYmluL3dpbmRvd3MvUnRvb2xzL1xuSW5zdGFsbGluZyBwYWNrYWdlIGludG8g4oCYQzovVXNlcnMvd2V4YTAvQXBwRGF0YS9Mb2NhbC9SL3dpbi1saWJyYXJ5LzQuM+KAmVxuKGFzIOKAmGxpYuKAmSBpcyB1bnNwZWNpZmllZClcbnRyeWluZyBVUkwgJ2h0dHBzOi8vY3Jhbi5yc3R1ZGlvLmNvbS9iaW4vd2luZG93cy9jb250cmliLzQuMy9yYW5kb21Gb3Jlc3RfNC43LTEuMS56aXAnXG5Db250ZW50IHR5cGUgJ2FwcGxpY2F0aW9uL3ppcCcgbGVuZ3RoIDIyMjQ1OSBieXRlcyAoMjE3IEtCKVxuZG93bmxvYWRlZCAyMTcgS0JcbnBhY2thZ2Ug4oCYcmFuZG9tRm9yZXN04oCZIHN1Y2Nlc3NmdWxseSB1bnBhY2tlZCBhbmQgTUQ1IHN1bXMgY2hlY2tlZFxuXG5UaGUgZG93bmxvYWRlZCBiaW5hcnkgcGFja2FnZXMgYXJlIGluXG5cdEM6XFxVc2Vyc1xcd2V4YTBcXEFwcERhdGFcXExvY2FsXFxUZW1wXFxSdG1wRTc5UXJTXFxkb3dubG9hZGVkX3BhY2thZ2VzXG4ifQ== --&gt;
-</code></pre>
-<p>WARNING: Rtools is required to build R packages but is not currently
-installed. Please download and install the appropriate version of Rtools
-before proceeding:</p>
-<p><a href="https://cran.rstudio.com/bin/windows/Rtools/" class="uri">https://cran.rstudio.com/bin/windows/Rtools/</a> Installing
-package into ‘C:/Users/wexa0/AppData/Local/R/win-library/4.3’ (as ‘lib’
-is unspecified) trying URL ‘<a href="https://cran.rstudio.com/bin/windows/contrib/4.3/randomForest_4.7-1.1.zip" class="uri">https://cran.rstudio.com/bin/windows/contrib/4.3/randomForest_4.7-1.1.zip</a>’
-Content type ‘application/zip’ length 222459 bytes (217 KB) downloaded
-217 KB package ‘randomForest’ successfully unpacked and MD5 sums
-checked</p>
-<p>The downloaded binary packages are in C:79QrS_packages</p>
-<pre><code>
-
-
-&lt;!-- rnb-output-end --&gt;
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubGlicmFyeShjYXJldClcbmBgYFxuYGBgIn0= --&gt;
-
-```r
-```r
-library(caret)</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-output-begin eyJkYXRhIjoiTG9hZGluZyByZXF1aXJlZCBwYWNrYWdlOiBnZ3Bsb3QyXG5Mb2FkaW5nIHJlcXVpcmVkIHBhY2thZ2U6IGxhdHRpY2VcblJlZ2lzdGVyZWQgUzMgbWV0aG9kIG92ZXJ3cml0dGVuIGJ5ICdkYXRhLnRhYmxlJzpcbiAgbWV0aG9kICAgICAgICAgICBmcm9tXG4gIHByaW50LmRhdGEudGFibGUgICAgIFxuIn0= --&gt;
-</code></pre>
-<p>Loading required package: ggplot2 Loading required package: lattice
-Registered S3 method overwritten by ‘data.table’: method from
-print.data.table</p>
-<pre><code>
-
-
-&lt;!-- rnb-output-end --&gt;
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubGlicmFyeShyYW5kb21Gb3Jlc3QpXG5gYGBcbmBgYCJ9 --&gt;
-
-```r
-```r
-library(randomForest)</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-output-begin eyJkYXRhIjoicmFuZG9tRm9yZXN0IDQuNy0xLjFcblR5cGUgcmZOZXdzKCkgdG8gc2VlIG5ldyBmZWF0dXJlcy9jaGFuZ2VzL2J1ZyBmaXhlcy5cblxuQXR0YWNoaW5nIHBhY2thZ2U6IOKAmHJhbmRvbUZvcmVzdOKAmVxuXG5UaGUgZm9sbG93aW5nIG9iamVjdCBpcyBtYXNrZWQgZnJvbSDigJhwYWNrYWdlOmdncGxvdDLigJk6XG5cbiAgICBtYXJnaW5cbiJ9 --&gt;
-</code></pre>
-<p>randomForest 4.7-1.1 Type rfNews() to see new features/changes/bug
-fixes.</p>
-<p>Attaching package: ‘randomForest’</p>
-<p>The following object is masked from ‘package:ggplot2’:</p>
-<pre><code>margin</code></pre>
-<pre><code>
-
-
-&lt;!-- rnb-output-end --&gt;
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubGlicmFyeShjYXJldClcbmBgYFxuYGBgIn0= --&gt;
-
-```r
-```r
-library(caret)</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-chunk-end --&gt;
-
-
-&lt;!-- rnb-text-begin --&gt;
-
-
-
-
-# Load the dataset
-
-&lt;!-- rnb-text-end --&gt;
-
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuZGF0YShIb2JieV9EYXRhKVxuYGBgXG5gYGAifQ== --&gt;
-
-```r
-```r
-data(Hobby_Data)</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-chunk-end --&gt;
-
-
-&lt;!-- rnb-text-begin --&gt;
-
-
-
-# Convert the class label to a factor
-
-&lt;!-- rnb-text-end --&gt;
-
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuSG9iYnlfRGF0YSRgUHJlZGljdGVkIEhvYmJ5YCA8LSBhcy5mYWN0b3IoSG9iYnlfRGF0YSRgUHJlZGljdGVkIEhvYmJ5YClcbmBgYFxuYGBgIn0= --&gt;
-
-```r
-```r
-Hobby_Data$`Predicted Hobby` &lt;- as.factor(Hobby_Data$`Predicted Hobby`)</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-chunk-end --&gt;
-
-
-&lt;!-- rnb-text-begin --&gt;
-
-
-
-# Separate the predictors and the class label
-
-&lt;!-- rnb-text-end --&gt;
-
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJlZGljdG9ycyA8LSBIb2JieV9EYXRhWywgLTE0XSAgIyBFeGNsdWRpbmcgdGhlIGNsYXNzIGxhYmVsIChQcmVkaWN0ZWQgSG9iYnkpXG5jbGFzc19sYWJlbCA8LSBIb2JieV9EYXRhJGBQcmVkaWN0ZWQgSG9iYnlgXG5gYGAifQ== --&gt;
-
-```r
-predictors &lt;- Hobby_Data[, -14]  # Excluding the class label (Predicted Hobby)
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>#Normalization and Discetization #We don’t need to use normalization
+and discetization in our dataset.Since our dataset doesn’t have numeric
+attributes and normalization involves mathematical operations, which can
+result in meaningless and erroneous values,Also, applying discretization
+leads to loss of information and makes intervals and relationships that
+don’t exist between values.</p>
+<p>Feature Selection Feature selection is the process of selecting a
+subset of relevant features from a larger set of available features. The
+main objective of feature selection is to improve the performance and
+efficiency of machine learning models. By selecting the most informative
+and influential features while discarding irrelevant or redundant ones
+to improves model performance.</p>
+<p>1-Rank Features By Importance The provided code performs a sequence
+of steps to analyze the importance of different features selection in
+predicting kids hobbies using a Random Forest model.</p>
+</div>
+<div id="ensure-the-results-are-repeatable-by-setting-a-seed" class="section level1">
+<h1>Ensure the results are repeatable by setting a seed</h1>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaW5zdGFsbC5wYWNrYWdlcyhcImNhcmV0XCIpXG5gYGAifQ== -->
+<pre class="r"><code>install.packages(&quot;caret&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiV0FSTklORzogUnRvb2xzIGlzIHJlcXVpcmVkIHRvIGJ1aWxkIFIgcGFja2FnZXMgYnV0IGlzIG5vdCBjdXJyZW50bHkgaW5zdGFsbGVkLiBQbGVhc2UgZG93bmxvYWQgYW5kIGluc3RhbGwgdGhlIGFwcHJvcHJpYXRlIHZlcnNpb24gb2YgUnRvb2xzIGJlZm9yZSBwcm9jZWVkaW5nOlxuXG5odHRwczovL2NyYW4ucnN0dWRpby5jb20vYmluL3dpbmRvd3MvUnRvb2xzL1xuSW5zdGFsbGluZyBwYWNrYWdlIGludG8g4oCYQzovVXNlcnMvOTY2NTMvQXBwRGF0YS9Mb2NhbC9SL3dpbi1saWJyYXJ5LzQuM+KAmVxuKGFzIOKAmGxpYuKAmSBpcyB1bnNwZWNpZmllZClcbnRyeWluZyBVUkwgJ2h0dHBzOi8vY3Jhbi5yc3R1ZGlvLmNvbS9iaW4vd2luZG93cy9jb250cmliLzQuMy9jYXJldF82LjAtOTQuemlwJ1xuQ29udGVudCB0eXBlICdhcHBsaWNhdGlvbi96aXAnIGxlbmd0aCAzNTc2OTAyIGJ5dGVzICgzLjQgTUIpXG5kb3dubG9hZGVkIDMuNCBNQlxuIn0= -->
+<pre><code>WARNING: Rtools is required to build R packages but is not currently installed. Please download and install the appropriate version of Rtools before proceeding:
+
+https://cran.rstudio.com/bin/windows/Rtools/
+Installing package into ‘C:/Users/96653/AppData/Local/R/win-library/4.3’
+(as ‘lib’ is unspecified)
+trying URL &#39;https://cran.rstudio.com/bin/windows/contrib/4.3/caret_6.0-94.zip&#39;
+Content type &#39;application/zip&#39; length 3576902 bytes (3.4 MB)
+downloaded 3.4 MB</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoicGFja2FnZSDigJhjYXJldOKAmSBzdWNjZXNzZnVsbHkgdW5wYWNrZWQgYW5kIE1ENSBzdW1zIGNoZWNrZWRcblxuVGhlIGRvd25sb2FkZWQgYmluYXJ5IHBhY2thZ2VzIGFyZSBpblxuXHRDOlxcVXNlcnNcXDk2NjUzXFxBcHBEYXRhXFxMb2NhbFxcVGVtcFxcUnRtcEtnUEtkMFxcZG93bmxvYWRlZF9wYWNrYWdlc1xuIn0= -->
+<pre><code>package ‘caret’ successfully unpacked and MD5 sums checked
+
+The downloaded binary packages are in
+    C:\Users\96653\AppData\Local\Temp\RtmpKgPKd0\downloaded_packages</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaW5zdGFsbC5wYWNrYWdlcyhcInJhbmRvbUZvcmVzdFwiKVxuYGBgIn0= -->
+<pre class="r"><code>install.packages(&quot;randomForest&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiV0FSTklORzogUnRvb2xzIGlzIHJlcXVpcmVkIHRvIGJ1aWxkIFIgcGFja2FnZXMgYnV0IGlzIG5vdCBjdXJyZW50bHkgaW5zdGFsbGVkLiBQbGVhc2UgZG93bmxvYWQgYW5kIGluc3RhbGwgdGhlIGFwcHJvcHJpYXRlIHZlcnNpb24gb2YgUnRvb2xzIGJlZm9yZSBwcm9jZWVkaW5nOlxuXG5odHRwczovL2NyYW4ucnN0dWRpby5jb20vYmluL3dpbmRvd3MvUnRvb2xzL1xuSW5zdGFsbGluZyBwYWNrYWdlIGludG8g4oCYQzovVXNlcnMvOTY2NTMvQXBwRGF0YS9Mb2NhbC9SL3dpbi1saWJyYXJ5LzQuM+KAmVxuKGFzIOKAmGxpYuKAmSBpcyB1bnNwZWNpZmllZClcbnRyeWluZyBVUkwgJ2h0dHBzOi8vY3Jhbi5yc3R1ZGlvLmNvbS9iaW4vd2luZG93cy9jb250cmliLzQuMy9yYW5kb21Gb3Jlc3RfNC43LTEuMS56aXAnXG5Db250ZW50IHR5cGUgJ2FwcGxpY2F0aW9uL3ppcCcgbGVuZ3RoIDIyMjQ1OSBieXRlcyAoMjE3IEtCKVxuZG93bmxvYWRlZCAyMTcgS0JcbiJ9 -->
+<pre><code>WARNING: Rtools is required to build R packages but is not currently installed. Please download and install the appropriate version of Rtools before proceeding:
+
+https://cran.rstudio.com/bin/windows/Rtools/
+Installing package into ‘C:/Users/96653/AppData/Local/R/win-library/4.3’
+(as ‘lib’ is unspecified)
+trying URL &#39;https://cran.rstudio.com/bin/windows/contrib/4.3/randomForest_4.7-1.1.zip&#39;
+Content type &#39;application/zip&#39; length 222459 bytes (217 KB)
+downloaded 217 KB</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoicGFja2FnZSDigJhyYW5kb21Gb3Jlc3TigJkgc3VjY2Vzc2Z1bGx5IHVucGFja2VkIGFuZCBNRDUgc3VtcyBjaGVja2VkXG5cblRoZSBkb3dubG9hZGVkIGJpbmFyeSBwYWNrYWdlcyBhcmUgaW5cblx0QzpcXFVzZXJzXFw5NjY1M1xcQXBwRGF0YVxcTG9jYWxcXFRlbXBcXFJ0bXBLZ1BLZDBcXGRvd25sb2FkZWRfcGFja2FnZXNcbiJ9 -->
+<pre><code>package ‘randomForest’ successfully unpacked and MD5 sums checked
+
+The downloaded binary packages are in
+    C:\Users\96653\AppData\Local\Temp\RtmpKgPKd0\downloaded_packages</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShjYXJldClcbmBgYCJ9 -->
+<pre class="r"><code>library(caret)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiTG9hZGluZyByZXF1aXJlZCBwYWNrYWdlOiBnZ3Bsb3QyXG5Mb2FkaW5nIHJlcXVpcmVkIHBhY2thZ2U6IGxhdHRpY2VcblJlZ2lzdGVyZWQgUzMgbWV0aG9kIG92ZXJ3cml0dGVuIGJ5ICdkYXRhLnRhYmxlJzpcbiAgbWV0aG9kICAgICAgICAgICBmcm9tXG4gIHByaW50LmRhdGEudGFibGUgICAgIFxuIn0= -->
+<pre><code>Loading required package: ggplot2
+Loading required package: lattice
+Registered S3 method overwritten by &#39;data.table&#39;:
+  method           from
+  print.data.table     </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShyYW5kb21Gb3Jlc3QpXG5gYGAifQ== -->
+<pre class="r"><code>library(randomForest)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoicmFuZG9tRm9yZXN0IDQuNy0xLjFcblR5cGUgcmZOZXdzKCkgdG8gc2VlIG5ldyBmZWF0dXJlcy9jaGFuZ2VzL2J1ZyBmaXhlcy5cblxuQXR0YWNoaW5nIHBhY2thZ2U6IOKAmHJhbmRvbUZvcmVzdOKAmVxuXG5UaGUgZm9sbG93aW5nIG9iamVjdCBpcyBtYXNrZWQgZnJvbSDigJhwYWNrYWdlOmdncGxvdDLigJk6XG5cbiAgICBtYXJnaW5cbiJ9 -->
+<pre><code>randomForest 4.7-1.1
+Type rfNews() to see new features/changes/bug fixes.
+
+Attaching package: ‘randomForest’
+
+The following object is masked from ‘package:ggplot2’:
+
+    margin</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="load-the-necessary-libraries" class="section level1">
+<h1>Load the necessary libraries</h1>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGF0YShIb2JieV9EYXRhKVxuYGBgIn0= -->
+<pre class="r"><code>data(Hobby_Data)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiV2FybmluZzogZGF0YSBzZXQg4oCYSG9iYnlfRGF0YeKAmSBub3QgZm91bmRcbiJ9 -->
+<pre><code>Warning: data set ‘Hobby_Data’ not found</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="load-the-dataset" class="section level1">
+<h1>Load the dataset</h1>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuSG9iYnlfRGF0YSRgUHJlZGljdGVkIEhvYmJ5YCA8LSBhcy5mYWN0b3IoSG9iYnlfRGF0YSRgUHJlZGljdGVkIEhvYmJ5YClcbmBgYCJ9 -->
+<pre class="r"><code>Hobby_Data$`Predicted Hobby` &lt;- as.factor(Hobby_Data$`Predicted Hobby`)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="convert-the-class-label-to-a-factor" class="section level1">
+<h1>Convert the class label to a factor</h1>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJlZGljdG9ycyA8LSBIb2JieV9EYXRhWywgLTE0XSAgIyBFeGNsdWRpbmcgdGhlIGNsYXNzIGxhYmVsIChQcmVkaWN0ZWQgSG9iYnkpXG5jbGFzc19sYWJlbCA8LSBIb2JieV9EYXRhJGBQcmVkaWN0ZWQgSG9iYnlgXG5gYGAifQ== -->
+<pre class="r"><code>predictors &lt;- Hobby_Data[, -14]  # Excluding the class label (Predicted Hobby)
 class_label &lt;- Hobby_Data$`Predicted Hobby`</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="separate-the-predictors-and-the-class-label" class="section level1">
+<h1>Separate the predictors and the class label</h1>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubW9kZWwgPC0gcmFuZG9tRm9yZXN0KHByZWRpY3RvcnMsIGNsYXNzX2xhYmVsLCBpbXBvcnRhbmNlID0gVFJVRSlcbmBgYCJ9 -->
+<pre class="r"><code>model &lt;- randomForest(predictors, class_label, importance = TRUE)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3IgaW4gcmFuZG9tRm9yZXN0LmRlZmF1bHQocHJlZGljdG9ycywgY2xhc3NfbGFiZWwsIGltcG9ydGFuY2UgPSBUUlVFKSA6IFxuICBOQSBub3QgcGVybWl0dGVkIGluIHByZWRpY3RvcnNcbiJ9 -->
+<pre><code>Error in randomForest.default(predictors, class_label, importance = TRUE) : 
+  NA not permitted in predictors</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
@@ -2098,41 +2077,18 @@ class_label &lt;- Hobby_Data$`Predicted Hobby`</code></pre>
 <h1>Train a Random Forest model</h1>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubW9kZWwgPC0gcmFuZG9tRm9yZXN0KHByZWRpY3RvcnMsIGNsYXNzX2xhYmVsLCBpbXBvcnRhbmNlID0gVFJVRSlcblxuYGBgXG5gYGAifQ== -->
-<pre class="r"><code>```r
-model &lt;- randomForest(predictors, class_label, importance = TRUE)
-</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-output-begin eyJkYXRhIjoiRXJyb3IgaW4gcmFuZG9tRm9yZXN0LmRlZmF1bHQocHJlZGljdG9ycywgY2xhc3NfbGFiZWwsIGltcG9ydGFuY2UgPSBUUlVFKSA6IFxuICBOQSBub3QgcGVybWl0dGVkIGluIHByZWRpY3RvcnNcbiJ9 --&gt;
-</code></pre>
-<p>Error in randomForest.default(predictors, class_label, importance =
-TRUE) : NA not permitted in predictors</p>
-<pre><code>
-
-
-&lt;!-- rnb-output-end --&gt;
-
-&lt;!-- rnb-chunk-end --&gt;
-
-
-&lt;!-- rnb-text-begin --&gt;
-
-
-
-# Get the variable importance
-
-&lt;!-- rnb-text-end --&gt;
-
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaW1wb3J0YW5jZSA8LSBpbXBvcnRhbmNlKG1vZGVsKVxuYGBgIn0= --&gt;
-
-```r
-importance &lt;- importance(model)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubW9kZWwgPC0gcmFuZG9tRm9yZXN0KHByZWRpY3RvcnMsIGNsYXNzX2xhYmVsLCBpbXBvcnRhbmNlID0gVFJVRSlcbmBgYCJ9 -->
+<pre class="r"><code>model &lt;- randomForest(predictors, class_label, importance = TRUE)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="get-the-variable-importance" class="section level1">
+<h1>Get the variable importance</h1>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaW1wb3J0YW5jZSA8LSBpbXBvcnRhbmNlKG1vZGVsKVxuYGBgIn0= -->
+<pre class="r"><code>importance &lt;- importance(model)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -2141,27 +2097,14 @@ importance &lt;- importance(model)</code></pre>
 <h1>Rank the features by importance</h1>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucmFua2VkX2ZlYXR1cmVzIDwtIHNvcnQoaW1wb3J0YW5jZVssIFwiTWVhbkRlY3JlYXNlR2luaVwiXSwgZGVjcmVhc2luZyA9IFRSVUUpXG5gYGAifQ== -->
-<pre class="r"><code>ranked_features &lt;- sort(importance[, &quot;MeanDecreaseGini&quot;], decreasing = TRUE)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-</div>
-<div id="print-the-ranked-features" class="section level1">
-<h1>Print the ranked features</h1>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
 <!-- rnb-plot-begin -->
 <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA2sAAAIcCAMAAABfO8ZvAAAA5FBMVEUAAAAAADoAAGYAOjoAOmYAOpAAZmYAZpAAZrY6AAA6OgA6Ojo6OmY6ZmY6ZpA6ZrY6kJA6kLY6kNtmAABmADpmOgBmOjpmZgBmZjpmZpBmkJBmkLZmkNtmtrZmtttmtv+QOgCQZgCQZjqQZmaQkDqQkGaQkLaQttuQtv+Q29uQ2/+2ZgC2Zjq2kDq2kGa2kJC2tma2tra227a229u22/+2/7a2/9u2//++vr7bkDrbkGbbtmbbtpDbtrbb25Db27bb29vb2//b/7bb/9vb////tmb/25D/27b/29v//7b//9v///9LxuJvAAAACXBIWXMAABJ0AAASdAHeZh94AAAgAElEQVR4nO2dC3vbRnpGh7TUio4jNVLlZNepxdVu6sbwJruxEpW2N+02pBQS////FHMBMLiQACn4A8A553kSgyRIDME5wsxg8ELFACCB6rsAAIGAawAy4BqADLgGIAOuAciAawAy4BqADLgGIAOuAciAawAy4BqADLgGIAOuAciAawAy4BqADLgGIAOuAciAawAy4BqADLgGIAOuAciAawAy4BqADLgGIAOuAciAawAy4BqADLgGIAOuAciAawAy4BqADLgGIAOuAciAawAy4BqADLgGIAOuAciAawAy4BqADLgGIAOuAcgQgGvrK6VuzNJCKTV5q59I/p+xmSt12fTWlVLT+8rrpWfrV/LQm0rX0Mtn24vsl7Duw+tWcTzMtr7Uns0P//XUj9B7z/Ls/K5p5eS3OV1673z6NxgcIbnmVOvRNVME+4HaiHSxbrs9u/bpemvhWpO7luz3pk/DtWMgFWblVOvTNS2Y29Zix8q9u5Z/8Sd+SEbDjsG1o8DVG13Na/+6Srqmt2Wr1K4mZC3jdM18yCZSjR9XcO04CcY1rZr7vbNq+nib6PfqN+fa46228cVd5a2avKZ/epl80Is32bO//JC8zb6r8DB7b8GKhTu2Zk3IzQ/PdYfmtXvx8sNMndylb/FfLG0r+9T/ScozKfSHnGtJBb95TF48uUs+J3nqW/cpp7+9Sz4le4f/fdICXNtj0VmxBMnnnv728Xn60O2xZ6+sItVy5HsvPZzv+DTnWuT3qGs2mLz82nyzFj/80AjFNdOeucmeMNV0NTM1StesS1sfDDelt5ql1DV9ODKYP8LJs5PneX+k+DByB66V/xc7a0SmTchIZfVaP/eFaW6lJfRfLG0rXWVR7Q/lrn1pm2/vbaEv7ac8m3nvKH6ftABfZ5v1S/CQW2i+gtt/2VvL5ai6tuPTrGuuP5u7Vtig+4kucG2o6J/8P65U3lB0v6TfnbjUlS75i7n5a6GlVnUtyt7i6n+KfrX40HtL3kRNG5FpE3KVVjFdIldfv0pLWHixtK18FVfJ81Zj7lqRahHL3yctQJQ+VShB9tcoK0H+1rpyZHvvca6q36f0aca1lfuVctfqN4hrAyX7iVKJ3C+pK9bFMn68Nj+wJ+BN9a1+VT1N2mTv7M9thlveGEN1HSk+1DrdVDpWXk3T24myvuSNLdHZMi9h4cXStuwqTl39HfLOn+faV0tz4EqakZ6xpRJ738cvQLV4psf7Out9LewnzfWeqS1HYe+dNX/a6a/pQd9zrbhK8oXiT3lvYFyE5Fp6eMmrqakXtoFj1jr5z39ueatzLXItJvfmVfp33D5ferhI1/E7/a45tag7fmaduYKf7sXSh9tV0mGQcjvVuaafc80yz9ib/FNK38cvQOlPTv4R7t90SOnhi1f/rC+Hv/fOl7s/TW9aN27PvF+ovIrXKMe1YWJ/8q/mWfsmd83I5xZcu2nyall+a+5aPmS5SOWyxiwKrUb3MKkiyf+j4iinPQJ4Y5+bf/z5ucr/ti/zEhZfLH24XaXcJDTkrrlWatoA8z9llR6O/O/jF8BVZ68EqVD2xYKOteXI995F+ids66elzdfC9y+ukhW2k0HSHgjFtUvzx9H/JfMRafsbZqMEdT0OV0fLj7M/47UPTSOyMjZvjh3ZsPzmNq2PNa4VXix9eMW1fCvtXSt/n4prhRK0c618QNadNSf0jk9LXSsM3W7ZoGucj45AXEsHwbzeQPm45oawVbnH4dfFrce1Vd1D04hM6kvxNJppRC68tpt69sefrupcK75Y+vDMteoZve6Oa8US2OP0Nteq5fA/5KbyZYufZlyb/sVtP3fNW4Xj2vBJfxr9rz9vJCr01yy//zAr9zgK45DV/prf+yk91G/X1adYL/Rb3WmGrCeyrnWt+GLpwwurFGlwbXd/reBasQT1VX/97+fv68uR7j39on7jrk+zh/v0z2Kta/TXhk8mzMIds0rjkLaJmf5lrvTuC67tMw4Zuz5g+Q/+wmtqrQq1sORa8cWt45DTu9IklCbX3LmN+nHIgmvFEtTY8dq9tbYc5R3f9Gl5y6DeNcYhB48/gcMfha+cX9PD3Y9zfyij4lrWqWtxfi19vTwTy27X1ml7TDWnHeqPa/mLh5xfq3fN+5TS9ym4lg3CpyUoVf18/7lDerkchQ6Wuil9n1rX3MGy3jXOrw2egjD5sEJ2qlTPxvDnjZxWhqfjmnkj527eyL9c5VWs9DC3u0hk7c6Xne6VsZHCi6UPT7/EIl8jpam/9o1XxOL3ySclRnZPFEpQqvrZvJFt5cj3nmtF7vo0t2l/4KeyQfcT/Rv9taHijV/Pzd/vbGjQTK87v4v8yXpuZmD5rVvnQ55t8tmFpYexqbLVMYPsggOzUT3D8f2qMjRhxiH9F0sfnn0JW576+ZBbxkY+7pgP6VzTQ4aTi2WhBOWq7+ZDXizj+nJ4Yxh2XGrXp6WbjrxfqLrBl3puJGMjUENUbUL2S/OlCMMH16DKxx3Xg/bDmF1b2ManHtcZ5dVtuPbZ8MdABsOYXfPGdQa2V9uBa58NO+wwrMPaqF3Lx1ZGeVjDtc+HOWn9pnk9UUbtWvzppR6JfPZqjEc1XAOQAtcAZMA1ABlwDUAGXAOQAdcAZMA1ABlwDUAGXAOQAdcAZMA1ABlwDUAGXAOQAdcAZMA1ABlwDUAGXAOQAdcAZMA1ABlwDUAGXAOQAdcAZMA1ABlwDUAGXAOQAdcAZMA1ABlwDUAGXAOQAdcAZMA1ABlwDUAGXAOQAdcAZMA1ABlwDUAGXAOQAdcAZMA1ABlwDUAGXAOQAdcAZMA1ABlwDUAGXAOQAdcAZJBzTbVDrDwAsgi69t9twDU4VnANQAZdtxeu+fbirm6Nzfx0ueXNm/f7bAnXIGh819Tkbc0a2117vD7bZ0u4BkFjXbvRi5t3ah934vhhhmsAbfFcS45g0/t93otrAO3xXYujxLXF9OdrNX2bHOVmanKxTNuQyUFPTV6ZxuTjS6XOk6WVbnbemBXVeW1Xr7glXIOgqRzXFtOvlTpdrq9ND+7k3rq2vjIPtXUPM7fkXIvMK81HRFyDsPFc+/1Pur+2sCMkkTq9ix/nyTPGtUglh7jk2HYZm8XkhRvXhlxfndzFmyg9NO7YEq5B0FTGIRfap8Qgc6DS/2jX1lemZ2YXT0378dK59jCbNrcfzZZwDYLGc21iOl32IJcOe0STt1ow2240TUVvQMQsbubJ0+ctTrThGoRNYWwkjre4tlJbXYs3t6ZjV3dqrrglXIOgaedaRbDC4ubHl3bYZPeWcA2CZotrlf5aNs5o+2vm/5526+vGgUhcg7DZ4lp1HDJ5GH+cuSHJTWTHRszIv37l04zjGsBOtrnmTqhNi+fX9EClHSfRhzH95GszNmJOtDVtCdcgaLa5Vpk3cpvNDknnjcTxh1lyeDPzRk7eNG8J1yBomuu27aB1sCVcg6ARdI0MBAiaxrodqT2vtAGAOppc28z1/GMAeCq02QBkGFxmHT03OFKGlqPFiCQcK7gGIINfo1fP/pBeivb45+d1E0FKCSN7BZTgGoRNwbV8tn5UP+kK1wAOpeSaS4hcX32BawCdUnTty9mlWVpM/4JrAJ1SdO0rm3G8mZ/ZKcilpLqLX41retHMNjaudZtZh2twrBRdu1yYRuTD7Ma4Vkmq+1K7lgYi3FjXus2swzU4VkquPZhG5GJ6b1wrJdXFH2fm2tGJPqRFZnF633FmHa7BsVJyzVysljQhzWVsXlLdg73uepHPQ1451zrOrMM1OFZKrsW6EblKPNOueUl1Jg8yGxv5/R8/fjNzrnWcWYdrcKyUXdP/mVj/xDUvqc537dHGjzvXOs6swzU4Vsqura9O/+/qLHbHtTP/pdi6pq+y+cPf36dtyLjbzDpcg2Ol7FocTb7T4xy2v1ZKqjP9NWfgInct7jCzDtfgWKm4trLj924c0kuqO1vGn2bGtemdOfFmXes4sw7X4FipuLa+MmON/vk1fc7NLn5p25DKnXbLxkZUZ5l1uAbHSsW12J4qc/NGvKS6W6Uu7N0ybvV9Nn4ykcjpvJHOMutwDY4Vrl8DkIEMBAAZqNEAMuAagAy4BiDDgPtrdOPgqBjuOCTDk3Bc4BqADCpepI2zPbJDPKJJ4wx/tyVcg6DBNQAZVPGuovuDawCtwDUAGUquZXF0VqHSPUWzeDp74Zp5NZp8/06pF91n1uEaHBdF1/I4Ovusuxw7JYunK7j2XD/ZfHTDNQibfGzEBGhlcXT26utiAzGPp/NdU8l7zFuatoRrEDQF1xw2SiR5XGpC5vF0Bddu4lZp47gGYVMeG0nj6Fx4XaEJmcfT+a5ZyZqHSHANwqboWh5HF+sE5LJAWTxd1bXm0Uxcg7ApuObF0enw41IT0qxh4+k4rgHsS8E1L44usWf6t2IT0qHj6axrD7Osv+bF223dEq5B0JRcy+Lo4ng1eV46VnnxdFGi4eNcpeOQySLjkAA7Kbch8zHJ9VU5y9iLpzMn4v51btqQX7ebTIlrEDbFsZE8ji6OzbGriBdP92Gmzn+zrv2SHAjPm5JYcQ1Ch+vXAGQgAwFAhqaqu/Jq+ZOuBwAIHFwDkIEmGYAM4+uv0WODcTK6cUhGImGk4BqADDUV95POQXhRvKFa0/Vpctev4RqMlGrFTa8dLUxwxDWAJ1KpuA+zyevkn1+vC0P8uAbwRCoVN50e6a6vceAawBPZ6ppFZ9jpecWJS7/cqsm3+jk9A3lysSws4hpAA3VtyDfeA91zswlbJpruUl8rarpzJ/f+Iq4BNFA/NvLsjzYwK1IXy8e5CanT14maC7YjvWQvDs0XcQ2ggZqK+7u+Sk3pERIbOKLTtJLj2lv72KUd6H+8RVwDaKC+4m4+3eqpxvn4SB7mkz4XTd56i7gG0MDWiquDe3ANoDPKFTfLqdP24BpAZ5Qr7mbuxvxth8yG/PiBkPTXAA6iUnFXavJqaRKQL+045CYyYyNegD/jkAD7U62479x8SH1Is+fXijeBWl8p96S3iGsADdTO808Me/bKdNu8eSOpa8wbATgErl8DkIEMBAAZqLgAMuAagAy4BiDDGPtr9OhgjIxwHJKRShgluAYgQ4ubFLZh8755S7gGQdONa4/XjbfwxTUInG6qZTF0a8uWcA2CBtcAZFDm2jN9y+sLc7dsM6d4kzycvCrdAtvcLPtcZ/7YW2S/0IuL6c/XavqdHmdvujsbrkHYWNe+1rK8nuv/X2aXypwWZYvMk7p7F9n1ddrPQi+efsQ1gCaMa2p6Fye+nN7FH5S5GjQ5uiXHtkt/xfXVyV28ibRSkQ7ZShbPdMCdNo42JEAj1rWbOEul09EGRpzNvHBge5hN79yiEc5esrawQuIaQBPGNW2ZvdrTJvq4mU6F0wEb3cI8N6fRIvtClLzNJZLjGkATKs3lyf+f3Y6+eOpNj5wodfI2c017hmsALalxbas4mx9fmhETjmsA+1Pjmouiq2V9nbxm+2tmNVwDaEmNazaKLv44K4yNrMyTn2ZmnHLyxqXWZa6VThDUbQnXIGjqXHPn18xofoYZG7Gn0SJ7fyi9vnNNv+N105ZwDYKmzrV4c5tOEfEw80ZO9L3Zosn36QyT9M6IH2bFs3F1W8I1CJpDqmVUPOK13RKuQdAIuibIAcUD+MzsrJYrr/p60x0Pcw0gbHANQAaaWwAyHGdmXRWxrwmwhaPM0WJkEgYIrgHIgGsAMuAagAy4BiADrgHI4KYT1wbSefjPpjfJdvfIjsys44fZgOYe4xoMEDclpDaQzsN7dn1t1j1xF4pu5ibcbjWkzDpcgwGiTPZcfSCdh/esuZLUXClqrsZ+mDlFm+4LgGsQNio5Ip1tCaTzyJ91CQn6H5Nqt5p8l7zmcu52bgnXIGjUN7PEtfpAOo/82TRaRK9g/jv9NXmmuQmJaxA4uut1tiWQziN/1nctMWwzP9OHt0Xz1H9cg7BR71e2a1YTSOdRf1xLWo4PsxudiTAfVLYPrsEAUcmxKu1qlQPpPPJnvf6aVvBv5vD2x8YRf1yD0FHvdBuyPpDOw3s2H4fUbcrnyVseZuVTBLVbwjUIGt1NO13WB9J5eM+6RDuzwsPMdPbmbe4EjGsQNur8J90arA2k8/CfTeeNxMYy3bZcqObYY1yDwKlUwvowkQ4iRnANwkbQtV55aukBnsp21wohWkRnATwRXAOQgcYVgAyhZNbtidhegXAI5LrsPcE16B5cqwPXoHtMrVpf1Qx9bN7v8TEtVsY1CBtTq1aqeqfCx+sWc0H2WRnXIGxMrYqmX1cmNLa53fxeK+MahI2uVeur04+V66pxDaBTdK1aqcssL+TxpVLnS3cmu+BfbazdYvrztZp+V1m5bkt9C7QHuAbdo1yOj5sY8jDT2ujInoo+tbF2C72YHBVxDaAB5RqAKzs6EqmL5aO5UKbcLKyPtVvYq0RpQwI0oVyMT9JnW6b/N96V9amPtVtYRXENoAmVR4UXD2Zlfepj7VzcFq4BNKFcF02Z6LodrtXH2uEaQEt0jpYjMWiXa7WxdrgG0BKVpdPprpfXa6vXpxxrh2sALVGrNJfnwSbWXSw3kR0bKcar1sfaZa4NPIt1T3ANukdF6YmxzTxpE9rOWxpN99pbsT7WzrlWXrl2S30LtAe4Bt2j8oBjkzyXzhuJ4w+z4oTk2li7NPa/vHLdlvoWaA9wDbrnkFp1WPgIrkHYCLo2Jg74fgC72VmrClFa+dOEagHsD64ByEBrCUAGMuuegNi+g2OAHK3DwTXYB1w7HFyDfcC1w8E12IdqfXHXs20lf71pzdKW+lajc3AN9gHXDgfXYB+e4tqeW+pbjc7BNdgHXDscXIN9ULdq8q1eyO44b13S8/3trH4bAfk2i4dMXv/FvsmG3eVhkQ1b6luNzsE12AdzTvZSX3Btlk7urUHp7KybNAJymcVDbub28rXL1LUsLLJhS32r0Tm4Bvug7ux1a5G+7Npca60NSnxKDml+BGQeD7mZ61UXbk0/LLJhS32r0Tm4BvugbLyISx3R/3j9sZV1TV8FmsdDmuu3zZuca1lYZMOW+lajc3AN9sG5lobzRJO3Tpvf//HjN7M8UiSPh7Sv567loVoNW+pbjc7BNdiHLa492u6bF9+TxUPWu7Y4qjz/duAa7EO9a8lR7OQPf3+/8lzL4iE5rqXgGuxDfX/NqbcouBbbeMiya3lYZMOW+lajc3AN9sG5VhqHNCMhm3deGzKPh6y4loVFNmypbzU6B9dgH1LXdMJjev7MtCEtySve2Ig54VZ2LQ+LbNhS32p0Dq7BPqSuleaN6JGQyflPXox4Fg9ZcS0Li2zYUt9qdA6uwT48ub60Dvr5TDkEffLUfQdBIecaQNjgGoAMuAYgA5l1fSC202FAkO3TA7gWJLjWA7gWJLjWA7gWJGkP4uzQGBHL5n3zlvqu4cMB14KkG9cer4/r3vSfGVwLEmVnaD2R9JKcnVvqu4YPB1wLElzrAVwLksw1O73fBNBdmKnHZjqxvq5m8qosYznQ7jvdCg3vuuyDwbUgKbtmAuhez/X/dZKdvdKmdOSrBNp9xLW9wLUgKbmmpndxYs7pXfxBmStIk6Nbcmy79N9SDbSjDbkfuBYkZddu8lC66f366sy+VNel8wLtcG0/cC1ISq5py+zov41CcK3F8umAUqAdru0HrgVJub9277uWdsxKrlUD7XBtL3AtSHa6Vq9QTaAdru0FrgXJTtfqk+hqAu1wbS9wLUh2umaT7OKPs8LYSDXQLnmq+YQ4rmXgWpDsds2dXyteel0NtDPrvW7aUt81fDjgWpDsdi3e3Lo7HPpUA+3iD7PiObi6LfVdw4cDrgUJGQh9ILbTYUDwswPI0NK1lfdHuWniIwDUgGsAMtBfGwlivxN8Lsj2GQe4Nn5wbRzg2vjBtXGAa+NHvU9PW6fsCtTaVNbeY0t9V9dRg2vjR09qbO2aiabDtT7AtfHTfJ9rjzbT+bdvqe/qOmpwbfzg2jjAtfGjlLqxrUIdRHee3i87MuF1L8yk4yyhzpzQdmt7t9c+/fVaTb5t3lLf1XXU4Nr4yeyx2SKny9Q1E16nL6bJE+o819Y2BuHkPrvCpmmaP649CVwbP9nYiI6ne9Q5Wu7R5LWNpfMT6kwbMr+INFldv54sbv5azpCs2VLf1XXU4Nr4SV2zl7GtksOTc0nPevSGHFcF11w4gv4nTbjDtc8Kro2f1LV82MO1IY1k9mbYWUJd5lq6dvK69RHXPjO4Nn52u6Yvu/YS6nCtN3Bt/DQe1/yEOlzrDVwbP8X+mv6/11/T/TE/oa6+v4ZrAuDa+MlH+dXFchPlYyOTN3ac0U+oM9F0lXFIXBMA18ZP0hF77Z1fm947lybPs4fu/Foik4mm88Ps0tVx7XODa+NHzdRl3byRyffZ7Q7zhDoTTVeZN4JrAuDa+NnyG0bF+NVOtgRPoeufA8SRcw0gbHANQAZcA5CBzLpRIfZrQfeQ7TMmcG3M4NqYwLUxg2tjAtfGTOm28x46n66BFqt4W+q7oh4BuDZmtrpm8ul202IVf0t9V9QjANfGzNZfr0Vm1n6xWrj2dHBtzODamMC1MWN+vSyVLg+gs5lZhVWzteLF9OdrNf3OrqJnIVduqV23pb4r6hGAa2NG/3p5Kl0eQFd1LV8rce1rpU4/2keRebY5dxzXng6ujRm19FPpvAC6cgPRz65bmOBIu8r66uROP914t1Fcezq4NmZUdtnZyoZBpgF0WzpjK+uaSV41q5jrtlttqe+KegTg2pixv16aSudd+FnjWpZdt7BHMRc/krQgz1ucaMO1p4NrY0b/enkq3S7XvOw63zVz3bZSJ43XBeDa08G1MaPMkSlNpdvhmp9dV3AteenHl4qMcQlwbcyoTJnFbtf87LqSawnr68aBSFx7Org2ZlTsp9IVXCseqfzsusy1ZJWVTq+LP804rgmAa2NGxX4qneeayafzVvSz65xrLsIuO+3WsKW+K+oRgGtjRv96eSqdH0Cn8+n8Nb3sOueaXcXMGzHTSRq21HdFPQJwbcyQgTAqxH4t6B5+PQAZdrq28v6iNvbHAGAXuAYgA/012IpY3QgDsn1gG7jWLbgG28C1bsE12AaudYsy0xjLE7JaQmbdUYNr3WLHF1fFKSItIbPuuMG1brGSLQ4a0idH67jBtW4x153ZaZB7g2vHDa51i8onG3u3wE6T6wqQWRcYuNYtZkLIw+xSX+5pzl+e3HvJdT5k1oUGrnWL0u3AhU7PivRFn4/zYnJdDpl1wYFr3aLmiVFRclRaX5lD09pcxZYl11Ugsy4ccK1bVHJMW1+d5QMd0eStf8WoD5l1YYFr3aJW6sZ01xpdI7MuNHCtW1RyUFvpJmOTa2TWBQeudYvazE//ZNXy+ms1rpFZFxy41i0qXkyeG2X8ccha18isCwxc6xalz5uZUUWdQGdPlG1rQ1rIrAsFXOsWlRgzseMa3ryRurERMutCA9e6hQwE2IpY3QgD9ieADORoAciAawAy0F8DOIQDDOheqm1b6ntYDaA7cA1ABlwDkKE/11qk1+EaHBG9udYmvQ7X4IjozbU2iVq4BkcErgHIcIhrb82FMpNXZp5xvmhj6fyLrfNsumj6S7Lei7u4lF6HaxAMh7i2dNfS6En93qKNpfMn+ufZdJF+TZksrUJ6Ha5BMBzUhozUxVIf0C5jf9HF0uV42XSRmryuSa/DNQiHQ1wzIVom63jpLaaxdDleNp0NgzRXufnpdbgG4XCIaw8zN79reu8tVu+m4WXTRTZbJEoOadXkEVyDEDjEtWwu//TeW6y5c02eTedc06vgGoTJYce1TBPfmLq7RKXZdBzXIHgO669laXPe4rY7splsOttfW3vJI7gGgXHgOKQOnfuoQ+e8xYprXjZdpCZvbLpdIb0O1yAcDnLNnVSzt8vIFuvHRuxptGjyPD3V5qfX4RqEw2FztDa32c0K88WasZEsmy6afH+r9Km4uJheh2sQDELzIaNJ440y6rYEcEQcYMAB1hzmGkDYHJKjhWsA+4NrADKQewwgA64ByIBrADLgGoAMuAYgA64ByIBrADLgGoAM3BMKRopYze0KQdfEttQeytQOytQFuDY0KFM7hlim3eDa0KBM7RhimXaDa0ODMrVjiGXaDa4NDcrUjiGWaTe4NjQoUzuGWKbd4NrQoEztGGKZdoNrQ4MytWOIZdoNrg0NytSOIZZpN7g2NChTO4ZYpt3g2tCgTO0YYpl2g2tDgzK1Y4hl2s34SgwwTnANQAZcA5AB1wBkwDUAGXANQAZcA5AB1wBkwDUAGXANQAZcA5AB1wBkwDUAGXANQAZcA5AB1wBkkHFt88NMTV4tRbbVgoW9+cJNPJSSra9uzL9eaXovWFqmweysx5dKTS7KO6f3/dQeGdci83OdiWyrBVFefQZRss1c3XgFOystDqFM/e+sh5nZ+ukyHtR+2gMR1x5m07vkf5O3EhtrZjM/Tf8ODqJkSbW29dorTd8Fy8o0lJ2VFOirZfx4rS4HtZ/2QcS1yPxsq6H89VlfZQUZQsk+ziZf2HrtlabnguVlGsrOcuV4mJ0NaT/thYRrm/n0PtZ763QYzeqH2aVbGkLJNvOTu4XtDuWl6blgeZkGtrPKO2cQZWqLhGtuT7j90j8r9R/XSp0vB1Ky/9XjD7pee6Xpu2BZmYa2s/QRbED7aS9CdM2NrCWlGUrJBudaVqaB7azNPOmZDWs/tUfGNduajoaxQ5Je9kXSy56bv5DDKFnqWlaaARQsbdcOamdFemhkWPupPSEe1yzrq+H8WRzwcc0yjJ21icwYyLD2U3vCdW1IP9XgXRtEmewxdmj7qT0hjkNadKmGUrKhjUPmZXIMYWc9XqnLrDDxYPZTewI8v+Z+mIdZ8s9ASrYY2vm1uHSsHcDOWl9NXrvFQe2n9oi4thL6HagAAAGOSURBVFKTt3qOzU3zqhJEprtvZiAMpGTZ+HpWmv4Llvk/kJ0V5dsd1H5qT4jzIbfMrOuRtL02pHl+2bnsYewsVw5bkiHtp/YEOc//8VYNa5p46tqQ5q+nZRrIzlopz7Uh7af2cP0agAy4BiADrgHIgGsAMuAagAy4BiADrgHIgGsAMuAagAy4BiADrgHIgGsAMuAagAy4BiADrgHIgGsAMuAagAy4BiADrgHIgGsAMuAagAy4BiADrgHIgGsAMuAagAy4BiADrgHIgGsAMuAagAy4BiADrgHIgGsAMuAagAy4BiADrgHIgGsAMuAagAy4BiADrgHIgGsAMuAagAy4BiADrgHIgGsAMuAagAy4BiADrgHIgGsAMuAagAy4BiADrgHIgGsAMuAagAy4BiADrgHIgGsAMuAagAy4BiADrgHIgGsAMuAagAy4BiADrgHIgGsAMuAagAy4BiADrgHIgGsAMuAagAy4BiADrgHIgGsAMuAagAy4BiADrgHIgGsAMuAagAy4BiADrgHI8P/JBANxW0bV7QAAAABJRU5ErkJggg==" /></p>
 <!-- rnb-plot-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>#—————————————————- 2-Feature Selection Using RFE The provided code
-aims to identify the most important features for predicting kids hobbies
-using Recursive Feature Elimination (RFE) .</p>
 </div>
-<div id="ensure-the-results-are-repeatable-by-setting-a-seed" class="section level1">
-<h1>Ensure the results are repeatable by setting a seed</h1>
+<div id="print-the-ranked-features" class="section level1">
+<h1>Print the ranked features</h1>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuc2V0LnNlZWQoNylcbmBgYFxuYGBgIn0= -->
@@ -2176,7 +2119,13 @@ set.seed(7)</code></pre>
 &lt;!-- rnb-text-begin --&gt;
 
 
-# Load the necessary libraries
+
+
+#----------------------------------------------------
+2-Feature Selection Using RFE
+The provided code aims to identify the most important features for predicting kids hobbies using Recursive Feature Elimination (RFE) .
+
+# Ensure the results are repeatable by setting a seed
 
 &lt;!-- rnb-text-end --&gt;
 
@@ -2198,8 +2147,7 @@ library(caret)</code></pre>
 &lt;!-- rnb-text-begin --&gt;
 
 
-
-# Load the data
+# Load the necessary libraries
 
 &lt;!-- rnb-text-end --&gt;
 
@@ -2222,7 +2170,7 @@ data(Hobby_Data)</code></pre>
 
 
 
-# Define the control parameters for RFE using random forest selection function
+# Load the data
 
 &lt;!-- rnb-text-end --&gt;
 
@@ -2245,7 +2193,7 @@ control &lt;- rfeControl(functions = rfFuncs, method = \cv\, number = 10)</code>
 
 
 
-# Extract the predictor variables from Hobby_Data
+# Define the control parameters for RFE using random forest selection function
 
 &lt;!-- rnb-text-end --&gt;
 
@@ -2268,7 +2216,7 @@ predictors &lt;- Hobby_Data[, -ncol(Hobby_Data)]</code></pre>
 
 
 
-# Convert the outcome variable to a factor
+# Extract the predictor variables from Hobby_Data
 
 &lt;!-- rnb-text-end --&gt;
 
@@ -2291,7 +2239,7 @@ outcome &lt;- as.factor(Hobby_Data$`Predicted Hobby`)</code></pre>
 
 
 
-# Run the RFE algorithm
+# Convert the outcome variable to a factor
 
 &lt;!-- rnb-text-end --&gt;
 
@@ -2314,7 +2262,7 @@ results &lt;- rfe(predictors, outcome, sizes = 1:ncol(Hobby_Data), rfeControl = 
 
 
 
-# Summarize the results
+# Run the RFE algorithm
 
 &lt;!-- rnb-text-end --&gt;
 
@@ -2359,8 +2307,7 @@ Time_art, Olympiad_Participation</p>
 
 
 
-
-# List the chosen features selected by RFE
+# Summarize the results
 
 &lt;!-- rnb-text-end --&gt;
 
@@ -2395,7 +2342,8 @@ predictors(results)</code></pre>
 
 
 
-# Plot the results
+
+# List the chosen features selected by RFE
 
 &lt;!-- rnb-text-end --&gt;
 
@@ -2424,11 +2372,7 @@ plot(results, type = c(\g\, \o\))</code></pre>
 
 
 
-
----------------------------------------
-By considering both Recursive Feature Elimination (RFE) and Rank By Importance, we can make informed decisions about feature relevance and impact on the model. In this case, the columns &quot;School,&quot; &quot;Medals&quot;  should be deleted as they have lower importance scores compared to the selected variables. Removing these columns simplifies the model and reduces dimensionality, eliminating potential noise and irrelevant information that could hinder accurate predictions.
-
-# Remove the specified columns from the Hobby_Kids dataset
+# Plot the results
 
 &lt;!-- rnb-text-end --&gt;
 
@@ -2450,7 +2394,12 @@ Hobby_Data &lt;- Hobby_Data[, !(colnames(Hobby_Data) %in% c(\School\, \Medals\))
 &lt;!-- rnb-text-begin --&gt;
 
 
-# Display the updated dataset after deleting columns
+
+
+---------------------------------------
+By considering both Recursive Feature Elimination (RFE) and Rank By Importance, we can make informed decisions about feature relevance and impact on the model. In this case, the columns &quot;School,&quot; &quot;Medals&quot;  should be deleted as they have lower importance scores compared to the selected variables. Removing these columns simplifies the model and reduces dimensionality, eliminating potential noise and irrelevant information that could hinder accurate predictions.
+
+# Remove the specified columns from the Hobby_Kids dataset
 
 &lt;!-- rnb-text-end --&gt;
 
@@ -2463,12 +2412,32 @@ Hobby_Data &lt;- Hobby_Data[, !(colnames(Hobby_Data) %in% c(\School\, \Medals\))
 ```r
 ```r
 View(Hobby_Data)</code></pre>
-<p>```</p>
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-chunk-end --&gt;
+
+
+&lt;!-- rnb-text-begin --&gt;
+
+
+# Display the updated dataset after deleting columns
+
+&lt;!-- rnb-text-end --&gt;
+
+
+&lt;!-- rnb-chunk-begin --&gt;
+
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuVmlldyhIb2JieV9EYXRhKVxuYGBgIn0= --&gt;
+
+```r
+View(Hobby_Data)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 </div>
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KIyMgKipLaWRzIEhvYmJ5IFByZWRpY3Rpb24gRGF0YXNldCoqDQoNCioqRGVzY3JpcHRpb246KioNCg0KRm9sbG93aW5nIHRoZSBzZWxlY3Rpb24gb2Ygb3VyIGRhdGEgc2V0ICgiSG9iYnlfRGF0YSIpIHdoaWNoIHByZWRpY3RzIGtpZHMnIGhvYmJpZXMsIHRoYXQgd2FzIGNvbGxlY3RlZCBieSBhc2tpbmcgdGhlaXIgcGFyZW50cyBzcGVjaWZpYyBxdWVzdGlvbnMgYWJvdXQgdGhlaXIga2lkJ3MgcHJlZmVyZW5jZXMsIGNhcGFiaWxpdGllcywgYW5kIGFjaGlldmVtZW50cy4gVG8gaGVscCB1cyB0cmFpbiB0aGUgbWFjaGluZSB0byBwcmVkaWN0IHRoZSBraWQncyBob2JieS4gV2Ugd2lsbCBiZWdpbiB0byBwcmVwcm9jZXNzIGFuZCBhbmFseXplIHRoZSBkYXRhLg0KDQoqKkdlbmVyYWwgaW5mb3JtYXRpb24gYWJvdXQgdGhlIGRhdGEgc2V0OioqDQoNCmBgYHtyfQ0Kc3RyKGRhdGFzZXQpDQpgYGBgYGANCg0KKipzdW1tYXJ5IG9mIHRoZSBkYXRhc2V0OioqDQoNCi0gICBzYW1wbGVzIG9mIHJhdyBkYXRhc2V0Og0KDQpgYGB7cn0NCnNhbXBsZShkYXRhc2V0KQ0KYGBgDQoNCg0KDQogU3RhdGlzdGljYWwgbWVhc3VyZXMgOg0KYGBge3J9DQoNCg0KbW9kZShkYXRhc2V0JEdyYXNwX3BvdykNCm1lYW4oZGF0YXNldCRHcmFzcF9wb3cpDQoNCm1lYW4oZGF0YXNldCRUaW1lX3NwcnQpDQoNCm1vZGUoZGF0YXNldCRUaW1lX3NwcnQpDQoNCg0KDQptb2RlKGRhdGFzZXQkVGltZV9hcnQpDQoNCk1vZGUgPC0gZnVuY3Rpb24oZGF0YXNldCkgew0KICB1eCA8LSB1bmlxdWUoZGF0YXNldCkNCiAgdXhbd2hpY2gubWF4KHRhYnVsYXRlKG1hdGNoKGRhdGFzZXQsIHV4KSkpXQ0KfSANCg0KbW9kZXM8LU1vZGUoZGF0YXNldCkNCnByaW50KE1vZGUpDQoNCm1lYW4oZGF0YXNldCRUaW1lX2FydCkNCg0KDQogDQoNCmBgYA0KIzEjIERhdGEgY2xlYW5pbmcNCg0KRHVyaW5nIHRoZSBkYXRhIGNsZWFuaW5nIHN0YWdlLCBGaW5kaW5nIGFuZCBmaXhpbmcgZmF1bHRzLCBpbmNvbnNpc3RlbmNpZXMsIGFuZCBlcnJvcnMgaW4gYSBkYXRhc2V0IGhlbHBzIGl0IGJlIG1vcmUgcmVsaWFibGUgYW5kIG9mIGhpZ2hlciBxdWFsaXR5IGZvciBhbmFseXNpcyBhbmQgbW9kZWxsaW5nLiBUaGVyZSBhcmUgbWV0aG9kcyBmb3IgaGFuZGxpbmcgbWlzc2luZyB2YWx1ZXMsIGRldGVjdGluZyBvdXRsaWVycywgcmVzb2x2aW5nIGluY29uc2lzdGVuY2llcywgYW5kIHN0YW5kYXJkaXNpbmcgZm9ybWF0cy4NCg0KLSAgIGltcG9ydCBEYXRhc2V0IkhvYmJ5X0RhdGEiDQoNCmBgYHtyfQ0Kc2V0d2QoIi9Vc2Vycy85NjY1My9Eb2N1bWVudHMvR2l0SHViL0tpZHNIb2JieS9EYXRhc2V0IikNCg0KDQpkYXRhc2V0ID0gcmVhZC5jc3YoJ0hvYmJ5X0RhdGEuY3N2JykNCg0KZGF0YXNldCA9IHJlYWQuY3N2KCJIb2JieV9EYXRhLmNzdiIpDQoNClZpZXcoZGF0YXNldCkNCg0Kc3RyKGRhdGFzZXQpDQpgYGANCg0KKioxLSBjaGVjayBtaXNzaW5nIHZhbHVlIDoqKg0KDQpgYGB7cn0NCmlzLm5hKGRhdGFzZXQpDQpgYGANCg0KLSAgICoqZmluZCB0aGUgdG90YWwgbnVsbCB2YWx1ZXMgaW4gdGhlIGRhdGFzZXQqKg0KDQpgYGB7cn0NCnN1bShpcy5uYShkYXRhc2V0KSkNCmBgYA0KDQpXZSBzaW1wbHkgbG9vayBmb3IgbWlzc2luZyB2YWx1ZXMgYW5kIG5vIG1pc3NpbmcgdmFsdWVzIGluIHRoZWlyICxBY2NvcmRpbmcgdG8gb3VyIGludmVzdGlnYXRpb24sIHRoZSBkYXRhc2V0IGRvZXMgbm90IGNvbnRhaW4gYW55IG91dGxpZXJzICwgc2luY2UgbnVtcmljIERhdGEgVHlwZSBpcyBub3QgaW5jbHVkZWQuIGFsc28gdGhlcmUgYXJlIG5vIGluY29uc2lzdGVudCB2YWx1ZXMsb3Igb3RoZXIgZXJyb3JzLg0KDQojRW5jb2Rpbmc6DQojQ29udmVydGluZyBjYXRlZ29yaWNhbCBvciBub24tbnVtZXJpYyBkYXRhIGludG8gYSBudW1lcmljYWwgZm9ybWF0LCB3aGljaCBpcyBuZWNlc3NhcnkgZm9yIGNvbXBhdGliaWxpdHkgd2l0aCBtYWNoaW5lIGxlYXJuaW5nIA0KYGBge3J9DQpIb2JieV9EYXRhJE9seW1waWFkX1BhcnRpY2lwYXRpb24gPSBmYWN0b3IoSG9iYnlfRGF0YSRPbHltcGlhZF9QYXJ0aWNpcGF0aW9uLGxldmVscyA9IGMoIk5vIiwgIlllcyIpLCBsYWJlbHMgPSBjKDAsIDEpKQ0KSG9iYnlfRGF0YSRTY2hvbGFyc2hpcCA9IGZhY3RvcihIb2JieV9EYXRhJFNjaG9sYXJzaGlwICwgbGV2ZWxzID0gYygiTm8iLCAiWWVzIiksIGxhYmVscyA9IGMoMCwgMSkpDQpIb2JieV9EYXRhJFNjaG9vbCA9IGZhY3RvcihIb2JieV9EYXRhJFNjaG9vbCwgbGV2ZWxzID0gYygiTm8iLCAiWWVzIiksIGxhYmVscyA9IGMoMCwgMSkpDQpIb2JieV9EYXRhJFByb2plY3RzID0gZmFjdG9yKEhvYmJ5X0RhdGEkUHJvamVjdHMsIGxldmVscyA9IGMoIk5vIiwgIlllcyIpLCBsYWJlbHMgPSBjKDAsIDEpKQ0KSG9iYnlfRGF0YSRNZWRhbHMgPSBmYWN0b3IoSG9iYnlfRGF0YSRNZWRhbHMsIGxldmVscyA9IGMoIk5vIiwgIlllcyIpLCBsYWJlbHMgPSBjKDAsIDEpKQ0KSG9iYnlfRGF0YSRDYXJlZXJfc3BydCA9IGZhY3RvcihIb2JieV9EYXRhJENhcmVlcl9zcHJ0LCBsZXZlbHMgPSBjKCJObyIsICJZZXMiKSwgbGFiZWxzID0gYygwLCAxKSkNCkhvYmJ5X0RhdGEkQWN0X3NwcnQgPSBmYWN0b3IoSG9iYnlfRGF0YSRBY3Rfc3BydCwgbGV2ZWxzID0gYygiTm8iLCAiWWVzIiksIGxhYmVscyA9IGMoMCwgMSkpDQpIb2JieV9EYXRhJEZhbnRfYXJ0cyA9IGZhY3RvcihIb2JieV9EYXRhJEZhbnRfYXJ0cywgbGV2ZWxzID0gYygiTm8iLCAiWWVzIiksIGxhYmVscyA9IGMoMCwgMSkpDQpIb2JieV9EYXRhJFdvbl9hcnRzID0gZmFjdG9yKEhvYmJ5X0RhdGEkV29uX2FydHMsIGxldmVscyA9IGMoIk5vIiwgIk1heWJlIiwgIlllcyIpLCBsYWJlbHMgPSBjKDAsIDIsIDEpKQ0KSG9iYnlfRGF0YSRGYXZfc3ViID0gZmFjdG9yKEhvYmJ5X0RhdGEkRmF2X3N1YiwgbGV2ZWxzID0gYygiU2NpZW5jZSIsICJNYXRoZW1hdGljcyIsICJIaXN0b3J5L0dlb2dyYXBoeSIsICJBbnkgbGFuZ3VhZ2UiKSwgbGFiZWxzID0gYygxLCAyLCAzLCA0KSkNCmBgYA0KDQojTm9ybWFsaXphdGlvbiBhbmQgRGlzY2V0aXphdGlvbg0KI1dlIGRvbid0IG5lZWQgdG8gdXNlIG5vcm1hbGl6YXRpb24gYW5kIGRpc2NldGl6YXRpb24gaW4gb3VyIGRhdGFzZXQuU2luY2Ugb3VyIGRhdGFzZXQgZG9lc27igJl0IGhhdmUgbnVtZXJpYyBhdHRyaWJ1dGVzIGFuZCBub3JtYWxpemF0aW9uIGludm9sdmVzIG1hdGhlbWF0aWNhbCBvcGVyYXRpb25zLCB3aGljaCBjYW4gcmVzdWx0IGluIG1lYW5pbmdsZXNzIGFuZCBlcnJvbmVvdXMgdmFsdWVzLEFsc28sIGFwcGx5aW5nIGRpc2NyZXRpemF0aW9uIGxlYWRzIHRvIGxvc3Mgb2YgaW5mb3JtYXRpb24gYW5kIG1ha2VzIGludGVydmFscyBhbmQgcmVsYXRpb25zaGlwcyB0aGF0IGRvbid0IGV4aXN0IGJldHdlZW4gdmFsdWVzLg0KDQoNCg0KRmVhdHVyZSBTZWxlY3Rpb24NCkZlYXR1cmUgc2VsZWN0aW9uIGlzIHRoZSBwcm9jZXNzIG9mIHNlbGVjdGluZyBhIHN1YnNldCBvZiByZWxldmFudCBmZWF0dXJlcyBmcm9tIGEgbGFyZ2VyIHNldCBvZiBhdmFpbGFibGUgZmVhdHVyZXMuIFRoZSBtYWluIG9iamVjdGl2ZSBvZiBmZWF0dXJlIHNlbGVjdGlvbiBpcyB0byBpbXByb3ZlIHRoZSBwZXJmb3JtYW5jZSBhbmQgZWZmaWNpZW5jeSBvZiBtYWNoaW5lIGxlYXJuaW5nIG1vZGVscy4gQnkgc2VsZWN0aW5nIHRoZSBtb3N0IGluZm9ybWF0aXZlIGFuZCBpbmZsdWVudGlhbCBmZWF0dXJlcyB3aGlsZSBkaXNjYXJkaW5nIGlycmVsZXZhbnQgb3IgcmVkdW5kYW50IG9uZXMgdG8gaW1wcm92ZXMgbW9kZWwgcGVyZm9ybWFuY2UuDQoNCjEtUmFuayBGZWF0dXJlcyBCeSBJbXBvcnRhbmNlDQpUaGUgcHJvdmlkZWQgY29kZSBwZXJmb3JtcyBhIHNlcXVlbmNlIG9mIHN0ZXBzIHRvIGFuYWx5emUgdGhlIGltcG9ydGFuY2Ugb2YgZGlmZmVyZW50IGZlYXR1cmVzIHNlbGVjdGlvbiBpbiBwcmVkaWN0aW5nIGtpZHMgaG9iYmllcyB1c2luZyBhIFJhbmRvbSBGb3Jlc3QgbW9kZWwuDQoNCiMgRW5zdXJlIHRoZSByZXN1bHRzIGFyZSByZXBlYXRhYmxlIGJ5IHNldHRpbmcgYSBzZWVkDQpgYGB7cn0NCnNldC5zZWVkKDcpDQoNCmBgYA0KDQoNCiMgTG9hZCB0aGUgbmVjZXNzYXJ5IGxpYnJhcmllcw0KYGBge3J9DQppbnN0YWxsLnBhY2thZ2VzKCJjYXJldCIpDQppbnN0YWxsLnBhY2thZ2VzKCJyYW5kb21Gb3Jlc3QiKQ0KbGlicmFyeShjYXJldCkNCmxpYnJhcnkocmFuZG9tRm9yZXN0KQ0KYGBgDQoNCg0KDQojIExvYWQgdGhlIGRhdGFzZXQNCmBgYHtyfQ0KZGF0YShIb2JieV9EYXRhKQ0KYGBgDQoNCg0KIyBDb252ZXJ0IHRoZSBjbGFzcyBsYWJlbCB0byBhIGZhY3Rvcg0KYGBge3J9DQpIb2JieV9EYXRhJGBQcmVkaWN0ZWQgSG9iYnlgIDwtIGFzLmZhY3RvcihIb2JieV9EYXRhJGBQcmVkaWN0ZWQgSG9iYnlgKQ0KYGBgDQoNCg0KIyBTZXBhcmF0ZSB0aGUgcHJlZGljdG9ycyBhbmQgdGhlIGNsYXNzIGxhYmVsDQpgYGB7cn0NCnByZWRpY3RvcnMgPC0gSG9iYnlfRGF0YVssIC0xNF0gICMgRXhjbHVkaW5nIHRoZSBjbGFzcyBsYWJlbCAoUHJlZGljdGVkIEhvYmJ5KQ0KY2xhc3NfbGFiZWwgPC0gSG9iYnlfRGF0YSRgUHJlZGljdGVkIEhvYmJ5YA0KYGBgDQoNCiMgVHJhaW4gYSBSYW5kb20gRm9yZXN0IG1vZGVsDQpgYGB7cn0NCm1vZGVsIDwtIHJhbmRvbUZvcmVzdChwcmVkaWN0b3JzLCBjbGFzc19sYWJlbCwgaW1wb3J0YW5jZSA9IFRSVUUpDQpgYGANCg0KDQojIEdldCB0aGUgdmFyaWFibGUgaW1wb3J0YW5jZQ0KYGBge3J9DQppbXBvcnRhbmNlIDwtIGltcG9ydGFuY2UobW9kZWwpDQpgYGANCg0KDQojIFJhbmsgdGhlIGZlYXR1cmVzIGJ5IGltcG9ydGFuY2UNCmBgYHtyfQ0KcmFua2VkX2ZlYXR1cmVzIDwtIHNvcnQoaW1wb3J0YW5jZVssICJNZWFuRGVjcmVhc2VHaW5pIl0sIGRlY3JlYXNpbmcgPSBUUlVFKQ0KYGBgDQoNCg0KIyBQcmludCB0aGUgcmFua2VkIGZlYXR1cmVzDQpgYGB7cn0NCnByaW50KHJhbmtlZF9mZWF0dXJlcykNCg0KYmFycGxvdChyYW5rZWRfZmVhdHVyZXMsIGhvcml6ID0gVFJVRSwgbGFzID0gMSwgbWFpbiA9ICJLaWRzIEhvYmJ5IFZhcmlhYmxlIEltcG9ydGFuY2UgUmFua2luZyIpDQpgYGANCg0KDQoNCiMtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tDQoyLUZlYXR1cmUgU2VsZWN0aW9uIFVzaW5nIFJGRQ0KVGhlIHByb3ZpZGVkIGNvZGUgYWltcyB0byBpZGVudGlmeSB0aGUgbW9zdCBpbXBvcnRhbnQgZmVhdHVyZXMgZm9yIHByZWRpY3Rpbmcga2lkcyBob2JiaWVzIHVzaW5nIFJlY3Vyc2l2ZSBGZWF0dXJlIEVsaW1pbmF0aW9uIChSRkUpIC4NCg0KIyBFbnN1cmUgdGhlIHJlc3VsdHMgYXJlIHJlcGVhdGFibGUgYnkgc2V0dGluZyBhIHNlZWQNCmBgYHtyfQ0Kc2V0LnNlZWQoNykNCmBgYA0KDQojIExvYWQgdGhlIG5lY2Vzc2FyeSBsaWJyYXJpZXMNCmBgYHtyfQ0KbGlicmFyeShjYXJldCkNCmBgYA0KDQoNCiMgTG9hZCB0aGUgZGF0YQ0KYGBge3J9DQpkYXRhKEhvYmJ5X0RhdGEpDQpgYGANCg0KDQojIERlZmluZSB0aGUgY29udHJvbCBwYXJhbWV0ZXJzIGZvciBSRkUgdXNpbmcgcmFuZG9tIGZvcmVzdCBzZWxlY3Rpb24gZnVuY3Rpb24NCmBgYHtyfQ0KY29udHJvbCA8LSByZmVDb250cm9sKGZ1bmN0aW9ucyA9IHJmRnVuY3MsIG1ldGhvZCA9ICJjdiIsIG51bWJlciA9IDEwKQ0KYGBgDQoNCg0KIyBFeHRyYWN0IHRoZSBwcmVkaWN0b3IgdmFyaWFibGVzIGZyb20gSG9iYnlfRGF0YQ0KYGBge3J9DQpwcmVkaWN0b3JzIDwtIEhvYmJ5X0RhdGFbLCAtbmNvbChIb2JieV9EYXRhKV0NCmBgYA0KDQoNCiMgQ29udmVydCB0aGUgb3V0Y29tZSB2YXJpYWJsZSB0byBhIGZhY3Rvcg0KYGBge3J9DQpvdXRjb21lIDwtIGFzLmZhY3RvcihIb2JieV9EYXRhJGBQcmVkaWN0ZWQgSG9iYnlgKQ0KYGBgDQoNCg0KIyBSdW4gdGhlIFJGRSBhbGdvcml0aG0NCmBgYHtyfQ0KcmVzdWx0cyA8LSByZmUocHJlZGljdG9ycywgb3V0Y29tZSwgc2l6ZXMgPSAxOm5jb2woSG9iYnlfRGF0YSksIHJmZUNvbnRyb2wgPSBjb250cm9sKQ0KYGBgDQoNCg0KIyBTdW1tYXJpemUgdGhlIHJlc3VsdHMNCmBgYHtyfQ0KcHJpbnQocmVzdWx0cykNCmBgYA0KDQoNCg0KIyBMaXN0IHRoZSBjaG9zZW4gZmVhdHVyZXMgc2VsZWN0ZWQgYnkgUkZFDQpgYGB7cn0NCnByZWRpY3RvcnMocmVzdWx0cykNCmBgYA0KDQoNCiMgUGxvdCB0aGUgcmVzdWx0cw0KYGBge3J9DQpwbG90KHJlc3VsdHMsIHR5cGUgPSBjKCJnIiwgIm8iKSkNCmBgYA0KDQoNCg0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tDQpCeSBjb25zaWRlcmluZyBib3RoIFJlY3Vyc2l2ZSBGZWF0dXJlIEVsaW1pbmF0aW9uIChSRkUpIGFuZCBSYW5rIEJ5IEltcG9ydGFuY2UsIHdlIGNhbiBtYWtlIGluZm9ybWVkIGRlY2lzaW9ucyBhYm91dCBmZWF0dXJlIHJlbGV2YW5jZSBhbmQgaW1wYWN0IG9uIHRoZSBtb2RlbC4gSW4gdGhpcyBjYXNlLCB0aGUgY29sdW1ucyAiU2Nob29sLCIgIk1lZGFscyIgIHNob3VsZCBiZSBkZWxldGVkIGFzIHRoZXkgaGF2ZSBsb3dlciBpbXBvcnRhbmNlIHNjb3JlcyBjb21wYXJlZCB0byB0aGUgc2VsZWN0ZWQgdmFyaWFibGVzLiBSZW1vdmluZyB0aGVzZSBjb2x1bW5zIHNpbXBsaWZpZXMgdGhlIG1vZGVsIGFuZCByZWR1Y2VzIGRpbWVuc2lvbmFsaXR5LCBlbGltaW5hdGluZyBwb3RlbnRpYWwgbm9pc2UgYW5kIGlycmVsZXZhbnQgaW5mb3JtYXRpb24gdGhhdCBjb3VsZCBoaW5kZXIgYWNjdXJhdGUgcHJlZGljdGlvbnMuDQoNCiMgUmVtb3ZlIHRoZSBzcGVjaWZpZWQgY29sdW1ucyBmcm9tIHRoZSBIb2JieV9LaWRzIGRhdGFzZXQNCmBgYHtyfQ0KSG9iYnlfRGF0YSA8LSBIb2JieV9EYXRhWywgIShjb2xuYW1lcyhIb2JieV9EYXRhKSAlaW4lIGMoIlNjaG9vbCIsICJNZWRhbHMiKSldDQpgYGANCg0KIyBEaXNwbGF5IHRoZSB1cGRhdGVkIGRhdGFzZXQgYWZ0ZXIgZGVsZXRpbmcgY29sdW1ucw0KYGBge3J9DQpWaWV3KEhvYmJ5X0RhdGEpDQpgYGANCg==</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KIyMgKipLaWRzIEhvYmJ5IFByZWRpY3Rpb24gRGF0YXNldCoqDQoNCioqRGVzY3JpcHRpb246KioNCg0KRm9sbG93aW5nIHRoZSBzZWxlY3Rpb24gb2Ygb3VyIGRhdGEgc2V0ICgiSG9iYnlfRGF0YSIpIHdoaWNoIHByZWRpY3RzIGtpZHMnIGhvYmJpZXMsIHRoYXQgd2FzIGNvbGxlY3RlZCBieSBhc2tpbmcgdGhlaXIgcGFyZW50cyBzcGVjaWZpYyBxdWVzdGlvbnMgYWJvdXQgdGhlaXIga2lkJ3MgcHJlZmVyZW5jZXMsIGNhcGFiaWxpdGllcywgYW5kIGFjaGlldmVtZW50cy4gVG8gaGVscCB1cyB0cmFpbiB0aGUgbWFjaGluZSB0byBwcmVkaWN0IHRoZSBraWQncyBob2JieS4gV2Ugd2lsbCBiZWdpbiB0byBwcmVwcm9jZXNzIGFuZCBhbmFseXplIHRoZSBkYXRhLg0KDQoqKkdlbmVyYWwgaW5mb3JtYXRpb24gYWJvdXQgdGhlIGRhdGEgc2V0OioqDQoNCmBgYHtyfQ0Kc3RyKEhvYmJ5X0RhdGEpDQpgYGBgYGANCg0KKipzdW1tYXJ5IG9mIHRoZSBkYXRhc2V0OioqDQoNCi0gc2FtcGxlcyBvZiByYXcgZGF0YXNldDoNCg0KYGBge3J9DQpzYW1wbGUoSG9iYnlfRGF0YSkNCmBgYA0KDQoNCg0KIFN0YXRpc3RpY2FsIG1lYXN1cmVzIDoNCmBgYHtyfQ0Kc3VtbWFyeSAoSG9iYnlfRGF0YSRHcmFzcF9wb3cpDQoNCm1vZGUoSG9iYnlfRGF0YSRHcmFzcF9wb3cpDQptZWFuKEhvYmJ5X0RhdGEkR3Jhc3BfcG93KQ0KDQptZWFuKEhvYmJ5X0RhdGEkVGltZV9zcHJ0KQ0KDQpzdW1tYXJ5KEhvYmJ5X0RhdGEkVGltZV9zcHJ0KQ0KDQoNCnN1bW1hcnkoSG9iYnlfRGF0YSRUaW1lX2FydCkNCm1vZGUoSG9iYnlfRGF0YSRUaW1lX2FydCkNCg0KTW9kZSA8LSBmdW5jdGlvbihIb2JieV9EYXRhKSB7DQogIHV4IDwtIHVuaXF1ZShIb2JieV9EYXRhKQ0KICB1eFt3aGljaC5tYXgodGFidWxhdGUobWF0Y2goSG9iYnlfRGF0YSwgdXgpKSldDQp9IA0KDQptb2RlczwtTW9kZShIb2JieV9EYXRhKQ0KDQoNCnN0ciggbW9kZXMpDQoNCg0KDQogDQoNCmBgYA0KIzEjIERhdGEgY2xlYW5pbmcNCg0KRHVyaW5nIHRoZSBkYXRhIGNsZWFuaW5nIHN0YWdlLCBGaW5kaW5nIGFuZCBmaXhpbmcgZmF1bHRzLCBpbmNvbnNpc3RlbmNpZXMsIGFuZCBlcnJvcnMgaW4gYSBkYXRhc2V0IGhlbHBzIGl0IGJlIG1vcmUgcmVsaWFibGUgYW5kIG9mIGhpZ2hlciBxdWFsaXR5IGZvciBhbmFseXNpcyBhbmQgbW9kZWxsaW5nLiBUaGVyZSBhcmUgbWV0aG9kcyBmb3IgaGFuZGxpbmcgbWlzc2luZyB2YWx1ZXMsIGRldGVjdGluZyBvdXRsaWVycywgcmVzb2x2aW5nIGluY29uc2lzdGVuY2llcywgYW5kIHN0YW5kYXJkaXNpbmcgZm9ybWF0cy4NCg0KLSAgIGltcG9ydCBEYXRhc2V0IkhvYmJ5X0RhdGEiDQoNCmBgYHtyfQ0Kc2V0d2QoIi9Vc2Vycy85NjY1My9Eb2N1bWVudHMvR2l0SHViL0tpZHNIb2JieS9EYXRhc2V0IikNCg0KDQoNClZpZXcoSG9iYnlfRGF0YSkNCg0Kc3RyKEhvYmJ5X0RhdGEpDQpgYGANCg0KKioxLSBjaGVjayBtaXNzaW5nIHZhbHVlIDoqKg0KDQpgYGB7cn0NCmlzLm5hKEhvYmJ5X0RhdGEpDQpgYGANCg0KLSAgICoqZmluZCB0aGUgdG90YWwgbnVsbCB2YWx1ZXMgaW4gdGhlIGRhdGFzZXQqKg0KDQpgYGB7cn0NCnN1bShpcy5uYShIb2JieV9EYXRhKSkNCmBgYA0KDQpXZSBzaW1wbHkgbG9vayBmb3IgbWlzc2luZyB2YWx1ZXMgYW5kIG5vIG1pc3NpbmcgdmFsdWVzIGluIHRoZWlyICxBY2NvcmRpbmcgdG8gb3VyIGludmVzdGlnYXRpb24sIHRoZSBkYXRhc2V0IGRvZXMgbm90IGNvbnRhaW4gYW55IG91dGxpZXJzICwgc2luY2UgbnVtcmljIERhdGEgVHlwZSBpcyBub3QgaW5jbHVkZWQuIGFsc28gdGhlcmUgYXJlIG5vIGluY29uc2lzdGVudCB2YWx1ZXMsb3Igb3RoZXIgZXJyb3JzLg0KDQojRW5jb2Rpbmc6DQojQ29udmVydGluZyBjYXRlZ29yaWNhbCBvciBub24tbnVtZXJpYyBkYXRhIGludG8gYSBudW1lcmljYWwgZm9ybWF0LCB3aGljaCBpcyBuZWNlc3NhcnkgZm9yIGNvbXBhdGliaWxpdHkgd2l0aCBtYWNoaW5lIGxlYXJuaW5nIA0KYGBge3J9DQpIb2JieV9EYXRhJE9seW1waWFkX1BhcnRpY2lwYXRpb24gPSBmYWN0b3IoSG9iYnlfRGF0YSRPbHltcGlhZF9QYXJ0aWNpcGF0aW9uLGxldmVscyA9IGMoIk5vIiwgIlllcyIpLCBsYWJlbHMgPSBjKDAsIDEpKQ0KSG9iYnlfRGF0YSRTY2hvbGFyc2hpcCA9IGZhY3RvcihIb2JieV9EYXRhJFNjaG9sYXJzaGlwICwgbGV2ZWxzID0gYygiTm8iLCAiWWVzIiksIGxhYmVscyA9IGMoMCwgMSkpDQpIb2JieV9EYXRhJFNjaG9vbCA9IGZhY3RvcihIb2JieV9EYXRhJFNjaG9vbCwgbGV2ZWxzID0gYygiTm8iLCAiWWVzIiksIGxhYmVscyA9IGMoMCwgMSkpDQpIb2JieV9EYXRhJFByb2plY3RzID0gZmFjdG9yKEhvYmJ5X0RhdGEkUHJvamVjdHMsIGxldmVscyA9IGMoIk5vIiwgIlllcyIpLCBsYWJlbHMgPSBjKDAsIDEpKQ0KSG9iYnlfRGF0YSRNZWRhbHMgPSBmYWN0b3IoSG9iYnlfRGF0YSRNZWRhbHMsIGxldmVscyA9IGMoIk5vIiwgIlllcyIpLCBsYWJlbHMgPSBjKDAsIDEpKQ0KSG9iYnlfRGF0YSRDYXJlZXJfc3BydCA9IGZhY3RvcihIb2JieV9EYXRhJENhcmVlcl9zcHJ0LCBsZXZlbHMgPSBjKCJObyIsICJZZXMiKSwgbGFiZWxzID0gYygwLCAxKSkNCkhvYmJ5X0RhdGEkQWN0X3NwcnQgPSBmYWN0b3IoSG9iYnlfRGF0YSRBY3Rfc3BydCwgbGV2ZWxzID0gYygiTm8iLCAiWWVzIiksIGxhYmVscyA9IGMoMCwgMSkpDQpIb2JieV9EYXRhJEZhbnRfYXJ0cyA9IGZhY3RvcihIb2JieV9EYXRhJEZhbnRfYXJ0cywgbGV2ZWxzID0gYygiTm8iLCAiWWVzIiksIGxhYmVscyA9IGMoMCwgMSkpDQpIb2JieV9EYXRhJFdvbl9hcnRzID0gZmFjdG9yKEhvYmJ5X0RhdGEkV29uX2FydHMsIGxldmVscyA9IGMoIk5vIiwgIk1heWJlIiwgIlllcyIpLCBsYWJlbHMgPSBjKDAsIDIsIDEpKQ0KSG9iYnlfRGF0YSRGYXZfc3ViID0gZmFjdG9yKEhvYmJ5X0RhdGEkRmF2X3N1YiwgbGV2ZWxzID0gYygiU2NpZW5jZSIsICJNYXRoZW1hdGljcyIsICJIaXN0b3J5L0dlb2dyYXBoeSIsICJBbnkgbGFuZ3VhZ2UiKSwgbGFiZWxzID0gYygxLCAyLCAzLCA0KSkNCmBgYA0KDQojTm9ybWFsaXphdGlvbiBhbmQgRGlzY2V0aXphdGlvbg0KI1dlIGRvbid0IG5lZWQgdG8gdXNlIG5vcm1hbGl6YXRpb24gYW5kIGRpc2NldGl6YXRpb24gaW4gb3VyIGRhdGFzZXQuU2luY2Ugb3VyIGRhdGFzZXQgZG9lc27igJl0IGhhdmUgbnVtZXJpYyBhdHRyaWJ1dGVzIGFuZCBub3JtYWxpemF0aW9uIGludm9sdmVzIG1hdGhlbWF0aWNhbCBvcGVyYXRpb25zLCB3aGljaCBjYW4gcmVzdWx0IGluIG1lYW5pbmdsZXNzIGFuZCBlcnJvbmVvdXMgdmFsdWVzLEFsc28sIGFwcGx5aW5nIGRpc2NyZXRpemF0aW9uIGxlYWRzIHRvIGxvc3Mgb2YgaW5mb3JtYXRpb24gYW5kIG1ha2VzIGludGVydmFscyBhbmQgcmVsYXRpb25zaGlwcyB0aGF0IGRvbid0IGV4aXN0IGJldHdlZW4gdmFsdWVzLg0KDQoNCg0KRmVhdHVyZSBTZWxlY3Rpb24NCkZlYXR1cmUgc2VsZWN0aW9uIGlzIHRoZSBwcm9jZXNzIG9mIHNlbGVjdGluZyBhIHN1YnNldCBvZiByZWxldmFudCBmZWF0dXJlcyBmcm9tIGEgbGFyZ2VyIHNldCBvZiBhdmFpbGFibGUgZmVhdHVyZXMuIFRoZSBtYWluIG9iamVjdGl2ZSBvZiBmZWF0dXJlIHNlbGVjdGlvbiBpcyB0byBpbXByb3ZlIHRoZSBwZXJmb3JtYW5jZSBhbmQgZWZmaWNpZW5jeSBvZiBtYWNoaW5lIGxlYXJuaW5nIG1vZGVscy4gQnkgc2VsZWN0aW5nIHRoZSBtb3N0IGluZm9ybWF0aXZlIGFuZCBpbmZsdWVudGlhbCBmZWF0dXJlcyB3aGlsZSBkaXNjYXJkaW5nIGlycmVsZXZhbnQgb3IgcmVkdW5kYW50IG9uZXMgdG8gaW1wcm92ZXMgbW9kZWwgcGVyZm9ybWFuY2UuDQoNCjEtUmFuayBGZWF0dXJlcyBCeSBJbXBvcnRhbmNlDQpUaGUgcHJvdmlkZWQgY29kZSBwZXJmb3JtcyBhIHNlcXVlbmNlIG9mIHN0ZXBzIHRvIGFuYWx5emUgdGhlIGltcG9ydGFuY2Ugb2YgZGlmZmVyZW50IGZlYXR1cmVzIHNlbGVjdGlvbiBpbiBwcmVkaWN0aW5nIGtpZHMgaG9iYmllcyB1c2luZyBhIFJhbmRvbSBGb3Jlc3QgbW9kZWwuDQoNCiMgRW5zdXJlIHRoZSByZXN1bHRzIGFyZSByZXBlYXRhYmxlIGJ5IHNldHRpbmcgYSBzZWVkDQpgYGB7cn0NCnNldC5zZWVkKDcpDQoNCmBgYA0KDQoNCiMgTG9hZCB0aGUgbmVjZXNzYXJ5IGxpYnJhcmllcw0KYGBge3J9DQppbnN0YWxsLnBhY2thZ2VzKCJjYXJldCIpDQppbnN0YWxsLnBhY2thZ2VzKCJyYW5kb21Gb3Jlc3QiKQ0KbGlicmFyeShjYXJldCkNCmxpYnJhcnkocmFuZG9tRm9yZXN0KQ0KYGBgDQoNCg0KDQojIExvYWQgdGhlIGRhdGFzZXQNCmBgYHtyfQ0KZGF0YShIb2JieV9EYXRhKQ0KYGBgDQoNCg0KIyBDb252ZXJ0IHRoZSBjbGFzcyBsYWJlbCB0byBhIGZhY3Rvcg0KYGBge3J9DQpIb2JieV9EYXRhJGBQcmVkaWN0ZWQgSG9iYnlgIDwtIGFzLmZhY3RvcihIb2JieV9EYXRhJGBQcmVkaWN0ZWQgSG9iYnlgKQ0KYGBgDQoNCg0KIyBTZXBhcmF0ZSB0aGUgcHJlZGljdG9ycyBhbmQgdGhlIGNsYXNzIGxhYmVsDQpgYGB7cn0NCnByZWRpY3RvcnMgPC0gSG9iYnlfRGF0YVssIC0xNF0gICMgRXhjbHVkaW5nIHRoZSBjbGFzcyBsYWJlbCAoUHJlZGljdGVkIEhvYmJ5KQ0KY2xhc3NfbGFiZWwgPC0gSG9iYnlfRGF0YSRgUHJlZGljdGVkIEhvYmJ5YA0KYGBgDQoNCiMgVHJhaW4gYSBSYW5kb20gRm9yZXN0IG1vZGVsDQpgYGB7cn0NCm1vZGVsIDwtIHJhbmRvbUZvcmVzdChwcmVkaWN0b3JzLCBjbGFzc19sYWJlbCwgaW1wb3J0YW5jZSA9IFRSVUUpDQpgYGANCg0KDQojIEdldCB0aGUgdmFyaWFibGUgaW1wb3J0YW5jZQ0KYGBge3J9DQppbXBvcnRhbmNlIDwtIGltcG9ydGFuY2UobW9kZWwpDQpgYGANCg0KDQojIFJhbmsgdGhlIGZlYXR1cmVzIGJ5IGltcG9ydGFuY2UNCmBgYHtyfQ0KcmFua2VkX2ZlYXR1cmVzIDwtIHNvcnQoaW1wb3J0YW5jZVssICJNZWFuRGVjcmVhc2VHaW5pIl0sIGRlY3JlYXNpbmcgPSBUUlVFKQ0KYGBgDQoNCg0KIyBQcmludCB0aGUgcmFua2VkIGZlYXR1cmVzDQpgYGB7cn0NCnByaW50KHJhbmtlZF9mZWF0dXJlcykNCg0KYmFycGxvdChyYW5rZWRfZmVhdHVyZXMsIGhvcml6ID0gVFJVRSwgbGFzID0gMSwgbWFpbiA9ICJLaWRzIEhvYmJ5IFZhcmlhYmxlIEltcG9ydGFuY2UgUmFua2luZyIpDQpgYGANCg0KDQoNCiMtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tDQoyLUZlYXR1cmUgU2VsZWN0aW9uIFVzaW5nIFJGRQ0KVGhlIHByb3ZpZGVkIGNvZGUgYWltcyB0byBpZGVudGlmeSB0aGUgbW9zdCBpbXBvcnRhbnQgZmVhdHVyZXMgZm9yIHByZWRpY3Rpbmcga2lkcyBob2JiaWVzIHVzaW5nIFJlY3Vyc2l2ZSBGZWF0dXJlIEVsaW1pbmF0aW9uIChSRkUpIC4NCg0KIyBFbnN1cmUgdGhlIHJlc3VsdHMgYXJlIHJlcGVhdGFibGUgYnkgc2V0dGluZyBhIHNlZWQNCmBgYHtyfQ0Kc2V0LnNlZWQoNykNCmBgYA0KDQojIExvYWQgdGhlIG5lY2Vzc2FyeSBsaWJyYXJpZXMNCmBgYHtyfQ0KbGlicmFyeShjYXJldCkNCmBgYA0KDQoNCiMgTG9hZCB0aGUgZGF0YQ0KYGBge3J9DQpkYXRhKEhvYmJ5X0RhdGEpDQpgYGANCg0KDQojIERlZmluZSB0aGUgY29udHJvbCBwYXJhbWV0ZXJzIGZvciBSRkUgdXNpbmcgcmFuZG9tIGZvcmVzdCBzZWxlY3Rpb24gZnVuY3Rpb24NCmBgYHtyfQ0KY29udHJvbCA8LSByZmVDb250cm9sKGZ1bmN0aW9ucyA9IHJmRnVuY3MsIG1ldGhvZCA9ICJjdiIsIG51bWJlciA9IDEwKQ0KYGBgDQoNCg0KIyBFeHRyYWN0IHRoZSBwcmVkaWN0b3IgdmFyaWFibGVzIGZyb20gSG9iYnlfRGF0YQ0KYGBge3J9DQpwcmVkaWN0b3JzIDwtIEhvYmJ5X0RhdGFbLCAtbmNvbChIb2JieV9EYXRhKV0NCmBgYA0KDQoNCiMgQ29udmVydCB0aGUgb3V0Y29tZSB2YXJpYWJsZSB0byBhIGZhY3Rvcg0KYGBge3J9DQpvdXRjb21lIDwtIGFzLmZhY3RvcihIb2JieV9EYXRhJGBQcmVkaWN0ZWQgSG9iYnlgKQ0KYGBgDQoNCg0KIyBSdW4gdGhlIFJGRSBhbGdvcml0aG0NCmBgYHtyfQ0KcmVzdWx0cyA8LSByZmUocHJlZGljdG9ycywgb3V0Y29tZSwgc2l6ZXMgPSAxOm5jb2woSG9iYnlfRGF0YSksIHJmZUNvbnRyb2wgPSBjb250cm9sKQ0KYGBgDQoNCg0KIyBTdW1tYXJpemUgdGhlIHJlc3VsdHMNCmBgYHtyfQ0KcHJpbnQocmVzdWx0cykNCmBgYA0KDQoNCg0KIyBMaXN0IHRoZSBjaG9zZW4gZmVhdHVyZXMgc2VsZWN0ZWQgYnkgUkZFDQpgYGB7cn0NCnByZWRpY3RvcnMocmVzdWx0cykNCmBgYA0KDQoNCiMgUGxvdCB0aGUgcmVzdWx0cw0KYGBge3J9DQpwbG90KHJlc3VsdHMsIHR5cGUgPSBjKCJnIiwgIm8iKSkNCmBgYA0KDQoNCg0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tDQpCeSBjb25zaWRlcmluZyBib3RoIFJlY3Vyc2l2ZSBGZWF0dXJlIEVsaW1pbmF0aW9uIChSRkUpIGFuZCBSYW5rIEJ5IEltcG9ydGFuY2UsIHdlIGNhbiBtYWtlIGluZm9ybWVkIGRlY2lzaW9ucyBhYm91dCBmZWF0dXJlIHJlbGV2YW5jZSBhbmQgaW1wYWN0IG9uIHRoZSBtb2RlbC4gSW4gdGhpcyBjYXNlLCB0aGUgY29sdW1ucyAiU2Nob29sLCIgIk1lZGFscyIgIHNob3VsZCBiZSBkZWxldGVkIGFzIHRoZXkgaGF2ZSBsb3dlciBpbXBvcnRhbmNlIHNjb3JlcyBjb21wYXJlZCB0byB0aGUgc2VsZWN0ZWQgdmFyaWFibGVzLiBSZW1vdmluZyB0aGVzZSBjb2x1bW5zIHNpbXBsaWZpZXMgdGhlIG1vZGVsIGFuZCByZWR1Y2VzIGRpbWVuc2lvbmFsaXR5LCBlbGltaW5hdGluZyBwb3RlbnRpYWwgbm9pc2UgYW5kIGlycmVsZXZhbnQgaW5mb3JtYXRpb24gdGhhdCBjb3VsZCBoaW5kZXIgYWNjdXJhdGUgcHJlZGljdGlvbnMuDQoNCiMgUmVtb3ZlIHRoZSBzcGVjaWZpZWQgY29sdW1ucyBmcm9tIHRoZSBIb2JieV9LaWRzIGRhdGFzZXQNCmBgYHtyfQ0KSG9iYnlfRGF0YSA8LSBIb2JieV9EYXRhWywgIShjb2xuYW1lcyhIb2JieV9EYXRhKSAlaW4lIGMoIlNjaG9vbCIsICJNZWRhbHMiKSldDQpgYGANCg0KIyBEaXNwbGF5IHRoZSB1cGRhdGVkIGRhdGFzZXQgYWZ0ZXIgZGVsZXRpbmcgY29sdW1ucw0KYGBge3J9DQpWaWV3KEhvYmJ5X0RhdGEpDQpgYGANCg==</div>
 
 
 
@@ -2515,7 +2484,7 @@ $(document).ready(function () {
 <!-- code folding -->
 <script>
 $(document).ready(function () {
-  window.initializeSourceEmbed("DMNRnotebook.Rmd");
+  window.initializeSourceEmbed("DMNRRRnotebook.Rmd");
   window.initializeCodeFolding("show" === "show");
 });
 </script>

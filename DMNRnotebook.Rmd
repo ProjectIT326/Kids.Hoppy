@@ -2,6 +2,88 @@
 title: "R Notebook"
 output: html_notebook
 ---
+## **Kids Hobby Prediction Dataset**
+
+**Description:**
+
+Following the selection of our data set ("Hobby_Data") which predicts kids' hobbies, that was collected by asking their parents specific questions about their kid's preferences, capabilities, and achievements. To help us train the machine to predict the kid's hobby. We will begin to preprocess and analyze the data.
+
+**General information about the data set:**
+
+```{r}
+str(Hobby_Data)
+``````
+
+**summary of the dataset:**
+
+- samples of raw dataset:
+
+```
+{r}
+sample(Hobby_Data)
+```
+
+
+
+ Statistical measures :
+```{r}
+summary (Hobby_Data$Grasp_pow)
+
+mode(Hobby_Data$Grasp_pow)
+mean(Hobby_Data$Grasp_pow)
+
+mean(Hobby_Data$Time_sprt)
+
+summary(Hobby_Data$Time_sprt)
+
+
+summary(Hobby_Data$Time_art)
+mode(Hobby_Data$Time_art)
+
+Mode <- function(Hobby_Data) {
+  ux <- unique(Hobby_Data)
+  ux[which.max(tabulate(match(Hobby_Data, ux)))]
+} 
+
+modes<-Mode(Hobby_Data)
+
+
+str( modes)
+
+
+
+ 
+
+```
+#1# Data cleaning
+
+During the data cleaning stage, Finding and fixing faults, inconsistencies, and errors in a dataset helps it be more reliable and of higher quality for analysis and modelling. There are methods for handling missing values, detecting outliers, resolving inconsistencies, and standardising formats.
+
+-   import Dataset"Hobby_Data"
+
+```{r}
+setwd("/Users/96653/Documents/GitHub/KidsHobby/Dataset")
+
+
+
+View(Hobby_Data)
+
+str(Hobby_Data)
+```
+
+**1- check missing value :**
+
+```{r}
+is.na(Hobby_Data)
+```
+
+-   **find the total null values in the dataset**
+
+```{r}
+sum(is.na(Hobby_Data))
+```
+
+We simply look for missing values and no missing values in their ,According to our investigation, the dataset does not contain any outliers , since numric Data Type is not included. also there are no inconsistent values,or other errors.
 
 #Encoding:
 #Converting categorical or non-numeric data into a numerical format, which is necessary for compatibility with machine learning 
