@@ -2,6 +2,7 @@
 title: "R Notebook"
 output: html_notebook
 ---
+
 ## **Kids Hobby Prediction Dataset**
 
 **Description:**
@@ -12,20 +13,65 @@ Following the selection of our data set ("Hobby_Data") which predicts kids' hobb
 
 ```{r}
 str(Hobby_Data)
-``````
+```
 
 **summary of the dataset:**
 
-- samples of raw dataset:
+-   **samples of raw dataset:**
 
-```
-{r}
+```{r}
 sample(Hobby_Data)
 ```
 
+-   **variables distribution:**
 
+    In our dataset, numeric variables are not available; instead, we have three ordinal variables. Due to the nature of our data types, certain types of graphs, such as scatter plots and box plots, were not suitable for our analysis.
 
- Statistical measures :
+variables distribution of Time_sprt:
+
+```{r}
+install.packages("magrittr") # install only one time then put this command as comment after installation
+library(magrittr) ## for pipe operations
+Hobby_Data$Time_art %>% density() %>% plot(main='variables distribution of Time_art')
+
+```
+
+In the "Time_art" variable, parents were requested to assess the time their child dedicated to artistic pursuits like painting or paper crafting, using a scale ranging from 1 to 6, where 6 represents the highest level of involvement. It's worth noting that the concentration of lower ratings at the lower end of the scale (1) is quite pronounced, and this tendency may be attributed to the inherent inclination of children towards physical activities.
+
+variables distribution of Time_art:
+
+```{r}
+Hobby_Data$Time_sprt %>% density() %>% plot(main='variables distribution of Time_sprt')
+```
+
+Parents were requested to assess their children's involvement in sports on a scale from 1 to 6 within the "Time_sprt" variable. Notably, the most prevalent ranking was 3, suggesting a moderate level of sports participation. It's interesting to observe that the distribution exhibits a shape akin to a bell curve, indicating that a substantial proportion of children have a genuine love for sports.
+
+variables distribution of Grasp_pow:
+
+```{r}
+hist(dataset$Grasp_pow)
+```
+
+The histogram representing parents' ratings of their children's grasp power, ranging from 1 to 6, reveals a pattern where the highest number of parents ranked their children at level 3, followed by level 4, level 5, level 2, level 1, and level 6. This distribution suggests that a significant portion of parents perceive their children to have an average or slightly above-average grasp power (levels 3 and 4), with fewer at the extremes (levels 1, 2, 5, and 6).
+
+variables distribution of the class label 'Predicted Hobby':
+
+```{r}
+install.packages("dplyr") # install only one time then put this command as comment after installation
+library(dplyr)
+
+dataset2 <- Hobby_Data %>% sample_n(1600)
+table(dataset2$`Predicted Hobby`) %>% pie()
+tab <- dataset2$`Predicted Hobby` %>% table()
+precentages <- tab %>% prop.table() %>% round(3) * 100 
+txt <- paste0(names(tab), '\n', precentages, '%')
+pie(tab, labels=txt)
+```
+
+The pie chart illustrates the distribution of the class label 'Predicted Hobby'. It's evident that a substantial portion, approximately 43.7%, of the children's hobbies are academic in nature, indicating a strong interest in educational pursuits. Additionally, 30.8% of the kids are engaged in sports, reflecting a significant inclination towards physical activities. Arts-related hobbies account for 25.6% of the total, suggesting a considerable creative and artistic engagement among the children. This distribution provides insights into the diverse interests and activities that engage the young population.
+
+-   **Statistical measures :**
+
 ```{r}
 summary (Hobby_Data$Grasp_pow)
 
@@ -49,17 +95,13 @@ modes<-Mode(Hobby_Data)
 
 
 str( modes)
-
-
-
- 
-
 ```
-#1# Data cleaning
 
-During the data cleaning stage, Finding and fixing faults, inconsistencies, and errors in a dataset helps it be more reliable and of higher quality for analysis and modelling. There are methods for handling missing values, detecting outliers, resolving inconsistencies, and standardising formats.
+**#1# Data cleaning:**
 
--   import Dataset"Hobby_Data"
+During the data cleaning stage, finding and fixing faults, inconsistencies, and errors in a dataset helps it be more reliable and of higher quality for analysis and modeling. There are methods for handling missing values, detecting outliers, resolving inconsistencies, and standardizing formats.
+
+import Dataset"Hobby_Data"
 
 ```{r}
 setwd("/Users/96653/Documents/GitHub/KidsHobby/Dataset")
@@ -71,22 +113,24 @@ View(Hobby_Data)
 str(Hobby_Data)
 ```
 
-**1- check missing value :**
+check missing value :
 
 ```{r}
 is.na(Hobby_Data)
 ```
 
--   **find the total null values in the dataset**
+find the total null values in the dataset:
 
 ```{r}
 sum(is.na(Hobby_Data))
 ```
 
-We simply look for missing values and no missing values in their ,According to our investigation, the dataset does not contain any outliers , since numric Data Type is not included. also there are no inconsistent values,or other errors.
+We simply looked for missing values, and there are no missing values in the dataset. According to our investigation, the dataset does not contain any outliers since it doesn't have a numerical data type. Additionally, there are no inconsistent values or other errors.
 
-#Encoding:
-#Converting categorical or non-numeric data into a numerical format, which is necessary for compatibility with machine learning 
+**#2#Encoding:**
+
+Converting categorical or non-numeric data into a numerical format, which is necessary for compatibility with machine learning
+
 ```{r}
 Hobby_Data$Olympiad_Participation = factor(Hobby_Data$Olympiad_Participation,levels = c("No", "Yes"), labels = c(0, 1))
 Hobby_Data$Scholarship = factor(Hobby_Data$Scholarship , levels = c("No", "Yes"), labels = c(0, 1))
@@ -100,25 +144,27 @@ Hobby_Data$Won_arts = factor(Hobby_Data$Won_arts, levels = c("No", "Maybe", "Yes
 Hobby_Data$Fav_sub = factor(Hobby_Data$Fav_sub, levels = c("Science", "Mathematics", "History/Geography", "Any language"), labels = c(1, 2, 3, 4))
 ```
 
-#Normalization and Discetization
-#We don't need to use normalization and discetization in our dataset.Since our dataset doesn’t have numeric attributes and normalization involves mathematical operations, which can result in meaningless and erroneous values,Also, applying discretization leads to loss of information and makes intervals and relationships that don't exist between values.
+**#3# Normalization and Discetization:**
 
+We don't need to use normalization and discetization in our dataset. Since our dataset doesn't have numeric attributes and normalization involves mathematical operations, which can result in meaningless values and errors, Also, applying discretization leads to a loss of information and creates intervals and relationships that don't exist between values.
 
+**#4#Feature Selection:**
 
-Feature Selection
-Feature selection is the process of selecting a subset of relevant features from a larger set of available features. The main objective of feature selection is to improve the performance and efficiency of machine learning models. By selecting the most informative and influential features while discarding irrelevant or redundant ones to improves model performance.
+Feature selection is the process of selecting a subset of relevant features from a larger set of available features. The main objective of feature selection is to improve the performance and efficiency of machine learning models. By selecting the most informative and influential features while discarding irrelevant or redundant ones, it improves model performance.
 
-1-Rank Features By Importance
-The provided code performs a sequence of steps to analyze the importance of different features selection in predicting kids hobbies using a Random Forest model.
+1.  **Rank Features by Importance:**
 
-# Ensure the results are repeatable by setting a seed
+    The provided code performs a sequence of steps to analyze the importance of different feature selections in predicting kids hobbies using a Random Forest model.
+
+Ensure the results are repeatable by setting a seed:
+
 ```{r}
 set.seed(7)
 
 ```
 
+Load the necessary libraries:
 
-# Load the necessary libraries
 ```{r}
 install.packages("caret")
 install.packages("randomForest")
@@ -126,127 +172,127 @@ library(caret)
 library(randomForest)
 ```
 
+Load the dataset:
 
-
-# Load the dataset
 ```{r}
 data(Hobby_Data)
 ```
 
+Convert the class label to a factor:
 
-# Convert the class label to a factor
 ```{r}
 Hobby_Data$`Predicted Hobby` <- as.factor(Hobby_Data$`Predicted Hobby`)
 ```
 
+Separate the predictors and the class label:
 
-# Separate the predictors and the class label
 ```{r}
 predictors <- Hobby_Data[, -14]  # Excluding the class label (Predicted Hobby)
 class_label <- Hobby_Data$`Predicted Hobby`
 ```
 
-# Train a Random Forest model
+Train a Random Forest model:
+
 ```{r}
 model <- randomForest(predictors, class_label, importance = TRUE)
 ```
 
+Get the variable importance:
 
-# Get the variable importance
 ```{r}
 importance <- importance(model)
 ```
 
+Rank the features by importance:
 
-# Rank the features by importance
 ```{r}
 ranked_features <- sort(importance[, "MeanDecreaseGini"], decreasing = TRUE)
 ```
 
+Print the ranked features:
 
-# Print the ranked features
 ```{r}
 print(ranked_features)
 
 barplot(ranked_features, horiz = TRUE, las = 1, main = "Kids Hobby Variable Importance Ranking")
 ```
 
+2.  **Feature Selection Using RFE:**
 
+    The provided code aims to identify the most important features for predicting kids hobbies using Recursive Feature Elimination (RFE) .
 
-#----------------------------------------------------
-2-Feature Selection Using RFE
-The provided code aims to identify the most important features for predicting kids hobbies using Recursive Feature Elimination (RFE) .
+Ensure the results are repeatable by setting a seed:
 
-# Ensure the results are repeatable by setting a seed
 ```{r}
 set.seed(7)
 ```
 
-# Load the necessary libraries
+Load the necessary libraries:
+
 ```{r}
 library(caret)
 ```
 
+Load the data:
 
-# Load the data
 ```{r}
 data(Hobby_Data)
 ```
 
+Define the control parameters for RFE using random forest selection function:
 
-# Define the control parameters for RFE using random forest selection function
 ```{r}
 control <- rfeControl(functions = rfFuncs, method = "cv", number = 10)
 ```
 
+Extract the predictor variables from Hobby_Data:
 
-# Extract the predictor variables from Hobby_Data
 ```{r}
 predictors <- Hobby_Data[, -ncol(Hobby_Data)]
 ```
 
+Convert the outcome variable to a factor:
 
-# Convert the outcome variable to a factor
 ```{r}
 outcome <- as.factor(Hobby_Data$`Predicted Hobby`)
 ```
 
+Run the RFE algorithm:
 
-# Run the RFE algorithm
 ```{r}
 results <- rfe(predictors, outcome, sizes = 1:ncol(Hobby_Data), rfeControl = control)
 ```
 
+Summarize the results:
 
-# Summarize the results
 ```{r}
 print(results)
 ```
 
+List the chosen features selected by RFE:
 
-
-# List the chosen features selected by RFE
 ```{r}
 predictors(results)
 ```
 
+Plot the results:
 
-# Plot the results
 ```{r}
 plot(results, type = c("g", "o"))
 ```
 
+------------------------------------------------------------------------
 
+By considering both Recursive Feature Elimination (RFE) and Rank By Importance, we can make informed decisions about feature relevance and impact on the model. In this case, the columns "School," "Medals" should be deleted as they have lower importance scores compared to the selected variables. Removing these columns simplifies the model and reduces dimensionality, eliminating potential noise and irrelevant information that could hinder accurate predictions.
 
----------------------------------------
-By considering both Recursive Feature Elimination (RFE) and Rank By Importance, we can make informed decisions about feature relevance and impact on the model. In this case, the columns "School," "Medals"  should be deleted as they have lower importance scores compared to the selected variables. Removing these columns simplifies the model and reduces dimensionality, eliminating potential noise and irrelevant information that could hinder accurate predictions.
+Remove the specified columns from the Hobby_Kids dataset:
 
-# Remove the specified columns from the Hobby_Kids dataset
 ```{r}
 Hobby_Data <- Hobby_Data[, !(colnames(Hobby_Data) %in% c("School", "Medals"))]
 ```
 
-# Display the updated dataset after deleting columns
+Display the updated dataset after deleting columns:
+
 ```{r}
 View(Hobby_Data)
 ```
