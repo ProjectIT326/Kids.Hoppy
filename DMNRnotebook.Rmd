@@ -1,0 +1,166 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+#Encoding is a step for preparing datasets for data mining(machine learning)
+```{r}
+Hobby_Data$Olympiad_Participation = factor(Hobby_Data$Olympiad_Participation,levels = c("No", "Yes"), labels = c(0, 1))
+Hobby_Data$Scholarship = factor(Hobby_Data$Scholarship , levels = c("No", "Yes"), labels = c(0, 1))
+Hobby_Data$School = factor(Hobby_Data$School, levels = c("No", "Yes"), labels = c(0, 1))
+Hobby_Data$Projects = factor(Hobby_Data$Projects, levels = c("No", "Yes"), labels = c(0, 1))
+Hobby_Data$Medals = factor(Hobby_Data$Medals, levels = c("No", "Yes"), labels = c(0, 1))
+Hobby_Data$Career_sprt = factor(Hobby_Data$Career_sprt, levels = c("No", "Yes"), labels = c(0, 1))
+Hobby_Data$Act_sprt = factor(Hobby_Data$Act_sprt, levels = c("No", "Yes"), labels = c(0, 1))
+Hobby_Data$Fant_arts = factor(Hobby_Data$Fant_arts, levels = c("No", "Yes"), labels = c(0, 1))
+Hobby_Data$Won_arts = factor(Hobby_Data$Won_arts, levels = c("No", "Maybe", "Yes"), labels = c(0, 2, 1))
+Hobby_Data$Fav_sub = factor(Hobby_Data$Fav_sub, levels = c("Science", "Mathematics", "History/Geography", "Any language"), labels = c(1, 2, 3, 4))
+```
+
+
+
+Feature Selection
+Feature selection is the process of selecting a subset of relevant features from a larger set of available features. The main objective of feature selection is to improve the performance and efficiency of machine learning models. By selecting the most informative and influential features while discarding irrelevant or redundant ones to improves model performance.
+
+1-Rank Features By Importance
+The provided code performs a sequence of steps to analyze the importance of different features selection in predicting kids hobbies using a Random Forest model.
+
+# Ensure the results are repeatable by setting a seed
+```{r}
+set.seed(7)
+
+```
+
+
+# Load the necessary libraries
+```{r}
+install.packages("caret")
+install.packages("randomForest")
+library(caret)
+library(randomForest)
+```
+
+
+
+# Load the dataset
+```{r}
+data(Hobby_Data)
+```
+
+
+# Convert the class label to a factor
+```{r}
+Hobby_Data$`Predicted Hobby` <- as.factor(Hobby_Data$`Predicted Hobby`)
+```
+
+
+# Separate the predictors and the class label
+```{r}
+predictors <- Hobby_Data[, -14]  # Excluding the class label (Predicted Hobby)
+class_label <- Hobby_Data$`Predicted Hobby`
+```
+
+# Train a Random Forest model
+```{r}
+model <- randomForest(predictors, class_label, importance = TRUE)
+```
+
+
+# Get the variable importance
+```{r}
+importance <- importance(model)
+```
+
+
+# Rank the features by importance
+```{r}
+ranked_features <- sort(importance[, "MeanDecreaseGini"], decreasing = TRUE)
+```
+
+
+# Print the ranked features
+```{r}
+print(ranked_features)
+
+barplot(ranked_features, horiz = TRUE, las = 1, main = "Kids Hobby Variable Importance Ranking")
+```
+
+
+
+#----------------------------------------------------
+2-Feature Selection Using RFE
+The provided code aims to identify the most important features for predicting kids hobbies using Recursive Feature Elimination (RFE) .
+
+# Ensure the results are repeatable by setting a seed
+```{r}
+set.seed(7)
+```
+
+# Load the necessary libraries
+```{r}
+library(caret)
+```
+
+
+# Load the data
+```{r}
+data(Hobby_Data)
+```
+
+
+# Define the control parameters for RFE using random forest selection function
+```{r}
+control <- rfeControl(functions = rfFuncs, method = "cv", number = 10)
+```
+
+
+# Extract the predictor variables from Hobby_Data
+```{r}
+predictors <- Hobby_Data[, -ncol(Hobby_Data)]
+```
+
+
+# Convert the outcome variable to a factor
+```{r}
+outcome <- as.factor(Hobby_Data$`Predicted Hobby`)
+```
+
+
+# Run the RFE algorithm
+```{r}
+results <- rfe(predictors, outcome, sizes = 1:ncol(Hobby_Data), rfeControl = control)
+```
+
+
+# Summarize the results
+```{r}
+print(results)
+```
+
+
+
+# List the chosen features selected by RFE
+```{r}
+predictors(results)
+```
+
+
+# Plot the results
+```{r}
+plot(results, type = c("g", "o"))
+```
+
+
+
+---------------------------------------
+By considering both Recursive Feature Elimination (RFE) and Rank By Importance, we can make informed decisions about feature relevance and impact on the model. In this case, the columns "School," "Medals"  should be deleted as they have lower importance scores compared to the selected variables. Removing these columns simplifies the model and reduces dimensionality, eliminating potential noise and irrelevant information that could hinder accurate predictions.
+
+# Remove the specified columns from the Hobby_Kids dataset
+```{r}
+Hobby_Data <- Hobby_Data[, !(colnames(Hobby_Data) %in% c("School", "Medals"))]
+```
+
+# Display the updated dataset after deleting columns
+```{r}
+View(Hobby_Data)
+```
