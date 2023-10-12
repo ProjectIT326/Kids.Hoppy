@@ -12,24 +12,24 @@ sample(Hobby_Data)
 Following the selection of our data set ("Hobby_Data") which predicts kids' hobbies, that was collected by asking their parents specific questions about their kid's preferences, capabilities, and achievements. To help us train the machine to predict the kid's hobby. We will begin to preprocess and analyze the data.
 
 | Attrbute name          | **Description**                                  | **Data type** |
-|------------------|----------------------------------------|--------------|
-| Olympiad_Participation | Has your child participated in any Science/Maths 
-                          Olympiad?                                         | Boolean       |
+|-----------------|--------------------------------------|-----------------|
+| Olympiad_Participation | Has your child participated in any Science/Maths |               |
+| Olympiad?              | Boolean                                          |               |
 | Scholarship            | Has he/she received any scholarship?             | Boolean       |
 | School                 | HLove's going to school?                         | Boolean       |
 | Fav_sub                | What is his/her favorite subject?                | Nominal       |
 | Projects               | Has done any projects under academics before?    | Boolean       |
 | Grasp_pow              | His/Her Grasping power (1-6)                     | Ordinal       |
-| Time_sprt              | How much time does he/she spend playing          
-                          outdoor/indoor games?                             | Ordinal       |
+| Time_sprt              | How much time does he/she spend playing          |               |
+| outdoor/indoor games?  | Ordinal                                          |               |
 | Medals                 | Medals won in Sports?                            | Boolean       |
 | Career_sprt            | Want's to pursue his/her career in sports?       | Boolean       |
 | Act_sprt               | Regular in his/her sports activities?            | Boolean       |
 | Fant_arts              | Love creating fantasy paintings?                 | Boolean       |
 | Won_arts               | Won art competitions?                            | Ordinal       |
 | Time_art               | Time utilized in Arts?                           | Ordinal       |
-| Predicted Hobby        | predictions for the hobby that the kid would     
-                          like                                              | Nominal       |
+| Predicted Hobby        | predictions for the hobby that the kid would     |               |
+| like                   | Nominal                                          |               |
 
 **General information about the data set:**
 
@@ -160,11 +160,13 @@ We don't need to use normalization and discetization in our dataset. Since our d
 
 **#4#Feature Selection:**
 
-Feature selection is the process of selecting a subset of relevant features from a larger set of available features. The main objective of feature selection is to improve the performance and efficiency of machine learning models. By selecting the most informative and influential features while discarding irrelevant or redundant ones, it improves model performance.
+To improve the accuracy of our predictions for the target class "Predicted Hobby" and decrease the processing time of our classifier, we will utilize feature selection techniques. These techniques enable us to eliminate redundant or irrelevant attributes from the dataset, resulting in a more concise subset of features that provide the most valuable information for our predictions.
+
+Specifically, we will use two feature selection methods: Rank Features by Importance and Feature Selection Using Recursive Feature Elimination (RFE).
 
 1.  **Rank Features by Importance:**
 
-    The provided code performs a sequence of steps to analyze the importance of different feature selections in predicting kids hobbies using a Random Forest model.
+This method used in the code helps us determine which features are most important for predicting the "Predicted Hobby" class label in the dataset. It utilizes the Random Forest algorithm, known for its accurate prediction capabilities. This method calculates the importance of each feature by assessing its contribution to the overall accuracy of the predictions. By ranking the features based on their importance, we can identify the ones that have the greatest influence on determining hobbies.
 
 Ensure the results are repeatable by setting a seed:
 
@@ -229,7 +231,7 @@ barplot(ranked_features, horiz = TRUE, las = 1, main = "Kids Hobby Variable Impo
 
 2.  **Feature Selection Using RFE:**
 
-    The provided code aims to identify the most important features for predicting kids hobbies using Recursive Feature Elimination (RFE) .
+The Recursive Feature Elimination (RFE) method with Random Forest is a technique used to select the most important features for accurate predictions . It iteratively eliminates less relevant features, retraining the model at each step to evaluate performance. By focusing on the most informative features, RFE improves reduces complexity, and enhances prediction accuracy. It is particularly effective with Random Forest due to its ability to handle complex relationships and high-dimensional data. RFE helps identify the most important attributes associated with the target variable, enabling the creation of more efficient and accurate models.
 
 Ensure the results are repeatable by setting a seed:
 
@@ -291,7 +293,7 @@ Plot the results:
 plot(results, type = c("g", "o"))
 ```
 
-------------------------------------------------------------------------
+**#5#Removing Irrelevant Columns:**
 
 By considering both Recursive Feature Elimination (RFE) and Rank By Importance, we can make informed decisions about feature relevance and impact on the model. In this case, the columns "School," "Medals" should be deleted as they have lower importance scores compared to the selected variables. Removing these columns simplifies the model and reduces dimensionality, eliminating potential noise and irrelevant information that could hinder accurate predictions.
 
