@@ -122,28 +122,16 @@ Hobby_Data$Fav_sub = factor(Hobby_Data$Fav_sub, levels = c("Science", "Mathemati
 -   **Statistical measures :**
 
 ```{r}
-summary (Hobby_Data$Grasp_pow)
+find_mode <- function(x) {
+  u <- unique(x)
+  tab <- tabulate(match(x, u))
+  u[tab == max(tab)]
+}
 
-mode(Hobby_Data$Grasp_pow)
-mean(Hobby_Data$Grasp_pow)
+find_mode(Hobby_Data$Time_art)
+find_mode(Hobby_Data$Grasp_pow)
+find_mode(Hobby_Data$Time_sprt)
 
-mean(Hobby_Data$Time_sprt)
-
-summary(Hobby_Data$Time_sprt)
-
-
-summary(Hobby_Data$Time_art)
-mode(Hobby_Data$Time_art)
-
-Mode <- function(Hobby_Data) {
-  ux <- unique(Hobby_Data)
-  ux[which.max(tabulate(match(Hobby_Data, ux)))]
-} 
-
-modes<-Mode(Hobby_Data)
-
-
-str( modes)
 ```
 
 **#3# Normalization and Discetization:**
