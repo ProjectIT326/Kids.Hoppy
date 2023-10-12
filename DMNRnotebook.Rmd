@@ -2,6 +2,7 @@
 title: "R Notebook"
 output: html_notebook
 ---
+
 sample(Hobby_Data)
 
 ## **Kids Hobby Prediction Dataset**
@@ -9,6 +10,26 @@ sample(Hobby_Data)
 **Description:**
 
 Following the selection of our data set ("Hobby_Data") which predicts kids' hobbies, that was collected by asking their parents specific questions about their kid's preferences, capabilities, and achievements. To help us train the machine to predict the kid's hobby. We will begin to preprocess and analyze the data.
+
+| Attrbute name          | **Description**                                  | **Data type** |
+|------------------|----------------------------------------|--------------|
+| Olympiad_Participation | Has your child participated in any Science/Maths 
+                          Olympiad?                                         | Boolean       |
+| Scholarship            | Has he/she received any scholarship?             | Boolean       |
+| School                 | HLove's going to school?                         | Boolean       |
+| Fav_sub                | What is his/her favorite subject?                | Nominal       |
+| Projects               | Has done any projects under academics before?    | Boolean       |
+| Grasp_pow              | His/Her Grasping power (1-6)                     | Ordinal       |
+| Time_sprt              | How much time does he/she spend playing          
+                          outdoor/indoor games?                             | Ordinal       |
+| Medals                 | Medals won in Sports?                            | Boolean       |
+| Career_sprt            | Want's to pursue his/her career in sports?       | Boolean       |
+| Act_sprt               | Regular in his/her sports activities?            | Boolean       |
+| Fant_arts              | Love creating fantasy paintings?                 | Boolean       |
+| Won_arts               | Won art competitions?                            | Ordinal       |
+| Time_art               | Time utilized in Arts?                           | Ordinal       |
+| Predicted Hobby        | predictions for the hobby that the kid would     
+                          like                                              | Nominal       |
 
 **General information about the data set:**
 
@@ -118,8 +139,7 @@ Hobby_Data$Won_arts = factor(Hobby_Data$Won_arts, levels = c("No", "Maybe", "Yes
 Hobby_Data$Fav_sub = factor(Hobby_Data$Fav_sub, levels = c("Science", "Mathematics", "History/Geography", "Any language"), labels = c(1, 2, 3, 4))
 ```
 
-
--   **Statistical measures :**
+**Statistical measures :**
 
 ```{r}
 find_mode <- function(x) {
