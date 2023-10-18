@@ -148,7 +148,10 @@ find_mode <- function(x) {
 }
 
 find_mode(Hobby_Data$Time_art)
+<<<<<<< Updated upstream
 hist(Hobby_Data$Time_art)
+=======
+>>>>>>> Stashed changes
 ```
 The histogram makes it evident that the mode is equal to 1, and we believe that the high frequency of parents ranking "1" as the most chosen rank in the "Time_art" variable could be attributed to several factors. It might indicate that a significant number of parents perceive their children's involvement in art activities as relatively low, possibly due to time constraints, academic priorities, or a limited interest in art. Alternatively, it could reflect that parents value a more balanced approach to their children's activities, with a variety of interests and responsibilities sharing their time. This trend could also result from a cultural or educational emphasis on other subjects and extracurricular activities that compete for a child's time, potentially leading to a lower ranking for art-related activities.
 
@@ -162,6 +165,35 @@ Rank 3, in this context, may have been the most chosen rank because it likely re
 
 ```{r}
 find_mode(Hobby_Data$Time_sprt)
+hist(Hobby_Data$Time_sprt)
+```
+As shown in the histogram the rank 3 on a scale of 1 to 6 was likely the most chosen rank for assessing children's involvement in sports because it represents a balanced middle ground. Parents may have perceived rank 3 as indicating that their children are moderately involved in sports, not excessively committed or disinterested. This middle-of-the-road ranking reflects a common perspective that many parents may hold, considering that extreme rankings, such as 1 or 6, might suggest either a lack of involvement or an excessive focus on sports, which may not align with their perception of their child's overall well-rounded development.
+
+
+The histogram graph for "Time_art" variable
+```{r}
+hist(Hobby_Data$Time_art)
+```
+
+The histogram makes it evident that the mode is equal to 1, and we believe that the high frequency of parents ranking "1" as the most chosen rank in the "Time_art" variable could be attributed to several factors. It might indicate that a significant number of parents perceive their children's involvement in art activities as relatively low, possibly due to time constraints, academic priorities, or a limited interest in art. Alternatively, it could reflect that parents value a more balanced approach to their children's activities, with a variety of interests and responsibilities sharing their time. This trend could also result from a cultural or educational emphasis on other subjects and extracurricular activities that compete for a child's time, potentially leading to a lower ranking for art-related activities.
+
+
+```{r}
+find_mode(Hobby_Data$Grasp_pow)
+```
+The histogram graph for "Grasp_pow" variable
+```{r}
+hist(Hobby_Data$Grasp_pow)
+```
+Rank 3, in this context, may have been the most chosen rank because it likely represents an average or moderate level of grasp power. Parents may have assessed their children's grasp power as neither exceptionally strong (rank 5 or 6) nor particularly weak (rank 1 or 2), resulting in the preference for the middle-ranking option. This choice could reflect a perception that their children's grasp power falls within a typical or expected range, making it the most common rating.
+
+
+```{r}
+find_mode(Hobby_Data$Time_sprt)
+```
+
+The histogram graph for "Time_sprt" variable
+```{r}
 hist(Hobby_Data$Time_sprt)
 ```
 As shown in the histogram the rank 3 on a scale of 1 to 6 was likely the most chosen rank for assessing children's involvement in sports because it represents a balanced middle ground. Parents may have perceived rank 3 as indicating that their children are moderately involved in sports, not excessively committed or disinterested. This middle-of-the-road ranking reflects a common perspective that many parents may hold, considering that extreme rankings, such as 1 or 6, might suggest either a lack of involvement or an excessive focus on sports, which may not align with their perception of their child's overall well-rounded development.
@@ -195,12 +227,6 @@ install.packages("caret")
 install.packages("randomForest")
 library(caret)
 library(randomForest)
-```
-
-Load the dataset:
-
-```{r}
-data(Hobby_Data)
 ```
 
 Convert the class label to a factor:
@@ -256,12 +282,6 @@ Load the necessary libraries:
 
 ```{r}
 library(caret)
-```
-
-Load the data:
-
-```{r}
-data(Hobby_Data)
 ```
 
 Define the control parameters for RFE using random forest selection function:
@@ -321,3 +341,4 @@ Display the updated dataset after deleting columns:
 ```{r}
 View(Hobby_Data)
 ```
+we can see that the two columns are deleted
