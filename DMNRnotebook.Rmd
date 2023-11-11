@@ -354,12 +354,13 @@ In the final steps, we utilize data visualization tools to create visual represe
 
 
 
-
 **Information Gain**
 
 Information Gain is particularly useful when dealing with categorical target variables using Information Gain for the initial partitioning of a dataset when building a decision tree It's based on the concept of entropy and aims to maximize the homogeneity of subsets after each split. This approach helps create an effective decision tree by selecting features that provide the most information for predicting the target variable.
 
-#### ***Frist Size (70% , 30%)***
+#### 
+
+**1-Information Gain(70%,30%)**
 
 ```{r}
 # Load the required packages
@@ -401,11 +402,13 @@ rpart.plot(Hobby_Data_ctree)
 
 ```
 
+**Decision Tree Analysis Using Information gain(70/30):**
+
 In Frist Tree ,we devide dataset into training set and test set with size(%70,%30) respectively. As you can see in the figure, the root node ("Career_sprt") serves as the starting point for the classification process since have the heights Gain. The dataset has a distribution of approximately 42.47% for class 1("Academics"), 25.92% for class 2("Arts"), and 31.61% for class 3 ("Sports").
 
 The tree further branches based on the values of the "Career_sprt" if equal 0, tree branches based on"Won_arts" ,and majority of instances fall into "Acadimcs", constituting 63.93% , if"Won_arts" equal 0 or2 In this case the tree terminates with a leaf node indicating a high probability 89.08% for "Acadimcs".else the instances are classified based on "Fant_arts" into "Arts" with a probability 88%,if equal 0 the instances are classified into "Academics" with a probability of 73% ,else the instances are classified into "Arts" with a high probability 96%, if "Career_sprt" is 1, the tree further branches based on the "Fant_arts" into "Sports" with a probability 80%. If "Fant_arts" is 1 , there is another split based on the "Time_art" feature into "Arts" with a probability 49%. If "Time_art" is greater than or equal to 3, the instances are classified into "Arts" with a probability of 87% . On the other hand, if "Time_art" is less than 3, the instances are classified into "Sports" with a probability of 65% .If "Fant_arts" not equal 1 , the instances are classified into "Sports" with a high probability 95%, as indicated by the leaf node.
 
-#### *First Confusion matrix*
+**First Confusion matrix**
 
 ```{r}
 # Predict on the test data
@@ -480,7 +483,9 @@ print(paste('Average Balanced Accuracy:', macro_avg_balanced_accuracy))
 
 ```
 
-#### *Second Size (80% , 20%)*
+#### 
+
+**2-Information Gain(80%,20%)**
 
 ```{r}
 library(rpart)
@@ -521,11 +526,13 @@ rpart.plot(Hobby_Data_ctree)
 
 ```
 
+**Decision Tree Analysis Using Information gain(80/20):**
+
 In Second Tree ,we devide dataset into training set and test set with size(%80,%20) respectively. As you can see in the figure, the root node ("Career_sprt") serves as the starting point for the classification process since have the heights Gain. The dataset has a distribution of approximately 43%for class1 ("Academics"), 26% for class 2("Arts"), and 31% for class 3 ("Sports").
 
 The tree further branches based on the values of the "Career_sprt" if equal 0, tree branches based on"Won_arts" ,and majority of instances fall into "Acadimcs", constituting 65% , if"Won_arts" equal 0 or2 In this case the tree terminates with a leaf node indicating a high probability 90% for "Acadimcs".else the instances are classified based on "Fant_arts"into "Arts" with a probability 88%,if equal 0 the instances are classified into "Academics" with a probability of 72% ,else the instances are classified into "Arts" with a high probability 96%, if "Career_sprt" is 1, the tree further branches based on the "Fant_arts" into "Sports" with a probability 78%. If "Fant_arts" is 1 , there is another split based on the "Time_art" into "Arts" with a probability 50%. If "Time_art" is greater than or equal to 3, the instances are classified into "Arts" with a probability of 85% . On the other hand, if "Time_art" is less than 3, the instances are classified into "Sports" with a probability of 58% .If "Fant_arts" If not equal 1 , the instances are classified into "Sports" with a high probability 94%, as indicated by the leaf node.
 
-#### *Second Confusion matrix*
+**Second Confusion matrix**
 
 ```{r}
 
@@ -602,7 +609,7 @@ print(paste('Average Balanced Accuracy:', macro_avg_balanced_accuracy))
 
 ```
 
-#### *Third Size (90% , 10%)*
+**3-Information Gain(90%,10%)**
 
 ```{r}
 library(rpart)
@@ -638,11 +645,13 @@ rpart.plot(Hobby_Data_ctree)
 
 ```
 
+**Decision Tree Analysis Using Information gain(90/10):**
+
 In Third Tree ,we devide dataset into training set and test set with size(%90,%10) respectively. As you can see in the figure, the root node ("Career_sprt") serves as the starting point for the classification process since have the heights Gain. The dataset has a distribution of approximately 43% for class 1("Academics"), 25% for class 2("Arts"), and 32% for class 3 ("Sports").
 
 The tree further branches based on the values of the "Career_sprt" if equal 0, tree branches based on"Won_arts" ,and majority of instances fall into "Acadimcs", constituting 65% , if"Won_arts" equal 0 or 2 In this case the tree terminates with a leaf node indicating a high probability 90% for "Acadimcs".else the instances are classified based on "Fant_arts"into "Arts" with a probability 87%,if equal 0 the instances are classified into "Academics" with a probability of 74% ,else the instances are classified into "Arts" with a high probability 96%, if "Career_sprt" is 1, the tree further branches based on the "Fant_arts" into "Sports" with a probability 79%. If "Fant_arts" is 1 , there is another split based on the "Time_art" into "Arts" with a probability 48%. If "Time_art" is greater than or equal to 3, the instances are classified into "Arts" with a probability of 84% . On the other hand, if "Time_art" is less than 3, the instances are classified based on"Act_sprt " into "Sports" with a probability of 58% .if "Act_sprt" equal 0 the instances are classified into "Academics" with a probability of 59%, other hand the instances are classified into "Sports" with a probability of 78%. If "Fant_arts" not equal 1 , the instances are classified into "Sports" with a high probability 94%, as indicated by the leaf node.
 
-#### *Third Confusion matrix*
+**Third Confusion matrix**
 
 ```{r}
 
@@ -727,13 +736,12 @@ print(paste('Average Balanced Accuracy:', macro_avg_balanced_accuracy))
 
 ```
 
+**Comparing Decision Tree Results Using Infromation gain:**
 After training three trees with different sizes, employing information gain as the selection measure, our analysis led to consistent accuracy results among the trees: Tree 1 (0.8932), Tree 2 (0.9057), and Tree 3 (0.8721). The minor discrepancies observed in these accuracy values could be attributed to the variations in dataset sizes. Investigating the impact of different training set sizes on model performance offers valuable insights into the intricate relationship between data size and accuracy.
 
 In the case of Tree 2, where a larger training set was employed (80% training, 20% testing), the model had the opportunity to grasp more robust patterns and relationships within the data. However, it is crucial to underscore the necessity of striking a balance between the sizes of the training and testing sets. For Tree 3, with a relatively smaller testing set (90% training, 10% testing), the accuracy estimate might be less reliable due to the limited sample size in the testing set.
 
 In summary, the utilization of information gain as the selection measure, coupled with different training set sizes, resulted in comparable accuracy outcomes. Achieving an optimal balance in the sizes of both training and testing datasets proves essential for ensuring accurate and generalizable model performance.
-
-
 
 **Gini index**
 The Gini index, is a measure used in decision trees, specifically in the CART (Classification and Regression Trees) algorithm, to quantify how often a randomly chosen element would be incorrectly labeled if it was randomly labeled according to the distribution of labels in the subset. It reflects the probability of a particular variable being wrongly classified when it is randomly chosen.
