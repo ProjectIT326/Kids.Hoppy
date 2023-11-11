@@ -743,6 +743,8 @@ In the case of Tree 2, where a larger training set was employed (80% training, 2
 
 In summary, the utilization of information gain as the selection measure, coupled with different training set sizes, resulted in comparable accuracy outcomes. Achieving an optimal balance in the sizes of both training and testing datasets proves essential for ensuring accurate and generalizable model performance.
 
+
+
 **Gini index**
 The Gini index, is a measure used in decision trees, specifically in the CART (Classification and Regression Trees) algorithm, to quantify how often a randomly chosen element would be incorrectly labeled if it was randomly labeled according to the distribution of labels in the subset. It reflects the probability of a particular variable being wrongly classified when it is randomly chosen.
 
@@ -1025,6 +1027,7 @@ print(metrics)
 
 The decision tree classifies hobbies into 'Academics' (1), 'Arts' (2), and 'Sports' (3). A lack of a sports hobby ('Career_sprt' = 0) leads to a 63% chance of falling into 'Academics'. If someone is not engaged in an arts hobby ('Fant_arts' = 0) and 'Won_arts' is 0 or 2, there's a 43% probability of an 'Academics' categorization. For individuals engaged in an arts hobby ('Fant_arts' = 1) with a high level of arts activity ('Time_art' ≥ 3), the likelihood of a 'Sports' classification is 28%. These model show how likely the model is to predict each hobby based on the attributes' significance, as learned from the data with a 90% training portion.
 
+
 **3-Gini index(70%,30%)**
 
 Install necessary libraries
@@ -1172,6 +1175,7 @@ Across Three Training-Test Sizes: The results of the decision trees from the 90/
 the accuracies of three data splits reveals distinct outcomes: the (90,10) split leads with the highest accuracy at 0.91875, suggesting that a larger training portion is more effective in this case. The (70,30) split follows with an accuracy of 0.91060, showing strong performance even with a larger test set. However, the commonly used (80,20) split lags slightly behind, achieving an accuracy of 0.90625. This comparison highlights the impact of varying training and testing proportions on model accuracy.
 
 
+
 **Gain Ratio**
 The third criterion employed for building the decision tree is Gain Ratio. Gain Ratio stands out as a significant metric in decision tree algorithms, especially in scenarios involving categorical target variables. It normalizes the reduction in entropy by taking into account the potential information content of the feature. This normalization process makes Gain Ratio particularly suitable for datasets with categorical target variables. By factoring in the intrinsic information of a split, Gain Ratio effectively mitigates bias towards features with higher levels, ensuring a more balanced evaluation of different attributes.
 
@@ -1312,6 +1316,7 @@ In First Tree ,we devide dataset into training set and test set with size(%90,%1
 
 Node "Career_sprt" The first decision is based on whether the value of the "Career_sprt" attribute is 0. then check if "Won_arts" is either 0 or 2.If" Won_arts" is 0 or 2 , predict"Academic".then check If "Fant_arts" is 1 "and Won_arts" is 1, predict "Arts".If "Fant_arts" is 0 and Won_arts is 0 or 2, then check if Olympiad_Participation is 1.If Olympiad_Participation is 1 predict "Academics".(When Olympiad_Participation is 0) If "Olympiad_Participation" is 0 and "Fant_arts" is 0, then check if "Grasp_pow" is less than or equal to 4 , predict class"Arts".When Career_sprt is 1, then check if "Fant_arts" is 0 then predict "Sports". If "Fant_arts" is 1, then check if "Time_art" is greater than 2.check if "Time_art" is less than or equal to 2, then check if "Act_sprt" is 1 or 0.If Act_sprt is 1, predict "Sports". If Act_sprt is 0, then check if Olympiad_Participation is 0 predict "Arts". If "Olympiad_Participation" is 1, predict "Academics".When Time_art is greater than 2 ,If Won_arts is 0, predict class "Sports".
 
+
 **2-Gain ratio(80%,20%)**
 
 Install necessary libraries
@@ -1446,6 +1451,8 @@ plot(model)
 **Decision Tree Analysis Using Gain Ratio(80/20):**
 
 The decision tree depicted classifies hobbies into 'Academics' (1), 'Arts' (2), and 'Sports' (3). It starts with 'Career_sprt' a value of 0 leads to 'Won_arts'. If 'Won_arts' is 0 or 2, the model suggests 'Academics' or 'Arts'. If 'Career_sprt' is 1, 'Fant_arts' is considered next; a value of 0 after 'Won_arts' being 1 points towards 'Arts', while a value of 1 leads to 'Olympiad_Participation', which, if 1, indicates 'Academics'. Conversely, a high 'Grasp_pow' (\>4) predicts 'Sports'.
+
+
 
 **3-Gain ratio(70%,30%)**
 
