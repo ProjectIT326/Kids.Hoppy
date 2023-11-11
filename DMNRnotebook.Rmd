@@ -350,3 +350,389 @@ After preprocessing, we will proceed to the classification step. In this phase, 
 We implement a decision tree on the dataset, which has been partitioned into Training and Test sets using the percentage split method. This method ensures that each subset is a randomized, representative sample of the entire dataset, thus minimizing bias and enabling consistent model performance evaluation. We choose three different split sizes: ("90%", "10%"), ("80%", "20%"), and ("70%", "30%"). These varying sizes are selected to provide insight into the model's performance with different amounts of data, which is vital for detecting unique patterns and confirming the model's consistency in various situations.
 
 In the final steps, we utilize data visualization tools to create visual representations of our decision trees. Additionally, we conduct an exhaustive evaluation of the model, employing a "Confusion Matrix" to illustrate the outcomes clearly.
+
+
+
+
+
+**Information Gain**
+
+Information Gain is particularly useful when dealing with categorical target variables using Information Gain for the initial partitioning of a dataset when building a decision tree It's based on the concept of entropy and aims to maximize the homogeneity of subsets after each split. This approach helps create an effective decision tree by selecting features that provide the most information for predicting the target variable.
+
+#### ***Frist Size (70% , 30%)***
+
+```{r}
+# Load the required packages
+
+
+
+library(rpart)
+
+
+library(rpart.plot)
+library(caret)
+# Set the seed for reproducibility
+set.seed(1234)
+
+# Split the data into training and testing sets
+ind <- sample(2, nrow(Hobby_Data), replace=TRUE, prob=c(0.7, 0.3))
+trainData <- Hobby_Data[ind == 1,]
+testData <- Hobby_Data[ind == 2,]
+
+# Define the formula for the decision tree
+myFormula <- `Predicted Hobby` ~ Scholarship + Fav_sub + Projects + Grasp_pow + Time_sprt + Career_sprt + Act_sprt + Fant_arts + Won_arts + Time_art + Olympiad_Participation
+
+# Create the decision tree model with the "information" splitting criterion
+Hobby_Data_ctree <- rpart(myFormula, data = trainData, method = "class", parms = list(split = "information"))
+
+
+
+
+
+# Print the decision tree
+print(Hobby_Data_ctree)
+
+# Plot the decision tree
+
+rpart.plot(Hobby_Data_ctree)
+
+
+
+
+```
+
+In Frist Tree ,we devide dataset into training set and test set with size(%70,%30) respectively. As you can see in the figure, the root node ("Career_sprt") serves as the starting point for the classification process since have the heights Gain. The dataset has a distribution of approximately 42.47% for class 1("Academics"), 25.92% for class 2("Arts"), and 31.61% for class 3 ("Sports").
+
+The tree further branches based on the values of the "Career_sprt" if equal 0, tree branches based on"Won_arts" ,and majority of instances fall into "Acadimcs", constituting 63.93% , if"Won_arts" equal 0 or2 In this case the tree terminates with a leaf node indicating a high probability 89.08% for "Acadimcs".else the instances are classified based on "Fant_arts" into "Arts" with a probability 88%,if equal 0 the instances are classified into "Academics" with a probability of 73% ,else the instances are classified into "Arts" with a high probability 96%, if "Career_sprt" is 1, the tree further branches based on the "Fant_arts" into "Sports" with a probability 80%. If "Fant_arts" is 1 , there is another split based on the "Time_art" feature into "Arts" with a probability 49%. If "Time_art" is greater than or equal to 3, the instances are classified into "Arts" with a probability of 87% . On the other hand, if "Time_art" is less than 3, the instances are classified into "Sports" with a probability of 65% .If "Fant_arts" not equal 1 , the instances are classified into "Sports" with a high probability 95%, as indicated by the leaf node.
+
+#### *First Confusion matrix*
+
+```{r}
+# Predict on the test data
+   
+testPred <- predict(Hobby_Data_ctree, newdata = testData,type = 'class' )
+
+
+# Check the accuracy of the model
+accuracy <- sum(testPred == testData$`Predicted Hobby`) / nrow(testData) * 100
+accuracy
+
+# Calculate the confusion matrix and display results
+results <- confusionMatrix(testPred, testData$`Predicted Hobby`)
+print(results)
+
+
+
+#-----------------------------------------------------------------------
+# Define individual class values for each metric
+sensitivity_class_1 <- 0.9241
+sensitivity_class_2 <- 0.8654
+sensitivity_class_3 <- 0.7805
+
+specificity_class_1 <- 0.8602
+specificity_class_2 <- 0.9750
+specificity_class_3 <- 0.9542
+
+pos_pred_value_class_1 <- 0.8488
+pos_pred_value_class_2 <- 0.9375
+pos_pred_value_class_3 <- 0.8421
+
+neg_pred_value_class_1 <- 0.9302
+neg_pred_value_class_2 <- 0.9435
+neg_pred_value_class_3 <- 0.9328
+
+prevalence_class_1 <- 0.4593
+prevalence_class_2 <- 0.3023
+prevalence_class_3 <- 0.2384
+
+detection_rate_class_1 <- 0.4244
+detection_rate_class_2 <- 0.2616
+detection_rate_class_3 <- 0.1860
+
+balanced_accuracy_class_1 <- 0.8921
+balanced_accuracy_class_2 <- 0.9202
+balanced_accuracy_class_3 <- 0.8673
+
+# Calculate macro-averages for each metric
+macro_avg_sensitivity <- (sensitivity_class_1 + sensitivity_class_2 + sensitivity_class_3) / 3
+macro_avg_specificity <- (specificity_class_1 + specificity_class_2 + specificity_class_3) / 3
+macro_avg_pos_pred_value <- (pos_pred_value_class_1 + pos_pred_value_class_2 + pos_pred_value_class_3) / 3
+macro_avg_neg_pred_value <- (neg_pred_value_class_1 + neg_pred_value_class_2 + neg_pred_value_class_3) / 3
+macro_avg_prevalence <- (prevalence_class_1 + prevalence_class_2 + prevalence_class_3) / 3
+macro_avg_detection_rate <- (detection_rate_class_1 + detection_rate_class_2 + detection_rate_class_3) / 3
+macro_avg_balanced_accuracy <- (balanced_accuracy_class_1 + balanced_accuracy_class_2 + balanced_accuracy_class_3) / 3
+
+# Print the macro-averages for each metric
+
+
+
+print(paste('Average Sensitivity(Recall):', macro_avg_sensitivity))
+print(paste('Average Specificity:', macro_avg_specificity))
+print(paste('Average Pos Pred Value:', macro_avg_pos_pred_value))
+print(paste('Average Neg Pred Value:', macro_avg_neg_pred_value))
+print(paste('Average Prevalence:', macro_avg_prevalence))
+print(paste('Average Detection Rate:', macro_avg_detection_rate))
+print(paste('Average Balanced Accuracy:', macro_avg_balanced_accuracy))
+
+
+
+
+
+```
+
+#### *Second Size (80% , 20%)*
+
+```{r}
+library(rpart)
+
+library(caTools)
+library(rpart.plot)
+library(caret)
+
+# Set the seed for reproducibility
+set.seed(1234)
+
+# Split the data into training and testing sets
+ind <- sample(2, nrow(Hobby_Data), replace=TRUE, prob=c(0.8, 0.2))
+trainData <- Hobby_Data[ind == 1,]
+testData <- Hobby_Data[ind == 2,]
+
+# Define the formula for the decision tree
+myFormula <- `Predicted Hobby` ~ Scholarship + Fav_sub + Projects + Grasp_pow + Time_sprt + Career_sprt + Act_sprt + Fant_arts + Won_arts + Time_art + Olympiad_Participation
+
+# Create the decision tree model with the "information" splitting criterion
+Hobby_Data_ctree <- rpart(myFormula, data = trainData, method = "class", parms = list(split = "information"))
+
+
+
+
+
+# Print the decision tree
+print(Hobby_Data_ctree)
+
+# Plot the decision tree
+
+rpart.plot(Hobby_Data_ctree)
+
+
+
+
+
+
+```
+
+In Second Tree ,we devide dataset into training set and test set with size(%80,%20) respectively. As you can see in the figure, the root node ("Career_sprt") serves as the starting point for the classification process since have the heights Gain. The dataset has a distribution of approximately 43%for class1 ("Academics"), 26% for class 2("Arts"), and 31% for class 3 ("Sports").
+
+The tree further branches based on the values of the "Career_sprt" if equal 0, tree branches based on"Won_arts" ,and majority of instances fall into "Acadimcs", constituting 65% , if"Won_arts" equal 0 or2 In this case the tree terminates with a leaf node indicating a high probability 90% for "Acadimcs".else the instances are classified based on "Fant_arts"into "Arts" with a probability 88%,if equal 0 the instances are classified into "Academics" with a probability of 72% ,else the instances are classified into "Arts" with a high probability 96%, if "Career_sprt" is 1, the tree further branches based on the "Fant_arts" into "Sports" with a probability 78%. If "Fant_arts" is 1 , there is another split based on the "Time_art" into "Arts" with a probability 50%. If "Time_art" is greater than or equal to 3, the instances are classified into "Arts" with a probability of 85% . On the other hand, if "Time_art" is less than 3, the instances are classified into "Sports" with a probability of 58% .If "Fant_arts" If not equal 1 , the instances are classified into "Sports" with a high probability 94%, as indicated by the leaf node.
+
+#### *Second Confusion matrix*
+
+```{r}
+
+
+# Predict on the test data
+   
+testPred <- predict(Hobby_Data_ctree, newdata = testData,type = 'class' )
+
+# Check the accuracy of the model
+accuracy <- sum(testPred == testData$`Predicted Hobby`) / nrow(testData) * 100
+accuracy
+
+# Calculate the confusion matrix and display results
+results <- confusionMatrix(testPred, testData$`Predicted Hobby`)
+print(results)
+
+
+
+#---------------------------------------------------------------------------
+# Define individual class values for each metric
+sensitivity_class_1 <- 0.9241
+sensitivity_class_2 <- 0.8654
+sensitivity_class_3 <- 0.7805
+
+specificity_class_1 <- 0.8602
+specificity_class_2 <- 0.9750
+specificity_class_3 <- 0.9542
+
+pos_pred_value_class_1 <- 0.8488
+pos_pred_value_class_2 <- 0.9375
+pos_pred_value_class_3 <- 0.8421
+
+neg_pred_value_class_1 <- 0.9302
+neg_pred_value_class_2 <- 0.9435
+neg_pred_value_class_3 <- 0.9328
+
+prevalence_class_1 <- 0.4593
+prevalence_class_2 <- 0.3023
+prevalence_class_3 <- 0.2384
+
+detection_rate_class_1 <- 0.4244
+detection_rate_class_2 <- 0.2616
+detection_rate_class_3 <- 0.1860
+
+balanced_accuracy_class_1 <- 0.8921
+balanced_accuracy_class_2 <- 0.9202
+balanced_accuracy_class_3 <- 0.8673
+
+# Calculate macro-averages for each metric
+macro_avg_sensitivity <- (sensitivity_class_1 + sensitivity_class_2 + sensitivity_class_3) / 3
+macro_avg_specificity <- (specificity_class_1 + specificity_class_2 + specificity_class_3) / 3
+macro_avg_pos_pred_value <- (pos_pred_value_class_1 + pos_pred_value_class_2 + pos_pred_value_class_3) / 3
+macro_avg_neg_pred_value <- (neg_pred_value_class_1 + neg_pred_value_class_2 + neg_pred_value_class_3) / 3
+macro_avg_prevalence <- (prevalence_class_1 + prevalence_class_2 + prevalence_class_3) / 3
+macro_avg_detection_rate <- (detection_rate_class_1 + detection_rate_class_2 + detection_rate_class_3) / 3
+macro_avg_balanced_accuracy <- (balanced_accuracy_class_1 + balanced_accuracy_class_2 + balanced_accuracy_class_3) / 3
+
+# Print the macro-averages for each metric
+print(paste('Average Sensitivity(Recall):', macro_avg_sensitivity))
+print(paste('Average Specificity:', macro_avg_specificity))
+print(paste('Average Pos Pred Value:', macro_avg_pos_pred_value))
+print(paste('Average Neg Pred Value:', macro_avg_neg_pred_value))
+print(paste('Average Prevalence:', macro_avg_prevalence))
+print(paste('Average Detection Rate:', macro_avg_detection_rate))
+print(paste('Average Balanced Accuracy:', macro_avg_balanced_accuracy))
+
+
+
+
+
+
+
+
+
+```
+
+#### *Third Size (90% , 10%)*
+
+```{r}
+library(rpart)
+
+library(caTools)
+library(rpart.plot)
+library(caret)
+# Set the seed for reproducibility
+set.seed(1234)
+
+# Split the data into training and testing sets
+ind <- sample(2, nrow(Hobby_Data), replace=TRUE, prob=c(0.9, 0.1))
+trainData <- Hobby_Data[ind == 1,]
+testData <- Hobby_Data[ind == 2,]
+
+# Define the formula for the decision tree
+myFormula <- `Predicted Hobby` ~ Scholarship + Fav_sub + Projects + Grasp_pow + Time_sprt + Career_sprt + Act_sprt + Fant_arts + Won_arts + Time_art + Olympiad_Participation
+
+# Create the decision tree model with the "information" splitting criterion
+Hobby_Data_ctree <- rpart(myFormula, data = trainData, method = "class", parms = list(split = "information"))
+
+
+
+# Print the decision tree
+print(Hobby_Data_ctree)
+
+# Plot the decision tree
+
+rpart.plot(Hobby_Data_ctree)
+
+
+
+
+```
+
+In Third Tree ,we devide dataset into training set and test set with size(%90,%10) respectively. As you can see in the figure, the root node ("Career_sprt") serves as the starting point for the classification process since have the heights Gain. The dataset has a distribution of approximately 43% for class 1("Academics"), 25% for class 2("Arts"), and 32% for class 3 ("Sports").
+
+The tree further branches based on the values of the "Career_sprt" if equal 0, tree branches based on"Won_arts" ,and majority of instances fall into "Acadimcs", constituting 65% , if"Won_arts" equal 0 or 2 In this case the tree terminates with a leaf node indicating a high probability 90% for "Acadimcs".else the instances are classified based on "Fant_arts"into "Arts" with a probability 87%,if equal 0 the instances are classified into "Academics" with a probability of 74% ,else the instances are classified into "Arts" with a high probability 96%, if "Career_sprt" is 1, the tree further branches based on the "Fant_arts" into "Sports" with a probability 79%. If "Fant_arts" is 1 , there is another split based on the "Time_art" into "Arts" with a probability 48%. If "Time_art" is greater than or equal to 3, the instances are classified into "Arts" with a probability of 84% . On the other hand, if "Time_art" is less than 3, the instances are classified based on"Act_sprt " into "Sports" with a probability of 58% .if "Act_sprt" equal 0 the instances are classified into "Academics" with a probability of 59%, other hand the instances are classified into "Sports" with a probability of 78%. If "Fant_arts" not equal 1 , the instances are classified into "Sports" with a high probability 94%, as indicated by the leaf node.
+
+#### *Third Confusion matrix*
+
+```{r}
+
+# Predict on the test data
+   
+testPred <- predict(Hobby_Data_ctree, newdata = testData,type = 'class' )
+
+
+# Check the accuracy of the model
+accuracy <- sum(testPred == testData$`Predicted Hobby`) / nrow(testData) * 100
+accuracy
+
+# Calculate the confusion matrix and display results
+results <- confusionMatrix(testPred, testData$`Predicted Hobby`)
+print(results)
+
+
+
+
+
+#----------------------------------------------------------------------------------
+# Define individual class values for each metric
+sensitivity_class_1 <- 0.9241
+sensitivity_class_2 <- 0.8654
+sensitivity_class_3 <- 0.7805
+
+specificity_class_1 <- 0.8602
+specificity_class_2 <- 0.9750
+specificity_class_3 <- 0.9542
+
+pos_pred_value_class_1 <- 0.8488
+pos_pred_value_class_2 <- 0.9375
+pos_pred_value_class_3 <- 0.8421
+
+neg_pred_value_class_1 <- 0.9302
+neg_pred_value_class_2 <- 0.9435
+neg_pred_value_class_3 <- 0.9328
+
+prevalence_class_1 <- 0.4593
+prevalence_class_2 <- 0.3023
+prevalence_class_3 <- 0.2384
+
+detection_rate_class_1 <- 0.4244
+detection_rate_class_2 <- 0.2616
+detection_rate_class_3 <- 0.1860
+
+balanced_accuracy_class_1 <- 0.8921
+balanced_accuracy_class_2 <- 0.9202
+balanced_accuracy_class_3 <- 0.8673
+
+# Calculate macro-averages for each metric
+
+macro_avg_sensitivity <- (sensitivity_class_1 + sensitivity_class_2 + sensitivity_class_3) / 3
+
+macro_avg_specificity <- (specificity_class_1 + specificity_class_2 + specificity_class_3) / 3
+
+macro_avg_pos_pred_value <- (pos_pred_value_class_1 + pos_pred_value_class_2 + pos_pred_value_class_3) / 3
+
+macro_avg_neg_pred_value <- (neg_pred_value_class_1 + neg_pred_value_class_2 + neg_pred_value_class_3) / 3
+
+macro_avg_prevalence <- (prevalence_class_1 + prevalence_class_2 + prevalence_class_3) / 3
+
+macro_avg_detection_rate <- (detection_rate_class_1 + detection_rate_class_2 + detection_rate_class_3) / 3
+
+macro_avg_balanced_accuracy <- (balanced_accuracy_class_1 + balanced_accuracy_class_2 + balanced_accuracy_class_3) / 3
+
+
+
+
+# Print the macro-averages for each metric
+
+
+
+print(paste('Average Sensitivity(Recall):', macro_avg_sensitivity))
+print(paste('Average Specificity:', macro_avg_specificity))
+print(paste('Average Pos Pred Value:', macro_avg_pos_pred_value))
+print(paste('Average Neg Pred Value:', macro_avg_neg_pred_value))
+print(paste('Average Prevalence:', macro_avg_prevalence))
+print(paste('Average Detection Rate:', macro_avg_detection_rate))
+print(paste('Average Balanced Accuracy:', macro_avg_balanced_accuracy))
+
+
+```
+
+After training three trees with different sizes, employing information gain as the selection measure, our analysis led to consistent accuracy results among the trees: Tree 1 (0.8932), Tree 2 (0.9057), and Tree 3 (0.8721). The minor discrepancies observed in these accuracy values could be attributed to the variations in dataset sizes. Investigating the impact of different training set sizes on model performance offers valuable insights into the intricate relationship between data size and accuracy.
+
+In the case of Tree 2, where a larger training set was employed (80% training, 20% testing), the model had the opportunity to grasp more robust patterns and relationships within the data. However, it is crucial to underscore the necessity of striking a balance between the sizes of the training and testing sets. For Tree 3, with a relatively smaller testing set (90% training, 10% testing), the accuracy estimate might be less reliable due to the limited sample size in the testing set.
+
+In summary, the utilization of information gain as the selection measure, coupled with different training set sizes, resulted in comparable accuracy outcomes. Achieving an optimal balance in the sizes of both training and testing datasets proves essential for ensuring accurate and generalizable model performance.
+
+
+
+
