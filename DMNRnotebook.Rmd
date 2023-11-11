@@ -802,11 +802,6 @@ tree <- rpart(`Predicted Hobby` ~ ., data = training_set, method = 'class')
 
 ```
 
-Plot the decision tree
-
-```{r}
-rpart.plot(tree)
-```
 
 Make predictions on the test set using the tree model
 
@@ -882,6 +877,12 @@ Print metrics
 ```{r}
 print(metrics)
 
+```
+
+Plot the decision tree
+
+```{r}
+rpart.plot(tree)
 ```
 
 **Decision Tree Analysis Using Gini Index(80/20):**
@@ -941,11 +942,6 @@ tree <- rpart(`Predicted Hobby` ~ ., data = training_set, method = 'class')
 
 ```
 
-Plot the decision tree
-
-```{r}
-rpart.plot(tree)
-```
 
 Make predictions on the test set using the tree model
 
@@ -1021,6 +1017,13 @@ Print metrics
 ```{r}
 print(metrics)
 
+```
+
+
+Plot the decision tree
+
+```{r}
+rpart.plot(tree)
 ```
 
 **Decision Tree Analysis Using Gini Index(90/10):**
@@ -1082,12 +1085,6 @@ tree <- rpart(`Predicted Hobby` ~ ., data = training_set, method = 'class')
 
 ```
 
-Plot the decision tree
-
-```{r}
-rpart.plot(tree)
-```
-
 Make predictions on the test set using the tree model
 
 ```{r}
@@ -1162,6 +1159,12 @@ Print metrics
 ```{r}
 print(metrics)
 
+```
+
+Plot the decision tree
+
+```{r}
+rpart.plot(tree)
 ```
 
 **Decision Tree Analysis Using Gini Index(70/30):**
