@@ -735,4 +735,849 @@ In summary, the utilization of information gain as the selection measure, couple
 
 
 
+**Gini index**
+The Gini index, is a measure used in decision trees, specifically in the CART (Classification and Regression Trees) algorithm, to quantify how often a randomly chosen element would be incorrectly labeled if it was randomly labeled according to the distribution of labels in the subset. It reflects the probability of a particular variable being wrongly classified when it is randomly chosen.
 
+**1-Gini index(80%,20%)**
+
+Install necessary libraries
+
+```{r}
+install.packages("rpart")
+install.packages("rpart.plot")
+install.packages("caTools")
+install.packages("caret")
+
+```
+
+Load necessary libraries
+
+```{r}
+library(rpart)
+library(rpart.plot)
+library(caTools)
+library(caret)
+```
+
+Set a seed for reproducibility
+
+```{r}
+set.seed(123)
+
+```
+
+Split the dataset, 80% for training, 20% for testing
+
+```{r}
+split <- sample.split(Hobby_Data$`Predicted Hobby`, SplitRatio = 0.80)
+```
+
+Create the training set (80% of the data)
+
+```{r}
+training_set <- subset(Hobby_Data, split == TRUE)
+```
+
+Create the test set (20% of the data)
+
+```{r}
+test_set <- subset(Hobby_Data, split == FALSE)
+
+```
+
+Build a decision tree model on the training set
+
+```{r}
+tree <- rpart(`Predicted Hobby` ~ ., data = training_set, method = 'class')
+
+```
+
+Plot the decision tree
+
+```{r}
+rpart.plot(tree)
+```
+
+Make predictions on the test set using the tree model
+
+```{r}
+predictions <- predict(tree, test_set, type = "class")
+```
+
+Confusion matrix
+
+```{r}
+conf_matrix <- table(Predicted = predictions, Actual = test_set$`Predicted Hobby`)
+```
+
+Calculate accuracy
+
+```{r}
+accuracy <- sum(diag(conf_matrix)) / sum(conf_matrix)
+```
+
+Initialize vectors to hold the metrics for each class
+
+```{r}
+precision <- numeric(length = nrow(conf_matrix))
+recall <- numeric(length = nrow(conf_matrix))
+specificity <- numeric(length = nrow(conf_matrix))
+```
+
+Calculate metrics for each class
+
+```{r}
+for (i in 1:nrow(conf_matrix)) {
+  TP <- conf_matrix[i, i]
+  FP <- sum(conf_matrix[, i]) - TP
+  FN <- sum(conf_matrix[i, ]) - TP
+  TN <- sum(conf_matrix) - TP - FP - FN
+  
+  precision[i] <- TP / (TP + FP)
+  recall[i] <- TP / (TP + FN)
+  specificity[i] <- TN / (TN + FP)
+}
+```
+
+Average the metrics if you want a single performance measure
+
+```{r}
+avg_precision <- mean(precision)
+avg_recall <- mean(recall)
+avg_specificity <- mean(specificity)
+```
+
+Output the evaluation metrics
+
+```{r}
+print(paste("Overall Accuracy:", accuracy))
+print(paste("Average Precision:", avg_precision))
+print(paste("Average Recall (Sensitivity):", avg_recall))
+print(paste("Average Specificity:", avg_specificity))
+```
+
+the metrics for each class:
+
+```{r}
+metrics <- data.frame(
+  Class = rownames(conf_matrix),
+  Precision = precision,
+  Recall = recall,
+  Specificity = specificity
+)
+```
+
+Print metrics
+
+```{r}
+print(metrics)
+
+```
+
+**Decision Tree Analysis Using Gini Index(80/20):**
+ The decision tree delineates hobbies into 'Academics' (1), 'Arts' (2), and 'Sports' (3). Without a sports hobby ('Career_sprt' = 0), the model suggests a 62% chance of 'Academics'. With no arts hobby ('Fant_arts' = 0) and 'Won_arts' at 0 or 2, there's a 43% chance of an 'Academics' categorization. Conversely, for those with an arts hobby ('Fant_arts' = 1) and frequent arts activities ('Time_art' ≥ 3), These model show how likely the model is to predict each hobby based on the attributes' significance, as learned from the data with a 80% training portion
+
+**2-Gini index(90%,10%)**
+
+Install necessary libraries
+
+```{r}
+install.packages("rpart")
+install.packages("rpart.plot")
+install.packages("caTools")
+install.packages("caret")
+
+```
+
+Load necessary libraries
+
+```{r}
+library(rpart)
+library(rpart.plot)
+library(caTools)
+library(caret)
+```
+
+Set a seed for reproducibility
+
+```{r}
+set.seed(123)
+
+```
+
+Split the dataset, 90% for training, 10% for testing
+
+```{r}
+split <- sample.split(Hobby_Data$`Predicted Hobby`, SplitRatio = 0.90)
+```
+
+Create the training set (90% of the data)
+
+```{r}
+training_set <- subset(Hobby_Data, split == TRUE)
+```
+
+Create the test set (10% of the data)
+
+```{r}
+test_set <- subset(Hobby_Data, split == FALSE)
+
+```
+
+Build a decision tree model on the training set
+
+```{r}
+tree <- rpart(`Predicted Hobby` ~ ., data = training_set, method = 'class')
+
+```
+
+Plot the decision tree
+
+```{r}
+rpart.plot(tree)
+```
+
+Make predictions on the test set using the tree model
+
+```{r}
+predictions <- predict(tree, test_set, type = "class")
+```
+
+Confusion matrix
+
+```{r}
+conf_matrix <- table(Predicted = predictions, Actual = test_set$`Predicted Hobby`)
+```
+
+Calculate accuracy
+
+```{r}
+accuracy <- sum(diag(conf_matrix)) / sum(conf_matrix)
+```
+
+Initialize vectors to hold the metrics for each class
+
+```{r}
+precision <- numeric(length = nrow(conf_matrix))
+recall <- numeric(length = nrow(conf_matrix))
+specificity <- numeric(length = nrow(conf_matrix))
+```
+
+Calculate metrics for each class
+
+```{r}
+for (i in 1:nrow(conf_matrix)) {
+  TP <- conf_matrix[i, i]
+  FP <- sum(conf_matrix[, i]) - TP
+  FN <- sum(conf_matrix[i, ]) - TP
+  TN <- sum(conf_matrix) - TP - FP - FN
+  
+  precision[i] <- TP / (TP + FP)
+  recall[i] <- TP / (TP + FN)
+  specificity[i] <- TN / (TN + FP)
+}
+```
+
+Average the metrics if you want a single performance measure
+
+```{r}
+avg_precision <- mean(precision)
+avg_recall <- mean(recall)
+avg_specificity <- mean(specificity)
+```
+
+Output the evaluation metrics
+
+```{r}
+print(paste("Overall Accuracy:", accuracy))
+print(paste("Average Precision:", avg_precision))
+print(paste("Average Recall (Sensitivity):", avg_recall))
+print(paste("Average Specificity:", avg_specificity))
+```
+
+the metrics for each class:
+
+```{r}
+metrics <- data.frame(
+  Class = rownames(conf_matrix),
+  Precision = precision,
+  Recall = recall,
+  Specificity = specificity
+)
+```
+
+Print metrics
+
+```{r}
+print(metrics)
+
+```
+
+**Decision Tree Analysis Using Gini Index(90/10):**
+
+The decision tree classifies hobbies into 'Academics' (1), 'Arts' (2), and 'Sports' (3). A lack of a sports hobby ('Career_sprt' = 0) leads to a 63% chance of falling into 'Academics'. If someone is not engaged in an arts hobby ('Fant_arts' = 0) and 'Won_arts' is 0 or 2, there's a 43% probability of an 'Academics' categorization. For individuals engaged in an arts hobby ('Fant_arts' = 1) with a high level of arts activity ('Time_art' ≥ 3), the likelihood of a 'Sports' classification is 28%. These model show how likely the model is to predict each hobby based on the attributes' significance, as learned from the data with a 90% training portion.
+
+**3-Gini index(70%,30%)**
+
+Install necessary libraries
+
+```{r}
+install.packages("rpart")
+install.packages("rpart.plot")
+install.packages("caTools")
+install.packages("caret")
+
+```
+
+Load necessary libraries
+
+```{r}
+library(rpart)
+library(rpart.plot)
+library(caTools)
+library(caret)
+```
+
+Set a seed for reproducibility
+
+```{r}
+set.seed(123)
+
+```
+
+Split the dataset, 70% for training, 30% for testing
+
+```{r}
+split <- sample.split(Hobby_Data$`Predicted Hobby`, SplitRatio = 0.70)
+```
+
+Create the training set (70% of the data)
+
+```{r}
+training_set <- subset(Hobby_Data, split == TRUE)
+```
+
+Create the test set (20% of the data)
+
+```{r}
+test_set <- subset(Hobby_Data, split == FALSE)
+
+```
+
+Build a decision tree model on the training set
+
+```{r}
+tree <- rpart(`Predicted Hobby` ~ ., data = training_set, method = 'class')
+
+```
+
+Plot the decision tree
+
+```{r}
+rpart.plot(tree)
+```
+
+Make predictions on the test set using the tree model
+
+```{r}
+predictions <- predict(tree, test_set, type = "class")
+```
+
+Confusion matrix
+
+```{r}
+conf_matrix <- table(Predicted = predictions, Actual = test_set$`Predicted Hobby`)
+```
+
+Calculate accuracy
+
+```{r}
+accuracy <- sum(diag(conf_matrix)) / sum(conf_matrix)
+```
+
+Initialize vectors to hold the metrics for each class
+
+```{r}
+precision <- numeric(length = nrow(conf_matrix))
+recall <- numeric(length = nrow(conf_matrix))
+specificity <- numeric(length = nrow(conf_matrix))
+```
+
+Calculate metrics for each class
+
+```{r}
+for (i in 1:nrow(conf_matrix)) {
+  TP <- conf_matrix[i, i]
+  FP <- sum(conf_matrix[, i]) - TP
+  FN <- sum(conf_matrix[i, ]) - TP
+  TN <- sum(conf_matrix) - TP - FP - FN
+  
+  precision[i] <- TP / (TP + FP)
+  recall[i] <- TP / (TP + FN)
+  specificity[i] <- TN / (TN + FP)
+}
+```
+
+Average the metrics if you want a single performance measure
+
+```{r}
+avg_precision <- mean(precision)
+avg_recall <- mean(recall)
+avg_specificity <- mean(specificity)
+```
+
+Output the evaluation metrics
+
+```{r}
+print(paste("Overall Accuracy:", accuracy))
+print(paste("Average Precision:", avg_precision))
+print(paste("Average Recall (Sensitivity):", avg_recall))
+print(paste("Average Specificity:", avg_specificity))
+```
+
+the metrics for each class:
+
+```{r}
+metrics <- data.frame(
+  Class = rownames(conf_matrix),
+  Precision = precision,
+  Recall = recall,
+  Specificity = specificity
+)
+```
+
+Print metrics
+
+```{r}
+print(metrics)
+
+```
+
+**Decision Tree Analysis Using Gini Index(70/30):**
+
+The decision tree sorts hobbies into 'Academics' (1), 'Arts' (2), and 'Sports' (3). A non-sports hobby ('Career_sprt' = 0) results in a 63% probability of an 'Academics' categorization. If 'Fant_arts' is 0 and 'Won_arts' is 0 or 2, there's a 43% chance of being classified as 'Academics'. Conversely, for those involved in an arts hobby ('Fant_arts' = 1) with significant arts activity ('Time_art' ≥ 3), the model indicates a 28% probability of a 'Sports' hobby. This decision tree demonstrates the likelihood of predicting each hobby based on the importance of the attributes, as determined from the data trained with a 70% portion.
+
+**Comparing Decision Tree Results Using Gini Index:**
+
+Across Three Training-Test Sizes: The results of the decision trees from the 90/10, 80/20, and 70/30 dataset splits, there is a consistent pattern: 'Career_sprt' is always the root node, and the subsequent splits on 'Won_arts' and 'Fant_arts' are the same across all trees. This consistency in tree structure and the probabilities for predicting 'Academics' and 'Sports' across different splits suggest a stable and robust model that is reliable regardless of the training set size.
+
+the accuracies of three data splits reveals distinct outcomes: the (90,10) split leads with the highest accuracy at 0.91875, suggesting that a larger training portion is more effective in this case. The (70,30) split follows with an accuracy of 0.91060, showing strong performance even with a larger test set. However, the commonly used (80,20) split lags slightly behind, achieving an accuracy of 0.90625. This comparison highlights the impact of varying training and testing proportions on model accuracy.
+
+
+**Gain Ratio**
+The third criterion employed for building the decision tree is Gain Ratio. Gain Ratio stands out as a significant metric in decision tree algorithms, especially in scenarios involving categorical target variables. It normalizes the reduction in entropy by taking into account the potential information content of the feature. This normalization process makes Gain Ratio particularly suitable for datasets with categorical target variables. By factoring in the intrinsic information of a split, Gain Ratio effectively mitigates bias towards features with higher levels, ensuring a more balanced evaluation of different attributes.
+
+**1-Gain ratio(90%,10%)**
+
+Install necessary libraries
+
+```{r}
+install.packages("C50")
+install.packages("printr")
+install.packages("caret")
+```
+
+Load necessary libraries
+
+```{r}
+
+library(C50)
+library(printr)
+library(caret)
+```
+
+Set a seed for reproducibility
+
+```{r}
+set.seed(1958)
+
+```
+
+Splitting the data into training and test sets
+
+```{r}
+train_indices <- sample(1:nrow(Hobby_Data), 0.9 * nrow(Hobby_Data))
+Hobby.train <- Hobby_Data[train_indices, ]
+Hobby.test <- Hobby_Data[-train_indices, ]
+
+```
+
+Training the decision tree model
+
+```{r}
+model <- C5.0(`Predicted Hobby` ~ ., data = Hobby.train, control = C5.0Control(CF = 0.01))
+
+```
+
+Making predictions on the test set
+
+```{r}
+predictions <- predict(model, newdata = Hobby.test, type = 'class')
+```
+
+Create a confusion matrix from the predictions and actual values
+
+```{r}
+conf_matrix <- table(Predicted = predictions, Actual = Hobby.test$`Predicted Hobby`)
+```
+
+Calculate and print the accuracy of the model
+
+```{r}
+accuracy <- sum(diag(conf_matrix)) / sum(conf_matrix)
+print(paste('Accuracy on test data is:', accuracy))
+```
+
+Initialize vectors to hold the metrics for each class
+
+```{r}
+precision <- numeric(length = nrow(conf_matrix))
+recall <- numeric(length = nrow(conf_matrix))
+specificity <- numeric(length = nrow(conf_matrix))
+```
+
+Calculate metrics for each class
+
+```{r}
+for (i in 1:nrow(conf_matrix)) {
+  TP <- conf_matrix[i, i]
+  FP <- sum(conf_matrix[, i]) - TP
+  FN <- sum(conf_matrix[i, ]) - TP
+  TN <- sum(conf_matrix) - TP - FP - FN
+  
+  precision[i] <- TP / (TP + FP)
+  recall[i] <- TP / (TP + FN)
+  specificity[i] <- TN / (TN + FP)
+}
+```
+
+Average the metrics if you want a single performance measure
+
+```{r}
+avg_precision <- mean(precision)
+avg_recall <- mean(recall)
+avg_specificity <- mean(specificity)
+```
+
+Output the evaluation metrics
+
+```{r}
+print(paste("Overall Accuracy:", accuracy))
+print(paste("Average Precision:", avg_precision))
+print(paste("Average Recall (Sensitivity):", avg_recall))
+print(paste("Average Specificity:", avg_specificity))
+```
+
+print the metrics for each class:
+
+```{r}
+
+metrics <- data.frame(
+  Class = rownames(conf_matrix),
+  Precision = precision,
+  Recall = recall,
+  Specificity = specificity
+)
+```
+
+Print metrics
+
+```{r}
+print(metrics)
+```
+
+Generate and print additional performance metrics using caret package
+
+```{r}
+confusionMatrix(predictions, Hobby.test$`Predicted Hobby`)
+```
+
+Plot the decision tree
+
+```{r}
+plot(model)
+```
+
+**Decision Tree Analysis Using Gain Ratio(90%/10%):**
+
+In First Tree ,we devide dataset into training set and test set with size(%90,%10) respectively. As you can see in the figure, the root node is "Career_sprt" , class 1("Academics"), class 2("Arts"), and class 3 ("Sports").
+
+Node "Career_sprt" The first decision is based on whether the value of the "Career_sprt" attribute is 0. then check if "Won_arts" is either 0 or 2.If" Won_arts" is 0 or 2 , predict"Academic".then check If "Fant_arts" is 1 "and Won_arts" is 1, predict "Arts".If "Fant_arts" is 0 and Won_arts is 0 or 2, then check if Olympiad_Participation is 1.If Olympiad_Participation is 1 predict "Academics".(When Olympiad_Participation is 0) If "Olympiad_Participation" is 0 and "Fant_arts" is 0, then check if "Grasp_pow" is less than or equal to 4 , predict class"Arts".When Career_sprt is 1, then check if "Fant_arts" is 0 then predict "Sports". If "Fant_arts" is 1, then check if "Time_art" is greater than 2.check if "Time_art" is less than or equal to 2, then check if "Act_sprt" is 1 or 0.If Act_sprt is 1, predict "Sports". If Act_sprt is 0, then check if Olympiad_Participation is 0 predict "Arts". If "Olympiad_Participation" is 1, predict "Academics".When Time_art is greater than 2 ,If Won_arts is 0, predict class "Sports".
+
+**2-Gain ratio(80%,20%)**
+
+Install necessary libraries
+
+```{r}
+install.packages("C50")
+install.packages("printr")
+install.packages("caret")
+```
+
+Load necessary libraries
+
+```{r}
+
+library(C50)
+library(printr)
+library(caret)
+```
+
+Set a seed for reproducibility
+
+```{r}
+set.seed(1958)
+
+```
+
+Splitting the data into training and test sets
+
+```{r}
+train_indices <- sample(1:nrow(Hobby_Data), 0.8 * nrow(Hobby_Data))
+Hobby.train <- Hobby_Data[train_indices, ]
+Hobby.test <- Hobby_Data[-train_indices, ]
+
+```
+
+Training the decision tree model
+
+```{r}
+model <- C5.0(`Predicted Hobby` ~ ., data = Hobby.train, control = C5.0Control(CF = 0.01))
+
+```
+
+Making predictions on the test set
+
+```{r}
+predictions <- predict(model, newdata = Hobby.test, type = 'class')
+```
+
+Create a confusion matrix from the predictions and actual values
+
+```{r}
+conf_matrix <- table(Predicted = predictions, Actual = Hobby.test$`Predicted Hobby`)
+```
+
+Calculate and print the accuracy of the model
+
+```{r}
+accuracy <- sum(diag(conf_matrix)) / sum(conf_matrix)
+print(paste('Accuracy on test data is:', accuracy))
+```
+
+Initialize vectors to hold the metrics for each class
+
+```{r}
+precision <- numeric(length = nrow(conf_matrix))
+recall <- numeric(length = nrow(conf_matrix))
+specificity <- numeric(length = nrow(conf_matrix))
+```
+
+Calculate metrics for each class
+
+```{r}
+for (i in 1:nrow(conf_matrix)) {
+  TP <- conf_matrix[i, i]
+  FP <- sum(conf_matrix[, i]) - TP
+  FN <- sum(conf_matrix[i, ]) - TP
+  TN <- sum(conf_matrix) - TP - FP - FN
+  
+  precision[i] <- TP / (TP + FP)
+  recall[i] <- TP / (TP + FN)
+  specificity[i] <- TN / (TN + FP)
+}
+```
+
+Average the metrics if you want a single performance measure
+
+```{r}
+avg_precision <- mean(precision)
+avg_recall <- mean(recall)
+avg_specificity <- mean(specificity)
+```
+
+Output the evaluation metrics
+
+```{r}
+print(paste("Overall Accuracy:", accuracy))
+print(paste("Average Precision:", avg_precision))
+print(paste("Average Recall (Sensitivity):", avg_recall))
+print(paste("Average Specificity:", avg_specificity))
+```
+
+print the metrics for each class:
+
+```{r}
+
+metrics <- data.frame(
+  Class = rownames(conf_matrix),
+  Precision = precision,
+  Recall = recall,
+  Specificity = specificity
+)
+```
+
+Print metrics
+
+```{r}
+print(metrics)
+```
+
+Generate and print additional performance metrics using caret package
+
+```{r}
+confusionMatrix(predictions, Hobby.test$`Predicted Hobby`)
+```
+
+Plot the decision tree
+
+```{r}
+plot(model)
+```
+
+**Decision Tree Analysis Using Gain Ratio(80/20):**
+
+The decision tree depicted classifies hobbies into 'Academics' (1), 'Arts' (2), and 'Sports' (3). It starts with 'Career_sprt' a value of 0 leads to 'Won_arts'. If 'Won_arts' is 0 or 2, the model suggests 'Academics' or 'Arts'. If 'Career_sprt' is 1, 'Fant_arts' is considered next; a value of 0 after 'Won_arts' being 1 points towards 'Arts', while a value of 1 leads to 'Olympiad_Participation', which, if 1, indicates 'Academics'. Conversely, a high 'Grasp_pow' (\>4) predicts 'Sports'.
+
+**3-Gain ratio(70%,30%)**
+
+Install necessary libraries
+
+```{r}
+install.packages("C50")
+install.packages("printr")
+install.packages("caret")
+```
+
+Load necessary libraries
+
+```{r}
+
+library(C50)
+library(printr)
+library(caret)
+```
+
+Set a seed for reproducibility
+
+```{r}
+set.seed(1958)
+
+```
+
+Splitting the data into training and test sets
+
+```{r}
+train_indices <- sample(1:nrow(Hobby_Data), 0.7 * nrow(Hobby_Data))
+Hobby.train <- Hobby_Data[train_indices, ]
+Hobby.test <- Hobby_Data[-train_indices, ]
+
+```
+
+Training the decision tree model
+
+```{r}
+model <- C5.0(`Predicted Hobby` ~ ., data = Hobby.train, control = C5.0Control(CF = 0.01))
+
+```
+
+Making predictions on the test set
+
+```{r}
+predictions <- predict(model, newdata = Hobby.test, type = 'class')
+```
+
+Create a confusion matrix from the predictions and actual values
+
+```{r}
+conf_matrix <- table(Predicted = predictions, Actual = Hobby.test$`Predicted Hobby`)
+```
+
+Calculate and print the accuracy of the model
+
+```{r}
+accuracy <- sum(diag(conf_matrix)) / sum(conf_matrix)
+print(paste('Accuracy on test data is:', accuracy))
+```
+
+Initialize vectors to hold the metrics for each class
+
+```{r}
+precision <- numeric(length = nrow(conf_matrix))
+recall <- numeric(length = nrow(conf_matrix))
+specificity <- numeric(length = nrow(conf_matrix))
+```
+
+Calculate metrics for each class
+
+```{r}
+for (i in 1:nrow(conf_matrix)) {
+  TP <- conf_matrix[i, i]
+  FP <- sum(conf_matrix[, i]) - TP
+  FN <- sum(conf_matrix[i, ]) - TP
+  TN <- sum(conf_matrix) - TP - FP - FN
+  
+  precision[i] <- TP / (TP + FP)
+  recall[i] <- TP / (TP + FN)
+  specificity[i] <- TN / (TN + FP)
+}
+```
+
+Average the metrics if you want a single performance measure
+
+```{r}
+avg_precision <- mean(precision)
+avg_recall <- mean(recall)
+avg_specificity <- mean(specificity)
+```
+
+Output the evaluation metrics
+
+```{r}
+print(paste("Overall Accuracy:", accuracy))
+print(paste("Average Precision:", avg_precision))
+print(paste("Average Recall (Sensitivity):", avg_recall))
+print(paste("Average Specificity:", avg_specificity))
+```
+
+print the metrics for each class:
+
+```{r}
+
+metrics <- data.frame(
+  Class = rownames(conf_matrix),
+  Precision = precision,
+  Recall = recall,
+  Specificity = specificity
+)
+```
+
+Print metrics
+
+```{r}
+print(metrics)
+```
+
+Generate and print additional performance metrics using caret package
+
+```{r}
+confusionMatrix(predictions, Hobby.test$`Predicted Hobby`)
+```
+
+Plot the decision tree
+
+```{r}
+plot(model)
+```
+
+**Decision Tree Analysis Using Gain Ratio(70%/30%):**
+
+In Third Tree ,we devide dataset into training set and test set with size(%70,%30) respectively. As you can see in the figure, the root node is "Career_sprt" , class 1("Academics"), class 2("Arts"), and class 3 ("Sports").
+
+The first decision is based on whether the value of the "Career_sprt" attribute is 0.If "Career_sprt" is 0, then check if "Won_arts" is either 0 or 2.predict "Academics".If "Won_arts" is 1, then check if "Fant_arts" is 1,predict "Arts".If ""Fant_arts is 0 and"Won_arts" is 0 or 2, then check if "Time_art" is less than or equal to 2,predict "Academics". If "Time_art" is greater than 2, predict "Arts".
+
+If "Career_sprt"is 1, then check if "Fant_arts" is 0, predict "Sports".If "Fant_arts"is 1, then check if "Time_art" is less than or equal to 2 check if "Act_sprt" is 0,predict "Academics" .If "Act_sprt" is 1 predict "Sports". if "Time_art" is greater than 2, then check if "Won_arts" is 0 predict "Sports".If "Won_arts" is 1 or 2 predict "Arts".
+
+**Comparing Decision Tree Results Using Gain Ratio**
+
+Across Three Training-Test Sizes: The accuracy rates -- 0.8944 for the 90:10 split, 0.8939 for the 70:30 split, and 0.8879 for the 80:20 split -- indicate only slight variations, with the 90:10 split being marginally better.
