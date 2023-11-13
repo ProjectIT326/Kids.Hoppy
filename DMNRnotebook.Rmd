@@ -363,7 +363,22 @@ View(Hobby_Data)
 ```
 we can see that the two columns are deleted
 
-**#5# Classification:**
+**Balanced Data**
+```{r}
+# Calculate class imbalance
+class_imbalance <- max(prop.table(table(Hobby_Data$`Predicted Hobby`))) - min(prop.table(table(Hobby_Data$`Predicted Hobby`)))
+
+# Print the result
+print(class_imbalance)
+```
+if class_imbalance is close to 0, it suggests that the proportions of different classes are relatively similar, indicating a balanced dataset. Conversely, if class_imbalance is larger, it suggests a more significant imbalance between the classes.
+The calculated class imbalance value of 0.1805122 suggests that the distribution of classes in the "Predicted_Hobby" column of the dataset is relatively balanced. The class imbalance is a measure of the difference between the proportions of the most prevalent and least prevalent classes. In this case, the value is close to 0, indicating that there is a minimal difference between the proportions of different classes. A lower-class imbalance value is generally desirable, as it signifies a more even distribution of instances across classes, which can be beneficial for the training and performance of machine learning models.
+
+
+
+
+**--------------------------------------------------- Classification----------------------------------------------------**
+
 After preprocessing, we will proceed to the classification step. In this phase, as part of supervised learning, we will apply a classification algorithm to assign each data point into predefined categories based on its attributes. This involves selecting the most relevant features that have been cleaned and formatted during preprocessing. The selected model will then learn from training data, enabling it to predict the category of new, unseen data accurately. This step is essential for making informed decisions or predictions based on the data.
 
 We implement a decision tree on the dataset, which has been partitioned into Training and Test sets using the percentage split method. This method ensures that each subset is a randomized, representative sample of the entire dataset, thus minimizing bias and enabling consistent model performance evaluation. We choose three different split sizes: ("90%", "10%"), ("80%", "20%"), and ("70%", "30%"). These varying sizes are selected to provide insight into the model's performance with different amounts of data, which is vital for detecting unique patterns and confirming the model's consistency in various situations.
@@ -377,7 +392,6 @@ In the final steps, we utilize data visualization tools to create visual represe
 
 Information Gain is particularly useful when dealing with categorical target variables using Information Gain for the initial partitioning of a dataset when building a decision tree It's based on the concept of entropy and aims to maximize the homogeneity of subsets after each split. This approach helps create an effective decision tree by selecting features that provide the most information for predicting the target variable.
 
-#### 
 
 **1-Information Gain(70%,30%)**
 
@@ -442,6 +456,7 @@ print(results)
 
 
 #-----------------------------------------------------------------------
+
 # Define individual class values for each metric
 sensitivity_class_1 <- 0.9241
 sensitivity_class_2 <- 0.8654
@@ -498,7 +513,7 @@ print(paste('Average Balanced Accuracy:', macro_avg_balanced_accuracy))
 
 ```
 
-#### 
+
 
 **2-Information Gain(80%,20%)**
 
@@ -761,6 +776,7 @@ In summary, the utilization of information gain as the selection measure, couple
 
 
 **Gini index**
+
 The Gini index, is a measure used in decision trees, specifically in the CART (Classification and Regression Trees) algorithm, to quantify how often a randomly chosen element would be incorrectly labeled if it was randomly labeled according to the distribution of labels in the subset. It reflects the probability of a particular variable being wrongly classified when it is randomly chosen.
 
 **1-Gini index(80%,20%)**
@@ -1618,7 +1634,14 @@ Across Three Training-Test Sizes: The accuracy rates -0.8944 for the 90:10 split
 
 
 
--------------------------------------------------Clustering----------------------------------------------------------------
+
+
+
+
+
+
+
+**-------------------------------------------------Clustering-------------------------------------------------------------**
 
 
 
@@ -1688,7 +1711,9 @@ library(cluster)
 library(dplyr)
 ```
 
----------------------------------------------k-meansclustering--------------------------------------------
+
+
+**---------------------------------------------k-meansclustering------------------------------------------------**
 
 **Validation:**
 
@@ -1700,8 +1725,7 @@ addition to that, it helps make the clustering more accurate and useful.
 If you know the right number beforehand, it saves time and helps make
 the whole process more efficient and the results more reliable.
 
-**compute average silhouette for k clusters using silhouette() For
-k-mean**
+**compute average silhouette for k clusters using silhouette() For k-mean**
 
 ```{r}
 silhouette_score <- function(k) {
@@ -1779,8 +1803,13 @@ designed forcategorical data, such as partitioning around medoids, are
 moreappropriate for capturing the intrinsic patterns and relationships
 incategorical datasets.
 
---------------------------------------------------k-mediods clustering
-with PAM--------------------------------------------
+
+
+
+
+
+
+**--------------------------------------------------k-mediods clustering with PAM--------------------------------------------**
 
 K-medoids clustering presents a robust alternative for analyzing
 categorical data by addressing the limitations posed by k-means
@@ -1824,9 +1853,10 @@ the dataset. In addition to that, the ground truth (class labels) also
 contains three classes, and that indicates a reassuring alignment
 between the structure of the data and the clustering results.
 
+
+
 We need to determine two more suggested numbers of clusters by computing
 the average silhouette for k clusters using silhouette().
-
 ```{r}
 silhouette_score <- function(k) {
   km <- pam(Hobby_Data2, k, diss = TRUE)
@@ -1853,8 +1883,9 @@ decreasing trend beyond three clusters, it indicates that adding more
 clusters does not significantly improve the separation and cohesion of
 the clusters.
 
---------------------------------------------------group into k=3
-clusters--------------------------------------------
+
+
+**--------------------------------------------------group into k=3 clusters--------------------------------------------**
 
 The sub-sampling and clustering approach is a helpful method to evaluate
 the robustness of the clustering results under various subsets and to
@@ -1889,7 +1920,7 @@ indicate shared characteristics between adjacent clusters, effectively
 capturing meaningful patterns and groupings that reflect the intricacies
 of real-world phenomena not confined to strict boundaries.
 
-#bCubed
+bCubed
 
 ```{r}
 cluster_assignments <- c(pam.result$cluster)
@@ -1951,8 +1982,10 @@ While precision highlights room for better accuracy in identifying
 similar items, the higher recall indicates the algorithm's capability to
 catch a good amount of actual similarities within clusters.
 
---------------------------------------------------group into k=4
-clusters--------------------------------------------
+
+
+
+**--------------------------------------------------group into k=4 clusters------------------------------------------------**
 
 ```{r}
 set.seed(7)
@@ -1977,8 +2010,7 @@ placement of one cluster on top of two others implies that the medoid of
 this cluster might be near points belonging to those two neighboring
 clusters. This could be due to the nature of the data.
 
-#BCubed
-
+BCubed
 ```{r}
 cluster_assignments <- c(pam.result$cluster) 
  
@@ -2044,8 +2076,9 @@ group are missed or incorrectly assigned to other clusters. These
 results highlight limitations in accurately capturing the data's
 underlying structure.
 
---------------------------------------------------group into k=2
-clusters--------------------------------------------
+
+
+**----------------------------------------------group into k=2 clusters--------------------------------------------**
 
 ```{r}
 set.seed(7)
@@ -2142,7 +2175,9 @@ precision score (0.0432) indicates a lack of homogeneity within the
 identified clusters, implying that the clusters contain a mix of data
 points from different ground truth classes.
 
-**AS A Summary**
+
+
+**AS A Summary For clustring**
 
 Silhouette analysis measures how similar an object is to its own cluster
 (cohesion) compared to other clusters (separation). The silhouette width
@@ -2176,8 +2211,11 @@ In conclusion, k=3 seems to be a reasonable choice. It has a good
 silhouette width, and its BCubed Precision and Recall values strike a
 balance.
 
+
+
+
 **What is the best for our dataset?**
 
-since We used the Information Gain, Gini Index, and Gain Ratio as three important metrics in our categorical data classification approach to determine how important certain variables were in predicting hobby categories. The dataset was split into training and testing sets so that different subsets of the data could be used to train classification algorithms. Three metrics were used to evaluate the performance of the model: overall accuracy, recall, and precision.We examined accuracy at several measures of tree selection, Provide us with more accurate results, specifically at the pruning parameters of 0.90, 0.91, and 0.89, in order.The methodical evaluation yielded insightful information on how well each selection measure performed in producing precise predictions within the dataset. high accuracy strongly suggest that, for our dataset, classification is a better methodology than clustering.
+since We used the Information Gain, Gini Index, and Gain Ratio as three important metrics in our categorical data classification approach to determine how important certain variables were in predicting hobby categories. The dataset was split into training and testing sets so that different subsets of the data could be used to train classification algorithms. Three metrics were used to evaluate the performance of the model: overall accuracy, recall, and precision.We examined accuracy at several measures of tree selection, Provide us with more accurate results, specifically at the pruning parameters of 0.90, 0.91, and 0.89, in order.The methodical evaluation yielded insightful information on how well each selection measure performed in producing precise predictions within the dataset. high accuracy strongly suggest that, for our dataset, classification is a better methodology than clustering, since the classification give us a good result then clustring.
 
 
