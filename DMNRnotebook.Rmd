@@ -110,8 +110,8 @@ precentages <- tab %>% prop.table() %>% round(3) * 100
 txt <- paste0(names(tab), '\n', precentages, '%')
 pie(tab, labels=txt)
 ```
+The pie chart illustrates the distribution of the class label 'Predicted Hobby'. It's evident that a substantial portion, approximately 43.7%, of the children's hobbies are academic in nature, indicating a strong interest in educational pursuits. Additionally, 30.8% of the kids are engaged in sports, reflecting a significant inclination towards physical activities. Arts-related hobbies account for 25.6% of the total, the distribution reflects a harmonious blend of hobbies. This balanced distribution not only signifies a variety of interests but also indicates a well-rounded engagement of children in academic, physical, and creative activities.
 
-The pie chart illustrates the distribution of the class label 'Predicted Hobby'. It's evident that a substantial portion, approximately 43.7%, of the children's hobbies are academic in nature, indicating a strong interest in educational pursuits. Additionally, 30.8% of the kids are engaged in sports, reflecting a significant inclination towards physical activities. Arts-related hobbies account for 25.6% of the total, suggesting a considerable creative and artistic engagement among the children. This distribution provides insights into the diverse interests and activities that engage the young population.
 
 **#1# Data cleaning:**
 
