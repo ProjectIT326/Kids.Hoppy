@@ -1661,15 +1661,6 @@ Hobby_proc <-scale(Hobby_proc )
 Hobby_Data2 <- Hobby_proc[, !(colnames(Hobby_proc) %in% c("Predict Hobby"))]
 ```
 
-**Data balance:**
-
-```{r}
-#Bar Chart
-Hobby_proc$`Predicted Hobby` %>% table() %>% barplot() #plot bar chart
-# add colors and percentages
-bb <- Hobby_proc$`Predicted Hobby` %>% table() %>% barplot(axisnames=F, main='Predicted Hobby', ylab='Frequency',col=c('pink', 'lightblue', 'lightgreen'))
-text(bb, tab/2, labels=txt, cex=1.5)
-```
 
 Our data set exhibits a balanced distribution among class labels, with
 "academic," "art," and "sport" constituting 43.6%, 25.6%, and 30.8% of
