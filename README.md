@@ -1,6 +1,8 @@
 # IT326 | Kids Hobby Prediction Dataset
 
-Kids are usually confused about which field or hobby they are passionate about or enjoy doing such as (academic/art's/sports), so we attempted to choose a dataset that is collected from parents as a survey that gathers information about their child's preferences to prepare a classification model that predicts the kids' hobbies.
+Children often find themselves at crossroads when it comes to discovering their passions or hobbies, be it in academics, arts, or sports. Recognizing the importance of guiding children towards activities they are passionate about, we have curated a dataset obtained through surveys conducted with parents. This dataset compiles valuable information about children's preferences, enabling the creation of a classification model aimed at predicting kids' hobbies.
+
+In this exploratory journey, we delve into the dataset to uncover patterns and insights that can assist parents in understanding their child's inclinations better. Through the application of clustering techniques, we aim to categorize children based on number of columns(Fav_sub , Scholarshep, etc..). The ultimate goal is to provide parents with meaningful recommendations, fostering an environment where children can thrive in activities that genuinely resonate with their interests.
 
 By analyzing this dataset, we hope to offer insightful information that will aid parents in guiding their kids toward the right hobbies.
 ____________________________________________________________________
