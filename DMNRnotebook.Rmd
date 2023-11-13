@@ -383,14 +383,10 @@ Information Gain is particularly useful when dealing with categorical target var
 
 ```{r}
 # Load the required packages
-
-
-
 library(rpart)
-
-
 library(rpart.plot)
 library(caret)
+
 # Set the seed for reproducibility
 set.seed(1234)
 
@@ -1618,3 +1614,579 @@ If "Career_sprt"is 1, then check if "Fant_arts" is 0, predict "Sports".If "Fant_
 **Comparing Decision Tree Results Using Gain Ratio**
 
 Across Three Training-Test Sizes: The accuracy rates -0.8944 for the 90:10 split, 0.8939 for the 70:30 split, and 0.8879 for the 80:20 split -- indicate only slight variations, with the 90:10 split being marginally better.
+
+
+
+
+-------------------------------------------------Clustering----------------------------------------------------------------
+
+
+
+```{r}
+str(Hobby_proc)
+```
+
+**To convert type from factor columns to numeric**
+
+```{r}
+
+Hobby_proc$Fav_sub <-as.numeric(Hobby_proc$Fav_sub)
+
+Hobby_proc$Olympiad_Participation <-as.numeric(Hobby_proc$Olympiad_Participation)
+
+Hobby_proc$Projects <-as.numeric(Hobby_proc$Projects)
+
+Hobby_proc$Scholarship <-as.numeric(Hobby_proc$Scholarship)
+
+Hobby_proc$Career_sprt <-as.numeric(Hobby_proc$Career_sprt)
+
+Hobby_proc$Act_sprt <-as.numeric(Hobby_proc$Act_sprt)
+
+Hobby_proc$Fant_arts <-as.numeric(Hobby_proc$Fant_arts)
+
+Hobby_proc$Won_arts <-as.numeric(Hobby_proc$Won_arts)
+
+Hobby_proc$`Predicted Hobby` <-as.numeric(Hobby_proc$`Predicted Hobby` )
+```
+
+**Scaled All Columns**
+
+```{r}
+Hobby_proc <-scale(Hobby_proc )
+```
+
+**Data set without ground truth**
+
+```{r}
+Hobby_Data2 <- Hobby_proc[, !(colnames(Hobby_proc) %in% c("Predict Hobby"))]
+```
+
+**Data balance:**
+
+```{r}
+#Bar Chart
+Hobby_proc$`Predicted Hobby` %>% table() %>% barplot() #plot bar chart
+# add colors and percentages
+bb <- Hobby_proc$`Predicted Hobby` %>% table() %>% barplot(axisnames=F, main='Predicted Hobby', ylab='Frequency',col=c('pink', 'lightblue', 'lightgreen'))
+text(bb, tab/2, labels=txt, cex=1.5)
+```
+
+Our data set exhibits a balanced distribution among class labels, with
+"academic," "art," and "sport" constituting 43.6%, 25.6%, and 30.8% of
+the total, respectively. This balanced distribution is advantageous for
+both classification and clustering tasks. In classification, a balanced
+data set helps prevent the model from favoring one class over the
+others, ensuring that the learning algorithm is exposed to a
+representative set of examples from each category. This balance promotes
+the development of a model that generalizes well across all classes,
+enhancing its predictive performance on new, unseen data. In clustering,
+a balanced data set aids in forming clusters that are more evenly
+distributed, allowing for a comprehensive understanding of patterns and
+relationships across diverse categories. Balanced data sets often lead
+to more accurate and fair clustering results, enabling meaningful
+insights into the underlying structures within each class.
+
+**require packages/Library**
+
+```{r}
+install.packages("ggplot2") 
+install.packages("magrittr")
+install.packages("dplyr")
+library(factoextra) 
+library(cluster)
+library(dplyr)
+```
+
+---------------------------------------------k-meansclustering--------------------------------------------
+
+**Validation:**
+
+Determining the right number of clusters before starting the clustering
+process is like making sure you have the correct-sized puzzle pieces
+before putting the puzzle together. It's important because some
+clustering algorithms, like K-means, require such a parameter. In
+addition to that, it helps make the clustering more accurate and useful.
+If you know the right number beforehand, it saves time and helps make
+the whole process more efficient and the results more reliable.
+
+**compute average silhouette for k clusters using silhouette() For
+k-mean**
+
+```{r}
+silhouette_score <- function(k) {
+  km <- kmeans(Hobby_Data2, centers = k, nstart = 25)
+  ss <- silhouette(km$cluster, dist(Hobby_Data2))
+  sil <- mean(ss[, 3])
+  return(sil)
+}
+
+# k cluster range from 2 to 10
+k <- 2:10
+
+# call function for each k value
+avg_sil <- sapply(k, silhouette_score)
+
+# plot the results
+plot(k, avg_sil, type = 'b', xlab = 'Number of clusters', ylab = 'Average Silhouette Scores', frame = FALSE)
+```
+
+The results indicate that the highest average silhouette scores indicate
+the quality of the clusters and suggest better-defined and more
+separated clusters, with each point having a high degree of similarity
+to its own cluster and a lower similarity to neighboring clusters. The
+highest average silhouette scores were observed for k values of 3, 2,
+and 4, so these are the optimal numbers. These values will be employed
+in subsequent k-means clustering analyses.
+
+**k-means cluster k=3**
+
+```{r}
+#set a seed for random number generation  to make the results reproducible
+set.seed(7)
+kmeans.result <- kmeans(Hobby_Data2, 3)
+
+# print the clusterng result
+kmeans.result
+
+#visualize clustering
+fviz_cluster(kmeans.result, data = Hobby_Data2)
+```
+
+**Average for each cluster**
+
+```{r}
+avg_sil <- silhouette(kmeans.result$cluster,dist(Hobby_Data2)) 
+fviz_silhouette(avg_sil)
+```
+
+the presence of negative silhouettes for some observations within each
+cluster indicates that these points might be more similar to points in
+other clusters, suggesting a potential overlap or ambiguity in their
+assignment. The fact that some observations have negative silhouettes
+highlights that the separation of data points is not entirely
+sufficient.
+
+So since 3, which was the optimal number of clusters with the highest
+silhouette score average, did not have good clustering results, that
+does support our research results that the k-means algorithm is not
+applicable to categoricaldata clustering because it relies on the
+Euclidean distance metric tomeasure the similarity between data points.
+However, even afterEncoding and its application to categorical data pose
+significant challenges. Categorical variables often lack a meaningful
+numericalrepresentation; for instance, taking the mean of categories
+like thefeature "favorite subject," aka Fav_sub" (even after encoding),
+might nothave any practical interpretation. And the distances calculated
+in thealgorithm may not reflect the true dissimilarities between
+categoricalvalues. The encoding process itself introduces artificial
+numericalrelationships that may mislead the algorithm. Moreover, k-means
+relieson the minimization of Euclidean distances, which might not
+accuratelycapture the dissimilarity structure in categorical data.
+Categoricalvariables inherently exhibit discrete and non-ordinal
+characteristicsthat are not well-suited for the continuous and linear
+assumptions ofk-means. Alternative clustering techniques, specifically
+designed forcategorical data, such as partitioning around medoids, are
+moreappropriate for capturing the intrinsic patterns and relationships
+incategorical datasets.
+
+--------------------------------------------------k-mediods clustering
+with PAM--------------------------------------------
+
+K-medoids clustering presents a robust alternative for analyzing
+categorical data by addressing the limitations posed by k-means
+clustering. Unlike k-means, k-medoids does not rely on the mean as a
+representative centroid but employs medoids, which are actual data
+points within the clusters, and the algorithm defines clusters based on
+partitioning around medoids. This feature makes k-medoids particularly
+suitable for categorical data, where meaningful centroids may not have a
+numerical interpretation. The algorithm defines clusters based on
+partitioning around medoids.
+
+**Validation:**
+
+First, we want to determine three different numbers of clusters by using
+a number of methods that will suggest the optimal number of clusters for
+k-mediods clustering with PAM.
+
+**Silhouette coefficient**
+
+```{r}
+fviz_nbclust(Hobby_Data2, pam, method = "silhouette")+
+  labs(subtitle = "Silhouette method")
+```
+
+**Elbow method**
+
+```{r}
+fviz_nbclust(Hobby_Data2, pam, method = "wss") +
+  geom_vline(xintercept= 3, linetype= 3)+
+  labs(subtitle = "Elbow method")
+```
+
+The silhouette coefficient, which measures the cohesion and separation
+of clusters, aligns with the Elbow method, which assesses the
+within-cluster sum of squares (wss) as a function of the number of
+clusters in the suggested optimal number of clusters. This alignment in
+results between two distinct evaluation methods strengthens confidence
+in the choice of three clusters, providing a stable foundation for
+further analysis and interpretation of the underlying patterns within
+the dataset. In addition to that, the ground truth (class labels) also
+contains three classes, and that indicates a reassuring alignment
+between the structure of the data and the clustering results.
+
+We need to determine two more suggested numbers of clusters by computing
+the average silhouette for k clusters using silhouette().
+
+```{r}
+silhouette_score <- function(k) {
+  km <- pam(Hobby_Data2, k, diss = TRUE)
+  ss <- silhouette(km$clustering, dist(Hobby_Data2))
+  sil <- mean(ss[, 3])
+  return(sil)
+}
+
+# k cluster range from 2 to 10
+k <- 2:10
+
+# Call function for each k value
+avg_sil <- sapply(k, silhouette_score)
+
+# Plot the results
+plot(k, avg_sil, type = 'b', xlab = 'Number of clusters', ylab = 'Average Silhouette Scores', frame = FALSE)
+```
+
+It is a common practice to choose the number of clusters corresponding
+to the peak in the silhouette score plot, and since we are looking for
+two more number of clusters other than three, it would be reasonable to
+consider two and four clusters for further analysis. Especially with the
+decreasing trend beyond three clusters, it indicates that adding more
+clusters does not significantly improve the separation and cohesion of
+the clusters.
+
+--------------------------------------------------group into k=3
+clusters--------------------------------------------
+
+The sub-sampling and clustering approach is a helpful method to evaluate
+the robustness of the clustering results under various subsets and to
+obtain insights into the structure of the data. Furthermore, we will
+take 100 samples from our data set to ensure that the clustering plot
+doesn't get too crowded.
+
+```{r}
+set.seed(7)
+
+# Specify the number of rows you want to sample
+num_rows <- 100
+
+# Use sample with the specified seed
+idx <- sample(1:dim(Hobby_Data2)[1], num_rows)
+
+Hobby_Data3 <- Hobby_Data2[idx, ]
+
+pam.result <- pam(Hobby_Data3,3)
+#Show the silhoutee plot of PAM AND clusters
+plot(pam.result)
+```
+
+The output of the code, displaying a silhouette plot of the PAM
+clusters, indicates that the clusters are relatively close to each
+other, with a slight overlap between two clusters. The silhouette plot
+visually represents how well-defined and separated the clusters are.
+While the slight overlap suggests that the natural grouping within the
+dataset may not be entirely distinct, it does not negatively affect the
+overall quality of the clusters. In fact, the observed overlap might
+indicate shared characteristics between adjacent clusters, effectively
+capturing meaningful patterns and groupings that reflect the intricacies
+of real-world phenomena not confined to strict boundaries.
+
+#bCubed
+
+```{r}
+cluster_assignments <- c(pam.result$cluster)
+set.seed(7)
+
+# Specify the number of rows you want to sample
+num_rows <- 100
+
+# Use sample with the specified seed
+idx <- sample(1:dim(Hobby_proc)[1], num_rows)
+
+# Select the sampled rows from Hobby_proc
+Hobby_Data4 <- Hobby_proc[idx, ]
+ground_truth_labels <- c(Hobby_Data4)
+
+# Create a data frame with cluster assignments and ground truth labels
+dataset <- data.frame(cluster = cluster_assignments, label = ground_truth_labels)
+
+# Calculate BCubed precision and recall
+calculate_bcubed_metrics <- function(dataset) {
+  n <- nrow(dataset)
+  precision_sum <- 0 
+  recall_sum <- 0
+  
+   for (i in 1:n) {
+    cluster <- dataset$cluster[i] 
+    label <- dataset$label[i]
+    
+    # Count the number of items from the same category in its cluster
+    same_category <- sum(dataset$label[dataset$cluster == cluster] == label)   
+    
+    # Count the number of items in its cluster    
+    same_cluster <- sum(dataset$cluster == cluster)
+    
+    # Count the number of items in its category
+    total_same_category <- sum(dataset$label == label)   
+    
+    # Calculate precision and recall 
+    precision_sum <- precision_sum + same_category / same_cluster
+    recall_sum <- recall_sum + same_category / total_same_category 
+    }
+  # End loop 
+  
+  # Calculate average precision and recall  
+  precision <- precision_sum / n
+  recall <- recall_sum / n 
+  return(list(precision = precision, recall = recall))}
+
+  # Calculate BCubed precision and recall
+  metrics <- calculate_bcubed_metrics(dataset)
+  precision <- metrics$precision
+  recall <- metrics$recall
+
+# Print the results
+  cat("BCubed Precision= ", precision, "AND BCubed Recall= ", recall, "\n")
+```
+
+While precision highlights room for better accuracy in identifying
+similar items, the higher recall indicates the algorithm's capability to
+catch a good amount of actual similarities within clusters.
+
+--------------------------------------------------group into k=4
+clusters--------------------------------------------
+
+```{r}
+set.seed(7)
+
+# Specify the number of rows you want to sample
+num_rows <- 100
+
+# Use sample with the specified seed
+idx <- sample(1:dim(Hobby_Data2)[1], num_rows)
+
+Hobby_Data3 <- Hobby_Data2[idx, ]
+
+pam.result <- pam(Hobby_Data3,4)
+#Show the silhoutee plot of PAM AND clusters
+plot(pam.result)
+```
+
+The output suggests that the dataset may exhibit a degree of overlap or
+similarity among observations. The overlapping clusters may indicate
+challenges in achieving a clear separation among these groups. The
+placement of one cluster on top of two others implies that the medoid of
+this cluster might be near points belonging to those two neighboring
+clusters. This could be due to the nature of the data.
+
+#BCubed
+
+```{r}
+cluster_assignments <- c(pam.result$cluster) 
+ 
+set.seed(7) 
+ 
+# Specify the number of rows you want to sample 
+num_rows <- 100 
+ 
+# Use sample with the specified seed 
+idx <- sample(1:dim(Hobby_proc)[1], num_rows) 
+ 
+# Select the sampled rows from Hobby_proc 
+Hobby_Data4 <- Hobby_proc[idx, ] 
+
+# Create a data frame with cluster assignments and ground truth labels
+dataset <- data.frame(cluster = cluster_assignments, label = ground_truth_labels)
+
+# Calculate BCubed precision and recall
+calculate_bcubed_metrics <- function(dataset) {
+  n <- nrow(dataset)
+  precision_sum <- 0
+  recall_sum <- 0
+ 
+  for (i in 1:n) {
+    cluster <- dataset$cluster[i]
+    label <- dataset$label[i]
+   
+    # Count the number of items from the same category in its cluster
+    same_category <- sum(dataset$label[dataset$cluster == cluster] == label)
+   
+    # Count the number of items in its cluster
+    same_cluster <- sum(dataset$cluster == cluster)
+   
+    # Count the number of items in its category
+    total_same_category <- sum(dataset$label == label)
+   
+    # Calculate precision and recall
+    precision_sum <- precision_sum + same_category / same_cluster
+    recall_sum <- recall_sum + same_category / total_same_category
+  }
+  # End loop
+ 
+  # Calculate average precision and recall
+  precision <- precision_sum / n
+  recall <- recall_sum / n
+ 
+  return(list(precision = precision, recall = recall))
+}
+
+# Calculate BCubed precision and recall
+metrics <- calculate_bcubed_metrics(dataset)
+precision <- metrics$precision
+recall <- metrics$recall
+
+# Print the results
+cat("BCubed Precision= ", precision, "AND BCubed Recall= ", recall, "\n")
+```
+
+The results indicate challenges in clustering performance. The low
+precision suggests a significant rate of misclassification, while the
+relatively low recall indicates that some instances within the same
+group are missed or incorrectly assigned to other clusters. These
+results highlight limitations in accurately capturing the data's
+underlying structure.
+
+--------------------------------------------------group into k=2
+clusters--------------------------------------------
+
+```{r}
+set.seed(7)
+
+# Specify the number of rows you want to sample
+num_rows <- 100
+
+# Use sample with the specified seed
+idx <- sample(1:dim(Hobby_Data2)[1], num_rows)
+
+Hobby_Data3 <- Hobby_Data2[idx, ]
+
+pam.result <- pam(Hobby_Data3,2)
+#Show the silhoutee plot of PAM AND clusters
+plot(pam.result)
+```
+
+An overlap between clusters implies that there is ambiguity in the
+assignment of data points to clusters, and the clusters may not be
+sufficiently distinct. In such cases, it might be needed to reconsider
+the number of clusters since the goal is to find a balance, but too few
+clusters result in oversimplification, as indicated by the observed
+overlap, and it is evident that forming only two clusters may not be
+sufficient to represent the inherent structure of the dataset.
+
+#BCubed
+
+```{r}
+cluster_assignments <- c(pam.result$cluster) 
+ 
+set.seed(7) 
+ 
+# Specify the number of rows you want to sample 
+num_rows <- 100 
+ 
+# Use sample with the specified seed 
+idx <- sample(1:dim(Hobby_proc)[1], num_rows) 
+ 
+# Select the sampled rows from Hobby_proc 
+Hobby_Data4 <- Hobby_proc[idx, ] 
+
+# Create a data frame with cluster assignments and ground truth labels
+dataset <- data.frame(cluster = cluster_assignments, label = ground_truth_labels)
+
+# Calculate BCubed precision and recall
+calculate_bcubed_metrics <- function(dataset) {
+  n <- nrow(dataset)
+  precision_sum <- 0
+  recall_sum <- 0
+ 
+  for (i in 1:n) {
+    cluster <- dataset$cluster[i]
+    label <- dataset$label[i]
+   
+    # Count the number of items from the same category in its cluster
+    same_category <- sum(dataset$label[dataset$cluster == cluster] == label)
+   
+    # Count the number of items in its cluster
+    same_cluster <- sum(dataset$cluster == cluster)
+   
+    # Count the number of items in its category
+    total_same_category <- sum(dataset$label == label)
+   
+    # Calculate precision and recall
+    precision_sum <- precision_sum + same_category / same_cluster
+    recall_sum <- recall_sum + same_category / total_same_category
+  }
+  # End loop
+ 
+  # Calculate average precision and recall
+  precision <- precision_sum / n
+  recall <- recall_sum / n
+ 
+  return(list(precision = precision, recall = recall))
+}
+
+# Calculate BCubed precision and recall
+metrics <- calculate_bcubed_metrics(dataset)
+precision <- metrics$precision
+recall <- metrics$recall
+
+# Print the results
+cat("BCubed Precision= ", precision, "AND BCubed Recall= ", recall, "\n")
+```
+
+The relatively high recall could be influenced by the specific choice of
+two clusters since it is sensitive to the number of clusters. In the
+context of a two-cluster solution, the recall score reflects how well
+the algorithm groups data points from the same class into one of the two
+identified clusters. Recall suggests that a significant portion of data
+points from the same ground truth class are indeed grouped together in
+one of the two clusters. However, it's important to note that the low
+precision score (0.0432) indicates a lack of homogeneity within the
+identified clusters, implying that the clusters contain a mix of data
+points from different ground truth classes.
+
+**AS A Summary**
+
+Silhouette analysis measures how similar an object is to its own cluster
+(cohesion) compared to other clusters (separation). The silhouette width
+ranges from -1 to 1, where a high value indicates that the object is
+well matched to its own cluster and poorly matched to neighboring
+clusters. In our project we did clusters for k=3, k=4, and k=2 since its
+have higher average silhouette then other number.
+
+For k=3, the average silhouette width is 0.22. 
+For k=4, the average silhouette width is 0.19. 
+For k=2, the average silhouette width is 0.21.
+
+A higher average silhouette width generally indicates better-defined
+clusters. So, in this case, k=3 has the highest average silhouette
+width.
+
+BCubed is a clustering evaluation metric that considers both precision
+and recall. Precision measures the accuracy of the positive predictions,
+while recall measures the coverage of the actual positive instances.
+
+For k=3, BBCubed Precision = 0.0488 BCubed Recall = 0.4932
+For k=4,BCubed Precision = 0.0505 BCubed Recall = 0.4101
+For k=2, BCubedPrecision = 0.0432 BCubed Recall = 0.6252
+
+These metrics measure how well the clustering aligns with the ground
+truth. Higher precision indicates fewer false positives, and higher
+recall indicates fewer false negatives. Here, k=2 has the highest recall
+(0.6252), but k=3 has a reasonable balance between precision and recall.
+
+In conclusion, k=3 seems to be a reasonable choice. It has a good
+silhouette width, and its BCubed Precision and Recall values strike a
+balance.
+
+**What is the best for our dataset?**
+
+since We used the Information Gain, Gini Index, and Gain Ratio as three important metrics in our categorical data classification approach to determine how important certain variables were in predicting hobby categories. The dataset was split into training and testing sets so that different subsets of the data could be used to train classification algorithms. Three metrics were used to evaluate the performance of the model: overall accuracy, recall, and precision.We examined accuracy at several measures of tree selection, Provide us with more accurate results, specifically at the pruning parameters of 0.90, 0.91, and 0.89, in order.The methodical evaluation yielded insightful information on how well each selection measure performed in producing precise predictions within the dataset. high accuracy strongly suggest that, for our dataset, classification is a better methodology than clustering.
+
+
