@@ -1906,6 +1906,17 @@ pam.result <- pam(Hobby_Data3,3)
 plot(pam.result)
 ```
 
+```{r}
+# Extract the clusinfo component
+clusinfo <- pam.result$clusinfo
+
+# Calculate the total within-cluster sum of squares
+tot_withinss <- sum(clusinfo[, "size"] * clusinfo[, "av_diss"]^2)
+
+# Print the result
+print(tot_withinss)
+```
+
 The output of the code, displaying a silhouette plot of the PAM
 clusters, indicates that the clusters are relatively close to each
 other, with a slight overlap between two clusters. The silhouette plot
@@ -2000,6 +2011,17 @@ pam.result <- pam(Hobby_Data3,4)
 plot(pam.result)
 ```
 
+
+```{r}
+# Extract the clusinfo component
+clusinfo <- pam.result$clusinfo
+
+# Calculate the total within-cluster sum of squares
+tot_withinss <- sum(clusinfo[, "size"] * clusinfo[, "av_diss"]^2)
+
+# Print the result
+print(tot_withinss)
+```
 The output suggests that the dataset may exhibit a degree of overlap or
 similarity among observations. The overlapping clusters may indicate
 challenges in achieving a clear separation among these groups. The
@@ -2093,6 +2115,17 @@ pam.result <- pam(Hobby_Data3,2)
 plot(pam.result)
 ```
 
+
+```{r}
+# Extract the clusinfo component
+clusinfo <- pam.result$clusinfo
+
+# Calculate the total within-cluster sum of squares
+tot_withinss <- sum(clusinfo[, "size"] * clusinfo[, "av_diss"]^2)
+
+# Print the result
+print(tot_withinss)
+```
 An overlap between clusters implies that there is ambiguity in the
 assignment of data points to clusters, and the clusters may not be
 sufficiently distinct. In such cases, it might be needed to reconsider
@@ -2100,6 +2133,7 @@ the number of clusters since the goal is to find a balance, but too few
 clusters result in oversimplification, as indicated by the observed
 overlap, and it is evident that forming only two clusters may not be
 sufficient to represent the inherent structure of the dataset.
+
 
 #BCubed
 
@@ -2214,5 +2248,4 @@ balance.
 **What is the best for our dataset?**
 
 since We used the Information Gain, Gini Index, and Gain Ratio as three important metrics in our categorical data classification approach to determine how important certain variables were in predicting hobby categories. The dataset was split into training and testing sets so that different subsets of the data could be used to train classification algorithms. Three metrics were used to evaluate the performance of the model: overall accuracy, recall, and precision.We examined accuracy at several measures of tree selection, Provide us with more accurate results, specifically at the pruning parameters of 0.90, 0.91, and 0.89, in order.The methodical evaluation yielded insightful information on how well each selection measure performed in producing precise predictions within the dataset. high accuracy strongly suggest that, for our dataset, classification is a better methodology than clustering, since the classification give us a good result then clustring.
-
 
