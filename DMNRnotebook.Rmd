@@ -112,58 +112,6 @@ pie(tab, labels=txt)
 ```
 The pie chart illustrates the distribution of the class label 'Predicted Hobby'. It's evident that a substantial portion, approximately 43.7%, of the children's hobbies are academic in nature, indicating a strong interest in educational pursuits. Additionally, 30.8% of the kids are engaged in sports, reflecting a significant inclination towards physical activities. Arts-related hobbies account for 25.6% of the total, the distribution reflects a harmonious blend of hobbies. This balanced distribution not only signifies a variety of interests but also indicates a well-rounded engagement of children in academic, physical, and creative activities.
 
-**Data preprocessing**
-
-
-
-
-
-**#1# Data cleaning:**
-
-During the data cleaning stage, finding and fixing faults, inconsistencies, and errors in a dataset helps it be more reliable and of higher quality for analysis and modeling. There are methods for handling missing values, detecting outliers, resolving inconsistencies, and standardizing formats.
-
-import Dataset"Hobby_Data"
-
-```{r}
-setwd("/Users/96653/Documents/GitHub/KidsHobby/Dataset")
-
-
-
-View(Hobby_Data)
-
-str(Hobby_Data)
-```
-
-check missing value :
-
-```{r}
-is.na(Hobby_Data)
-```
-
-find the total null values in the dataset:
-
-```{r}
-sum(is.na(Hobby_Data))
-```
-This stage involves checking and deleting for null and missing values because they might have a significant impact on the data and cause errors and negative effects in subsequent steps.We simply looked for missing values, and there are a missing values in our dataset. According to our investigation, the dataset does not contain any outliers since it doesn't have a numerical data type. Additionally, there are no inconsistent values or other errors.
-
-**#2#Encoding:**
-
-Converting categorical or non-numeric data into a numerical format, which is necessary for compatibility with machine learning
-
-```{r}
-Hobby_Data$Olympiad_Participation = factor(Hobby_Data$Olympiad_Participation,levels = c("No", "Yes"), labels = c(0, 1))
-Hobby_Data$Scholarship = factor(Hobby_Data$Scholarship , levels = c("No", "Yes"), labels = c(0, 1))
-Hobby_Data$School = factor(Hobby_Data$School, levels = c("No", "Yes"), labels = c(0, 1))
-Hobby_Data$Projects = factor(Hobby_Data$Projects, levels = c("No", "Yes"), labels = c(0, 1))
-Hobby_Data$Medals = factor(Hobby_Data$Medals, levels = c("No", "Yes"), labels = c(0, 1))
-Hobby_Data$Career_sprt = factor(Hobby_Data$Career_sprt, levels = c("No", "Yes"), labels = c(0, 1))
-Hobby_Data$Act_sprt = factor(Hobby_Data$Act_sprt, levels = c("No", "Yes"), labels = c(0, 1))
-Hobby_Data$Fant_arts = factor(Hobby_Data$Fant_arts, levels = c("No", "Yes"), labels = c(0, 1))
-Hobby_Data$Won_arts = factor(Hobby_Data$Won_arts, levels = c("No", "Maybe", "Yes"), labels = c(0, 2, 1))
-Hobby_Data$Fav_sub = factor(Hobby_Data$Fav_sub, levels = c("Science", "Mathematics", "History/Geography", "Any language"), labels = c(1, 2, 3, 4))
-Hobby_Data$`Predicted Hobby` <- factor(Hobby_Data$`Predicted Hobby`, levels = c("Academics", "Arts", "Sports"), labels = c(1, 2, 3))
-```
 
 **Statistical measures :**
 
@@ -226,6 +174,60 @@ hist(Hobby_Data$Time_sprt)
 As shown in the histogram the rank 3 on a scale of 1 to 6 was likely the most chosen rank for assessing children's involvement in sports because it represents a balanced middle ground. Parents may have perceived rank 3 as indicating that their children are moderately involved in sports, not excessively committed or disinterested. This middle-of-the-road ranking reflects a common perspective that many parents may hold, considering that extreme rankings, such as 1 or 6, might suggest either a lack of involvement or an excessive focus on sports, which may not align with their perception of their child's overall well-rounded development.
 
 
+**Data preprocessing**
+
+
+**#1# Data cleaning:**
+
+During the data cleaning stage, finding and fixing faults, inconsistencies, and errors in a dataset helps it be more reliable and of higher quality for analysis and modeling. There are methods for handling missing values, detecting outliers, resolving inconsistencies, and standardizing formats.
+
+import Dataset"Hobby_Data"
+
+```{r}
+setwd("/Users/96653/Documents/GitHub/KidsHobby/Dataset")
+
+
+
+View(Hobby_Data)
+
+str(Hobby_Data)
+```
+
+check missing value :
+
+```{r}
+is.na(Hobby_Data)
+```
+
+find the total null values in the dataset:
+
+```{r}
+sum(is.na(Hobby_Data))
+```
+
+Description:
+
+This stage involves checking and deleting for null and missing values because they might have a significant impact on the data and cause errors and negative effects in subsequent steps.We simply looked for missing values, and there are a missing values in our dataset. According to our investigation, the dataset does not contain any outliers since it doesn't have a numerical data type. Additionally, there are no inconsistent values or other errors.
+
+**#2#Encoding:**
+This step includes a Converting categorical or non-numeric data into a numerical format, which is necessary for compatibility with subsequent steps in preprocessing.
+
+```{r}
+Hobby_Data$Olympiad_Participation = factor(Hobby_Data$Olympiad_Participation,levels = c("No", "Yes"), labels = c(0, 1))
+Hobby_Data$Scholarship = factor(Hobby_Data$Scholarship , levels = c("No", "Yes"), labels = c(0, 1))
+Hobby_Data$School = factor(Hobby_Data$School, levels = c("No", "Yes"), labels = c(0, 1))
+Hobby_Data$Projects = factor(Hobby_Data$Projects, levels = c("No", "Yes"), labels = c(0, 1))
+Hobby_Data$Medals = factor(Hobby_Data$Medals, levels = c("No", "Yes"), labels = c(0, 1))
+Hobby_Data$Career_sprt = factor(Hobby_Data$Career_sprt, levels = c("No", "Yes"), labels = c(0, 1))
+Hobby_Data$Act_sprt = factor(Hobby_Data$Act_sprt, levels = c("No", "Yes"), labels = c(0, 1))
+Hobby_Data$Fant_arts = factor(Hobby_Data$Fant_arts, levels = c("No", "Yes"), labels = c(0, 1))
+Hobby_Data$Won_arts = factor(Hobby_Data$Won_arts, levels = c("No", "Maybe", "Yes"), labels = c(0, 2, 1))
+Hobby_Data$Fav_sub = factor(Hobby_Data$Fav_sub, levels = c("Science", "Mathematics", "History/Geography", "Any language"), labels = c(1, 2, 3, 4))
+Hobby_Data$`Predicted Hobby` <- factor(Hobby_Data$`Predicted Hobby`, levels = c("Academics", "Arts", "Sports"), labels = c(1, 2, 3))
+```
+
+
+
 **#3# Normalization and Discetization:**
 
 We don't need to use normalization and discetization in our dataset. Since our dataset doesn't have numeric attributes and normalization involves mathematical operations, which can result in meaningless values and errors, Also, applying discretization leads to a loss of information and creates intervals and relationships that don't exist between values.
@@ -236,7 +238,7 @@ To improve the accuracy of our predictions for the target class "Predicted Hobby
 
 Specifically, we will use two feature selection methods: Rank Features by Importance and Feature Selection Using Recursive Feature Elimination (RFE).
 
-1.  **Rank Features by Importance:**
+1.**Rank Features by Importance:**
 
 This method used in the code helps us determine which features are most important for predicting the "Predicted Hobby" class label in the dataset. It utilizes the Random Forest algorithm, known for its accurate prediction capabilities. This method calculates the importance of each feature by assessing its contribution to the overall accuracy of the predictions. By ranking the features based on their importance, we can identify the ones that have the greatest influence on determining hobbies.
 
@@ -289,7 +291,7 @@ print(ranked_features)
 barplot(ranked_features, horiz = TRUE, las = 1, main = "Kids Hobby Variable Importance Ranking")
 ```
 
-2.  **Feature Selection Using RFE:**
+2.**Feature Selection Using RFE:**
 
 The Recursive Feature Elimination (RFE) method with Random Forest is a technique used to select the most important features for accurate predictions . It iteratively eliminates less relevant features, retraining the model at each step to evaluate performance. By focusing on the most informative features, RFE improves reduces complexity, and enhances prediction accuracy. It is particularly effective with Random Forest due to its ability to handle complex relationships and high-dimensional data. RFE helps identify the most important attributes associated with the target variable, enabling the creation of more efficient and accurate models.
 
@@ -347,7 +349,7 @@ Plot the results:
 plot(results, type = c("g", "o"))
 ```
 
-**#5#Removing Irrelevant Columns:**
+3.**Removing Irrelevant Columns:**
 
 By considering both Recursive Feature Elimination (RFE) and Rank By Importance, we can make informed decisions about feature relevance and impact on the model. In this case, the columns "School," "Medals" should be deleted as they have lower importance scores compared to the selected variables. Removing these columns simplifies the model and reduces dimensionality, eliminating potential noise and irrelevant information that could hinder accurate predictions.
 
@@ -362,7 +364,10 @@ Display the updated dataset after deleting columns:
 ```{r}
 View(Hobby_Data)
 ```
-we can see that the two columns are deleted
+we can see that the two columns are deleted("School", "Medals").
+
+
+
 
 **Balanced Data**
 ```{r}
