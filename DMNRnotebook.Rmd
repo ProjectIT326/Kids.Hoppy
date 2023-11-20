@@ -112,6 +112,11 @@ pie(tab, labels=txt)
 ```
 The pie chart illustrates the distribution of the class label 'Predicted Hobby'. It's evident that a substantial portion, approximately 43.7%, of the children's hobbies are academic in nature, indicating a strong interest in educational pursuits. Additionally, 30.8% of the kids are engaged in sports, reflecting a significant inclination towards physical activities. Arts-related hobbies account for 25.6% of the total, the distribution reflects a harmonious blend of hobbies. This balanced distribution not only signifies a variety of interests but also indicates a well-rounded engagement of children in academic, physical, and creative activities.
 
+**Data preprocessing**
+
+
+
+
 
 **#1# Data cleaning:**
 
@@ -140,8 +145,7 @@ find the total null values in the dataset:
 ```{r}
 sum(is.na(Hobby_Data))
 ```
-
-We simply looked for missing values, and there are no missing values in the dataset. According to our investigation, the dataset does not contain any outliers since it doesn't have a numerical data type. Additionally, there are no inconsistent values or other errors.
+This stage involves checking and deleting for null and missing values because they might have a significant impact on the data and cause errors and negative effects in subsequent steps.We simply looked for missing values, and there are a missing values in our dataset. According to our investigation, the dataset does not contain any outliers since it doesn't have a numerical data type. Additionally, there are no inconsistent values or other errors.
 
 **#2#Encoding:**
 
