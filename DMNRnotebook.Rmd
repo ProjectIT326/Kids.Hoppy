@@ -6,11 +6,34 @@ output: html_notebook
 ## **Kids Hobby Prediction Dataset**
 
 
+**Problem**
+
+Children often find themselves at a crossroads when it comes to discovering their passions or hobbies, be it in academics, arts, or sports. Recognizing the importance of guiding children towards activities they are passionate about; we have curated a dataset obtained through surveys conducted with parents. This dataset compiles valuable information about children's preferences, enabling the creation of a classification model aimed at predicting kids' hobbies. 
+
+In this exploratory journey, we delve into the dataset to uncover patterns and insights that can assist parents in understanding their child's inclinations better. Through the application of clustering techniques, we aim to categorize children based on number of columns (Fav_sub , Scholarship, etc..). The ultimate goal is to provide parents with meaningful recommendations, fostering an environment where children can thrive in activities that genuinely resonate with their interests. 
+
+By analyzing this dataset, we hope to offer insightful information that will aid parents in guiding their kids toward the right hobbies. 
+
+
+**Data Mining Task**
+
+The data mining task at hand revolves around predicting kids' hobbies based on a dataset named "Hobby_Data," obtained through specific questions posed to their parents regarding preferences, capabilities, and achievements. This dataset serves as the foundation for two primary data mining tasks: classification and clustering. In the classification process, the goal is to train a machine learning model to be capable of accurately predicting a child's hobby as either "academic," "art," or "sports." This requires using the data collected from parents to establish patterns and relationships that guide the model in making accurate predictions. Concurrently, the clustering process involves partitioning the dataset into meaningful clusters, grouping together children with similar characteristics or preferences. Through these dual approaches, the data mining task aims to develop a robust predictive model capable of accurately categorizing children's hobbies in order to uncover the inherent structures, patterns, and associations within the dataset, contributing to a deeper understanding of the diverse interests and engagement levels of the young population in academic, artistic, and sports-related activities.
+ 
+ 
+
+
+**Data**
+
+The source: https://www.kaggle.com/datasets/abtabm/hobby-prediction-basic 
+Number of objects: 1601 
+
+Number of attributes: 14 
+
+
 **Description:**
 Following the selection of our data set ("Hobby_Data") which predicts kids' hobbies, that was collected by asking their parents specific questions about their kid's preferences, capabilities, and achievements. To help us train the machine to predict the kid's hobby. We will begin to preprocess and analyze the data.
 
-**Dataset source:**
-https://www.kaggle.com/datasets/abtabm/hobby-prediction-basic
+
 
 **Attribute** **Description:**
 
@@ -210,6 +233,12 @@ Description:
 
 This stage involves checking and deleting for null and missing values because they might have a significant impact on the data and cause errors and negative effects in subsequent steps.We simply looked for missing values, and there are a missing values in our dataset. According to our investigation, the dataset does not contain any outliers since it doesn't have a numerical data type. Additionally, there are no inconsistent values or other errors.
 
+
+Dataset after cleaning step:
+```{r}
+sample(Hobby_Data)
+```
+
 **#2#Encoding:**
 This step includes a Converting categorical or non-numeric data into a numerical format, which is necessary for compatibility with subsequent steps in preprocessing.
 
@@ -227,6 +256,10 @@ Hobby_Data$Fav_sub = factor(Hobby_Data$Fav_sub, levels = c("Science", "Mathemati
 Hobby_Data$`Predicted Hobby` <- factor(Hobby_Data$`Predicted Hobby`, levels = c("Academics", "Arts", "Sports"), labels = c(1, 2, 3))
 ```
 
+Dataset after Encoding :
+```{r}
+sample(Hobby_Data)
+```
 
 
 **#3# Normalization and Discetization:**
@@ -363,7 +396,7 @@ Hobby_Data <- Hobby_Data[, !(colnames(Hobby_Data) %in% c("School", "Medals"))]
 Display the updated dataset after deleting columns:
 
 ```{r}
-View(Hobby_Data)
+sample(Hobby_Data)
 ```
 we can see that the two columns are deleted("School", "Medals").
 
