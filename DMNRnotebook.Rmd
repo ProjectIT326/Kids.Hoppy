@@ -1691,6 +1691,11 @@ Hobby_proc$Won_arts <-as.numeric(Hobby_proc$Won_arts)
 Hobby_proc$`Predicted Hobby` <-as.numeric(Hobby_proc$`Predicted Hobby` )
 ```
 
+
+```{r}
+str(Hobby_proc)
+```
+
 **Scaled All Columns**
 
 ```{r}
@@ -2050,6 +2055,23 @@ challenges in achieving a clear separation among these groups. The
 placement of one cluster on top of two others implies that the medoid of
 this cluster might be near points belonging to those two neighboring
 clusters. This could be due to the nature of the data.
+
+```{r}
+cluster_assignments <- pam.result$clustering
+
+# Add cluster assignments to the original data
+Hobby_Data_with_clusters <- cbind(Hobby_Data3, Cluster = factor(cluster_assignments))
+
+# Example: Pair plot for the first four features
+pairs(Hobby_Data_with_clusters[, 1:4], col = cluster_assignments)
+
+
+
+```
+
+
+
+
 
 BCubed
 ```{r}
