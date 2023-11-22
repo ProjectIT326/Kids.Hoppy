@@ -62,8 +62,6 @@ Following the selection of our data set ("Hobby_Data") which predicts kids' hobb
 str(Hobby_Data)
 ```
 
-**summary of the dataset:**
-
 -   **samples of raw dataset:**
 
 ```{r}
@@ -189,9 +187,6 @@ During the data cleaning stage, finding and fixing faults, inconsistencies, and 
 import Dataset"Hobby_Data"
 
 ```{r}
-setwd("/Users/96653/Documents/GitHub/KidsHobby/Dataset")
-
-
 
 View(Hobby_Data)
 
@@ -396,7 +391,10 @@ if class_imbalance is close to 0, it suggests that the proportions of different 
 The calculated class imbalance value of 0.1805122 suggests that the distribution of classes in the "Predicted_Hobby" column of the dataset is relatively balanced. The class imbalance is a measure of the difference between the proportions of the most prevalent and least prevalent classes. In this case, the value is close to 0, indicating that there is a minimal difference between the proportions of different classes. A lower-class imbalance value is generally desirable, as it signifies a more even distribution of instances across classes, which can be beneficial for the training and performance of machine learning models.
 
 
+**Data Mining Technique**
 
+
+**Evaluation And Comparison**
 
 **--------------------------------------------------- Classification----------------------------------------------------**
 
@@ -2232,6 +2230,10 @@ points from different ground truth classes.
 
 
 
+
+
+
+
 **AS A Summary For clustring**
 Silhouette analysis measures how similar an object is to its own cluster
 (cohesion) compared to other clusters (separation). The silhouette width
@@ -2265,7 +2267,20 @@ In conclusion, k=3 seems to be a reasonable choice. It has a good
 silhouette width, and its BCubed Precision and Recall values strike a
 balance.
 
+	K=2	K=3(BEST)	K=4
+Average Silhouette width	0.21	0.22	0.19
+total within-cluster sum of square	1059.6
+	833.5585
+	762.8895
 
+BCubed precision	0.0432	0.0488	0.0505
+BCubed recall	0.6252	0.4932	0.4101
+Visualization	In the figures above.
+
+
+**Findings**
+
+**References**
 
 
 **What is the best for our dataset?**
