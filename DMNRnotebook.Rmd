@@ -1696,7 +1696,7 @@ Hobby_proc$`Predicted Hobby` <-as.numeric(Hobby_proc$`Predicted Hobby` )
 **Scaled All Columns**
 
 ```{r}
-Hobby_proc <-scale(Hobby_proc )
+Hobby_proc <-scale(Hobby_proc)
 ```
 
 **Data set without ground truth**
