@@ -54,25 +54,6 @@ Following the selection of our data set ("Hobby_Data") which predicts kids' hobb
 | Time_art               | Time utilized in Arts?                                        | Ordinal       |
 | Predicted Hobby        | predictions for the hobby that the kid wouldl ike             | Categorical   |
 =======
-| Attrbute name          | **Description**                                  | **Data type** |
-|------------------------|--------------------------------------------------|---------------|
-| Olympiad_Participation | Has your child participated in any Science/Maths |               |
-| Olympiad?              | Boolean                                          |               |
-| Scholarship            | Has he/she received any scholarship?             | Boolean       |
-| School                 | HLove's going to school?                         | Boolean       |
-| Fav_sub                | What is his/her favorite subject?                | Nominal       |
-| Projects               | Has done any projects under academics before?    | Boolean       |
-| Grasp_pow              | His/Her Grasping power (1-6)                     | Ordinal       |
-| Time_sprt              | How much time does he/she spend playing          |               |
-| outdoor/indoor games?  | Ordinal                                          |               |
-| Medals                 | Medals won in Sports?                            | Boolean       |
-| Career_sprt            | Want's to pursue his/her career in sports?       | Boolean       |
-| Act_sprt               | Regular in his/her sports activities?            | Boolean       |
-| Fant_arts              | Love creating fantasy paintings?                 | Boolean       |
-| Won_arts               | Won art competitions?                            | Ordinal       |
-| Time_art               | Time utilized in Arts?                           | Ordinal       |
-| Predicted Hobby        | predictions for the hobby that the kid would     |               |
-| like                   | Nominal                                          |               |
 >>>>>>> Stashed changes
 
 **General information about the data set:**
