@@ -460,72 +460,68 @@ The tree further branches based on the values of the "Career_sprt" if equal 0, t
 
 ```{r}
 # Predict on the test data
-   
-testPred <- predict(Hobby_Data_ctree, newdata = testData,type = 'class' )
-
+testPred <- predict(Hobby_Data_ctree, newdata = testData, type = 'class')
 
 # Check the accuracy of the model
 accuracy <- sum(testPred == testData$`Predicted Hobby`) / nrow(testData) * 100
-accuracy
+cat('Accuracy:', accuracy, '\n')
 
-# Calculate the confusion matrix and display results
-results <- confusionMatrix(testPred, testData$`Predicted Hobby`)
-print(results)
+# Create a confusion matrix
+conf_matrix <- table(Actual = testData$`Predicted Hobby`, Predicted = testPred)
 
+# Calculate precision for each class
+precision_class_1 <- conf_matrix[1, 1] / sum(conf_matrix[1, ])
+precision_class_2 <- conf_matrix[2, 2] / sum(conf_matrix[2, ])
+precision_class_3 <- conf_matrix[3, 3] / sum(conf_matrix[3, ])
 
+# Calculate sensitivity for each class
+sensitivity_class_1 <- conf_matrix[1, 1] / sum(conf_matrix[1, ])
+sensitivity_class_2 <- conf_matrix[2, 2] / sum(conf_matrix[2, ])
+sensitivity_class_3 <- conf_matrix[3, 3] / sum(conf_matrix[3, ])
 
-#-----------------------------------------------------------------------
+# Calculate specificity for each class
+specificity_class_1 <- sum(diag(conf_matrix[-1, -1])) / sum(conf_matrix[-1, ])
+specificity_class_2 <- sum(conf_matrix[c(1, 3), c(1, 3)]) / sum(conf_matrix[c(1, 3), ])
+specificity_class_3 <- sum(conf_matrix[c(1, 2), c(1, 2)]) / sum(conf_matrix[c(1, 2), ])
 
-# Define individual class values for each metric
-sensitivity_class_1 <- 0.9241
-sensitivity_class_2 <- 0.8654
-sensitivity_class_3 <- 0.7805
-
-specificity_class_1 <- 0.8602
-specificity_class_2 <- 0.9750
-specificity_class_3 <- 0.9542
-
-pos_pred_value_class_1 <- 0.8488
-pos_pred_value_class_2 <- 0.9375
-pos_pred_value_class_3 <- 0.8421
-
-neg_pred_value_class_1 <- 0.9302
-neg_pred_value_class_2 <- 0.9435
-neg_pred_value_class_3 <- 0.9328
-
-prevalence_class_1 <- 0.4593
-prevalence_class_2 <- 0.3023
-prevalence_class_3 <- 0.2384
-
-detection_rate_class_1 <- 0.4244
-detection_rate_class_2 <- 0.2616
-detection_rate_class_3 <- 0.1860
-
-balanced_accuracy_class_1 <- 0.8921
-balanced_accuracy_class_2 <- 0.9202
-balanced_accuracy_class_3 <- 0.8673
-
-# Calculate macro-averages for each metric
+# Calculate macro-average sensitivity
 macro_avg_sensitivity <- (sensitivity_class_1 + sensitivity_class_2 + sensitivity_class_3) / 3
+
+# Calculate macro-average specificity
 macro_avg_specificity <- (specificity_class_1 + specificity_class_2 + specificity_class_3) / 3
-macro_avg_pos_pred_value <- (pos_pred_value_class_1 + pos_pred_value_class_2 + pos_pred_value_class_3) / 3
-macro_avg_neg_pred_value <- (neg_pred_value_class_1 + neg_pred_value_class_2 + neg_pred_value_class_3) / 3
-macro_avg_prevalence <- (prevalence_class_1 + prevalence_class_2 + prevalence_class_3) / 3
-macro_avg_detection_rate <- (detection_rate_class_1 + detection_rate_class_2 + detection_rate_class_3) / 3
-macro_avg_balanced_accuracy <- (balanced_accuracy_class_1 + balanced_accuracy_class_2 + balanced_accuracy_class_3) / 3
 
-# Print the macro-averages for each metric
+# Calculate macro-average precision
+macro_avg_precision <- (precision_class_1 + precision_class_2 + precision_class_3) / 3
+
+# Print macro-average sensitivity
+cat('Average Sensitivity:', macro_avg_sensitivity, '\n')
+
+# Print macro-average specificity
+cat('Average Specificity:', macro_avg_specificity, '\n')
+
+# Print macro-average precision
+cat('Average Precision:', macro_avg_precision, '\n')
 
 
 
-print(paste('Average Sensitivity(Recall):', macro_avg_sensitivity))
-print(paste('Average Specificity:', macro_avg_specificity))
-print(paste('Average Pos Pred Value:', macro_avg_pos_pred_value))
-print(paste('Average Neg Pred Value:', macro_avg_neg_pred_value))
-print(paste('Average Prevalence:', macro_avg_prevalence))
-print(paste('Average Detection Rate:', macro_avg_detection_rate))
-print(paste('Average Balanced Accuracy:', macro_avg_balanced_accuracy))
 
+
+
+# Print precision for each class
+cat('Precision for Class 1:', precision_class_1, ' \n')
+
+cat('Precision for Class 2:', precision_class_2, '  \n')
+cat('Precision for Class 3:', precision_class_3, ' \n')
+
+# Print sensitivity for each class
+cat('Sensitivity for Class 1:', sensitivity_class_1, '\n')
+cat('Sensitivity for Class 2:', sensitivity_class_2, '\n')
+cat('Sensitivity for Class 3:', sensitivity_class_3, '\n')
+
+# Print specificity for each class
+cat('Specificity for Class 1:', specificity_class_1, '\n')
+cat('Specificity for Class 2:', specificity_class_2, '\n')
+cat('Specificity for Class 3:', specificity_class_3, '\n')
 
 
 
@@ -585,70 +581,69 @@ The tree further branches based on the values of the "Career_sprt" if equal 0, t
 
 ```{r}
 
-
 # Predict on the test data
-   
-testPred <- predict(Hobby_Data_ctree, newdata = testData,type = 'class' )
+testPred <- predict(Hobby_Data_ctree, newdata = testData, type = 'class')
 
 # Check the accuracy of the model
 accuracy <- sum(testPred == testData$`Predicted Hobby`) / nrow(testData) * 100
-accuracy
+cat('Accuracy:', accuracy, '\n')
 
-# Calculate the confusion matrix and display results
-results <- confusionMatrix(testPred, testData$`Predicted Hobby`)
-print(results)
+# Create a confusion matrix
+conf_matrix <- table(Actual = testData$`Predicted Hobby`, Predicted = testPred)
 
+# Calculate precision for each class
+precision_class_1 <- conf_matrix[1, 1] / sum(conf_matrix[1, ])
+precision_class_2 <- conf_matrix[2, 2] / sum(conf_matrix[2, ])
+precision_class_3 <- conf_matrix[3, 3] / sum(conf_matrix[3, ])
 
+# Calculate sensitivity for each class
+sensitivity_class_1 <- conf_matrix[1, 1] / sum(conf_matrix[1, ])
+sensitivity_class_2 <- conf_matrix[2, 2] / sum(conf_matrix[2, ])
+sensitivity_class_3 <- conf_matrix[3, 3] / sum(conf_matrix[3, ])
 
-#---------------------------------------------------------------------------
-# Define individual class values for each metric
-sensitivity_class_1 <- 0.9241
-sensitivity_class_2 <- 0.8654
-sensitivity_class_3 <- 0.7805
+# Calculate specificity for each class
+specificity_class_1 <- sum(diag(conf_matrix[-1, -1])) / sum(conf_matrix[-1, ])
+specificity_class_2 <- sum(conf_matrix[c(1, 3), c(1, 3)]) / sum(conf_matrix[c(1, 3), ])
+specificity_class_3 <- sum(conf_matrix[c(1, 2), c(1, 2)]) / sum(conf_matrix[c(1, 2), ])
 
-specificity_class_1 <- 0.8602
-specificity_class_2 <- 0.9750
-specificity_class_3 <- 0.9542
-
-pos_pred_value_class_1 <- 0.8488
-pos_pred_value_class_2 <- 0.9375
-pos_pred_value_class_3 <- 0.8421
-
-neg_pred_value_class_1 <- 0.9302
-neg_pred_value_class_2 <- 0.9435
-neg_pred_value_class_3 <- 0.9328
-
-prevalence_class_1 <- 0.4593
-prevalence_class_2 <- 0.3023
-prevalence_class_3 <- 0.2384
-
-detection_rate_class_1 <- 0.4244
-detection_rate_class_2 <- 0.2616
-detection_rate_class_3 <- 0.1860
-
-balanced_accuracy_class_1 <- 0.8921
-balanced_accuracy_class_2 <- 0.9202
-balanced_accuracy_class_3 <- 0.8673
-
-# Calculate macro-averages for each metric
+# Calculate macro-average sensitivity
 macro_avg_sensitivity <- (sensitivity_class_1 + sensitivity_class_2 + sensitivity_class_3) / 3
+
+# Calculate macro-average specificity
 macro_avg_specificity <- (specificity_class_1 + specificity_class_2 + specificity_class_3) / 3
-macro_avg_pos_pred_value <- (pos_pred_value_class_1 + pos_pred_value_class_2 + pos_pred_value_class_3) / 3
-macro_avg_neg_pred_value <- (neg_pred_value_class_1 + neg_pred_value_class_2 + neg_pred_value_class_3) / 3
-macro_avg_prevalence <- (prevalence_class_1 + prevalence_class_2 + prevalence_class_3) / 3
-macro_avg_detection_rate <- (detection_rate_class_1 + detection_rate_class_2 + detection_rate_class_3) / 3
-macro_avg_balanced_accuracy <- (balanced_accuracy_class_1 + balanced_accuracy_class_2 + balanced_accuracy_class_3) / 3
 
-# Print the macro-averages for each metric
-print(paste('Average Sensitivity(Recall):', macro_avg_sensitivity))
-print(paste('Average Specificity:', macro_avg_specificity))
-print(paste('Average Pos Pred Value:', macro_avg_pos_pred_value))
-print(paste('Average Neg Pred Value:', macro_avg_neg_pred_value))
-print(paste('Average Prevalence:', macro_avg_prevalence))
-print(paste('Average Detection Rate:', macro_avg_detection_rate))
-print(paste('Average Balanced Accuracy:', macro_avg_balanced_accuracy))
+# Calculate macro-average precision
+macro_avg_precision <- (precision_class_1 + precision_class_2 + precision_class_3) / 3
+
+# Print macro-average sensitivity
+cat('Average Sensitivity:', macro_avg_sensitivity, '\n')
+
+# Print macro-average specificity
+cat('Average Specificity:', macro_avg_specificity, '\n')
+
+# Print macro-average precision
+cat('Average Precision:', macro_avg_precision, '\n')
 
 
+
+
+
+
+# Print precision for each class
+cat('Precision for Class 1:', precision_class_1, ' \n')
+
+cat('Precision for Class 2:', precision_class_2, '  \n')
+cat('Precision for Class 3:', precision_class_3, ' \n')
+
+# Print sensitivity for each class
+cat('Sensitivity for Class 1:', sensitivity_class_1, '\n')
+cat('Sensitivity for Class 2:', sensitivity_class_2, '\n')
+cat('Sensitivity for Class 3:', sensitivity_class_3, '\n')
+
+# Print specificity for each class
+cat('Specificity for Class 1:', specificity_class_1, '\n')
+cat('Specificity for Class 2:', specificity_class_2, '\n')
+cat('Specificity for Class 3:', specificity_class_3, '\n')
 
 
 
@@ -705,82 +700,68 @@ The tree further branches based on the values of the "Career_sprt" if equal 0, t
 ```{r}
 
 # Predict on the test data
-   
-testPred <- predict(Hobby_Data_ctree, newdata = testData,type = 'class' )
-
+testPred <- predict(Hobby_Data_ctree, newdata = testData, type = 'class')
 
 # Check the accuracy of the model
 accuracy <- sum(testPred == testData$`Predicted Hobby`) / nrow(testData) * 100
-accuracy
+cat('Accuracy:', accuracy, '\n')
 
-# Calculate the confusion matrix and display results
-results <- confusionMatrix(testPred, testData$`Predicted Hobby`)
-print(results)
+# Create a confusion matrix
+conf_matrix <- table(Actual = testData$`Predicted Hobby`, Predicted = testPred)
 
+# Calculate precision for each class
+precision_class_1 <- conf_matrix[1, 1] / sum(conf_matrix[1, ])
+precision_class_2 <- conf_matrix[2, 2] / sum(conf_matrix[2, ])
+precision_class_3 <- conf_matrix[3, 3] / sum(conf_matrix[3, ])
 
+# Calculate sensitivity for each class
+sensitivity_class_1 <- conf_matrix[1, 1] / sum(conf_matrix[1, ])
+sensitivity_class_2 <- conf_matrix[2, 2] / sum(conf_matrix[2, ])
+sensitivity_class_3 <- conf_matrix[3, 3] / sum(conf_matrix[3, ])
 
+# Calculate specificity for each class
+specificity_class_1 <- sum(diag(conf_matrix[-1, -1])) / sum(conf_matrix[-1, ])
+specificity_class_2 <- sum(conf_matrix[c(1, 3), c(1, 3)]) / sum(conf_matrix[c(1, 3), ])
+specificity_class_3 <- sum(conf_matrix[c(1, 2), c(1, 2)]) / sum(conf_matrix[c(1, 2), ])
 
-
-#----------------------------------------------------------------------------------
-# Define individual class values for each metric
-sensitivity_class_1 <- 0.9241
-sensitivity_class_2 <- 0.8654
-sensitivity_class_3 <- 0.7805
-
-specificity_class_1 <- 0.8602
-specificity_class_2 <- 0.9750
-specificity_class_3 <- 0.9542
-
-pos_pred_value_class_1 <- 0.8488
-pos_pred_value_class_2 <- 0.9375
-pos_pred_value_class_3 <- 0.8421
-
-neg_pred_value_class_1 <- 0.9302
-neg_pred_value_class_2 <- 0.9435
-neg_pred_value_class_3 <- 0.9328
-
-prevalence_class_1 <- 0.4593
-prevalence_class_2 <- 0.3023
-prevalence_class_3 <- 0.2384
-
-detection_rate_class_1 <- 0.4244
-detection_rate_class_2 <- 0.2616
-detection_rate_class_3 <- 0.1860
-
-balanced_accuracy_class_1 <- 0.8921
-balanced_accuracy_class_2 <- 0.9202
-balanced_accuracy_class_3 <- 0.8673
-
-# Calculate macro-averages for each metric
-
+# Calculate macro-average sensitivity
 macro_avg_sensitivity <- (sensitivity_class_1 + sensitivity_class_2 + sensitivity_class_3) / 3
 
+# Calculate macro-average specificity
 macro_avg_specificity <- (specificity_class_1 + specificity_class_2 + specificity_class_3) / 3
 
-macro_avg_pos_pred_value <- (pos_pred_value_class_1 + pos_pred_value_class_2 + pos_pred_value_class_3) / 3
+# Calculate macro-average precision
+macro_avg_precision <- (precision_class_1 + precision_class_2 + precision_class_3) / 3
 
-macro_avg_neg_pred_value <- (neg_pred_value_class_1 + neg_pred_value_class_2 + neg_pred_value_class_3) / 3
+# Print macro-average sensitivity
+cat('Average Sensitivity:', macro_avg_sensitivity, '\n')
 
-macro_avg_prevalence <- (prevalence_class_1 + prevalence_class_2 + prevalence_class_3) / 3
+# Print macro-average specificity
+cat('Average Specificity:', macro_avg_specificity, '\n')
 
-macro_avg_detection_rate <- (detection_rate_class_1 + detection_rate_class_2 + detection_rate_class_3) / 3
-
-macro_avg_balanced_accuracy <- (balanced_accuracy_class_1 + balanced_accuracy_class_2 + balanced_accuracy_class_3) / 3
-
-
-
-
-# Print the macro-averages for each metric
+# Print macro-average precision
+cat('Average Precision:', macro_avg_precision, '\n')
 
 
 
-print(paste('Average Sensitivity(Recall):', macro_avg_sensitivity))
-print(paste('Average Specificity:', macro_avg_specificity))
-print(paste('Average Pos Pred Value:', macro_avg_pos_pred_value))
-print(paste('Average Neg Pred Value:', macro_avg_neg_pred_value))
-print(paste('Average Prevalence:', macro_avg_prevalence))
-print(paste('Average Detection Rate:', macro_avg_detection_rate))
-print(paste('Average Balanced Accuracy:', macro_avg_balanced_accuracy))
+
+
+
+# Print precision for each class
+cat('Precision for Class 1:', precision_class_1, ' \n')
+
+cat('Precision for Class 2:', precision_class_2, '  \n')
+cat('Precision for Class 3:', precision_class_3, ' \n')
+
+# Print sensitivity for each class
+cat('Sensitivity for Class 1:', sensitivity_class_1, '\n')
+cat('Sensitivity for Class 2:', sensitivity_class_2, '\n')
+cat('Sensitivity for Class 3:', sensitivity_class_3, '\n')
+
+# Print specificity for each class
+cat('Specificity for Class 1:', specificity_class_1, '\n')
+cat('Specificity for Class 2:', specificity_class_2, '\n')
+cat('Specificity for Class 3:', specificity_class_3, '\n')
 
 
 ```
@@ -791,7 +772,19 @@ After training three trees with different sizes, employing information gain as t
 In the case of Tree 2, where a larger training set was employed (80% training, 20% testing), the model had the opportunity to grasp more robust patterns and relationships within the data. However, it is crucial to underscore the necessity of striking a balance between the sizes of the training and testing sets. For Tree 3, with a relatively smaller testing set (90% training, 10% testing), the accuracy estimate might be less reliable due to the limited sample size in the testing set.
 
 In summary, the utilization of information gain as the selection measure, coupled with different training set sizes, resulted in comparable accuracy outcomes. Achieving an optimal balance in the sizes of both training and testing datasets proves essential for ensuring accurate and generalizable model performance.
-
++------------------+-------------------+-------------------+-------------------+
+| information gain | 90 %t raining set | 80 %t raining set | 70 %t raining set |
+|                  |                   |                   |                   |
+|                  | 10% testing set:  | 20% testing set:  | 30% testing set:  |
++:================:+:=================:+:=================:+:=================:+
+| **Accuracy**     | 0.872             | 0.905             | 0.893             |
++------------------+-------------------+-------------------+-------------------+
+| **precision**    | 0.856             | 0.898             | 0.887             |
++------------------+-------------------+-------------------+-------------------+
+| **sensitivity**  | 0.856             | 0.898             | 0.887             |
++------------------+-------------------+-------------------+-------------------+
+| **specificity**  | 0.919             | 0.937             | 0.929             |
++------------------+-------------------+-------------------+-------------------+
 
 
 **Gini index**
@@ -1228,6 +1221,18 @@ Across Three Training-Test Sizes: The results of the decision trees from the 90/
 the accuracies of three data splits reveals distinct outcomes: the (90,10) split leads with the highest accuracy at 0.91875, suggesting that a larger training portion is more effective in this case. The (70,30) split follows with an accuracy of 0.91060, showing strong performance even with a larger test set. However, the commonly used (80,20) split lags slightly behind, achieving an accuracy of 0.90625. This comparison highlights the impact of varying training and testing proportions on model accuracy.
 
 
++-----------------+------------------------------------+------------------------------------+------------------------------------+
+| Gini index      | 90 %t raining set 10% testing set: | 80 %t raining set 20% testing set: | 70 %t raining set 30% testing set: |
++:===============:+:==================================:+:==================================:+:==================================:+
+| **Accuracy**    | 0.91875                            | 0.906                              | 0.911                              |
++-----------------+------------------------------------+------------------------------------+------------------------------------+
+| **precision**   | 0.91850                            | 0.905                              | 0.909                              |
++-----------------+------------------------------------+------------------------------------+------------------------------------+
+| **sensitivity** | 0.91927                            | 0.909                              | 0.912                              |
++-----------------+------------------------------------+------------------------------------+------------------------------------+
+| **specificity** | 0.9578                             | 0.952                              | 0.954                              |
++-----------------+------------------------------------+------------------------------------+------------------------------------+
+
 
 **Gain Ratio**
 The third criterion employed for building the decision tree is Gain Ratio. Gain Ratio stands out as a significant metric in decision tree algorithms, especially in scenarios involving categorical target variables. It normalizes the reduction in entropy by taking into account the potential information content of the feature. This normalization process makes Gain Ratio particularly suitable for datasets with categorical target variables. By factoring in the intrinsic information of a split, Gain Ratio effectively mitigates bias towards features with higher levels, ensuring a more balanced evaluation of different attributes.
@@ -1651,6 +1656,19 @@ If "Career_sprt"is 1, then check if "Fant_arts" is 0, predict "Sports".If "Fant_
 Across Three Training-Test Sizes: The accuracy rates -0.8944 for the 90:10 split, 0.8939 for the 70:30 split, and 0.8879 for the 80:20 split -- indicate only slight variations, with the 90:10 split being marginally better.
 
 
++-----------------+-------------------+-------------------+-------------------+
+| Gain ratio      | 90 %t raining set | 80 %t raining set | 70 %t raining set |
+|                 |                   |                   |                   |
+|                 | 10% testing set:  | 20% testing set:  | 30% testing set:  |
++:===============:+:=================:+:=================:+:=================:+
+| **Accuracy**    | 0.8944            | 0.888             | 0.893970893970894 |
++-----------------+-------------------+-------------------+-------------------+
+| **precision**   | 0.892             | 0.881             | 0.890             |
++-----------------+-------------------+-------------------+-------------------+
+| **sensitivity** | 0.891             | 0.890             | 0.902             |
++-----------------+-------------------+-------------------+-------------------+
+| **specificity** | 0.945             | 0.943             | 0.947             |
++-----------------+-------------------+-------------------+-------------------+
 
 
 
@@ -2308,4 +2326,5 @@ Visualization	In the figures above.
 **What is the best for our dataset?**
 
 since We used the Information Gain, Gini Index, and Gain Ratio as three important metrics in our categorical data classification approach to determine how important certain variables were in predicting hobby categories. The dataset was split into training and testing sets so that different subsets of the data could be used to train classification algorithms. Three metrics were used to evaluate the performance of the model: overall accuracy, recall, and precision.We examined accuracy at several measures of tree selection, Provide us with more accurate results, specifically at the pruning parameters of 0.90, 0.91, and 0.89, in order.The methodical evaluation yielded insightful information on how well each selection measure performed in producing precise predictions within the dataset. high accuracy strongly suggest that, for our dataset, classification is a better methodology than clustering, since the classification give us a good result then clustring.
+
 
