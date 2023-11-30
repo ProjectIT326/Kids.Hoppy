@@ -2353,17 +2353,6 @@ silhouette width, and its BCubed Precision and Recall values strike a
 balance.
 
 
-```{r}
-library(GGally)
-library(plotly)
-
-Hobby_Data2$clustring <- as.factor(Hobby_Data2$cluster)
-
-p<- ggparcoord (data=Hobby_Data2, columns = c(1:11), groupColumn ="cluster", scale = "std")+ labs(x = "", y=""), title = "Parallel Coordinate Plot")
-ggplotly(p)
-```
-
-
 
 
 **Findings**
@@ -2376,11 +2365,37 @@ ggplotly(p)
 | **sensitiviy** |  0.856  |  0.891   |  0.91927   |  0.898  |  0.890   |   0.909    |  0.887  |  0.902   |   0.912    |
 | **specificiy** |  0.919  |  0.945   |   0.9578   |  0.937  |  0.943   |   0.952    |  0.929  |  0.947   |   0.954    |
 
-**References**
+
+
+
+
+
+
+|                                        | k = 2  | k = 3(BEST) | k = 4    |
+|----------------------------------------|--------|-------------|----------|
+| **Average Silhouette width**           | 0.21   | 0.22        | 0.19     |
+| **total within-cluster sum of square** | 1059.6 | 833.5585    | 762.8895 |
+| **BCubed precision**                   | 0.0432 | 0.0488      | 0.0505   |
+| **BCubed recall**                      | 0.6252 | 0.4932      | 0.4101   |
+| **Visualization**                      |        |             |          |
+
+
+**References(Using IEEE format)**
+[1]Luiz Fonseca, “Clustering Analysis in R using K-means,” Medium, Aug. 15, 2019. https://towardsdatascience.com/clustering-analysis-in-r-using-k-means-73eca4fb7967
+
+[1]SagarDhandare, “What Is Encoding? And Its Importance in Data Science!,” Medium, Mar. 28, 2022. https://medium.datadriveninvestor.com/what-is-encoding-and-its-importance-in-data-science-6a2b0cce8e8e
+
+[1]“6.3. Preprocessing data — scikit-learn 0.23.1 documentation,” scikit-learn.org. https://scikit-learn.org/stable/modules/preprocessing.html#normalization
+
+[1]A. Kassambara, “Determining The Optimal Number Of Clusters: 3 Must Know Methods - Datanovia,” Datanovia, 2018. https://www.datanovia.com/en/lessons/determining-the-optimal-number-of-clusters-3-must-know-methods/
 
 
 **What is the best for our dataset?**
 
 since We used the Information Gain, Gini Index, and Gain Ratio as three important metrics in our categorical data classification approach to determine how important certain variables were in predicting hobby categories. The dataset was split into training and testing sets so that different subsets of the data could be used to train classification algorithms. Three metrics were used to evaluate the performance of the model: overall accuracy, recall, and precision.We examined accuracy at several measures of tree selection, Provide us with more accurate results, specifically at the pruning parameters of 0.90, 0.91, and 0.89, in order.The methodical evaluation yielded insightful information on how well each selection measure performed in producing precise predictions within the dataset. high accuracy strongly suggest that, for our dataset, classification is a better methodology than clustering, since the classification give us a good result then clustring.
+
+```{r}
+system("git status")
+```
 
 
