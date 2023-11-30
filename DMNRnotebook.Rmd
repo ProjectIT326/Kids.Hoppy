@@ -1962,6 +1962,71 @@ tot_withinss <- sum(clusinfo[, "size"] * clusinfo[, "av_diss"]^2)
 print(tot_withinss)
 ```
 
+
+```{r}
+str(Hobby_Data2)
+```
+
+**Data set without ground truth**
+
+```{r}
+Hobby_Data2 <- Hobby_proc[, !(colnames(Hobby_proc) %in% c("Predicted Hobby"))]
+```
+
+
+```{r}
+# Check the structure of pam.result$clustering
+str(pam.result$clustering)
+
+summary(Hobby_Data2)
+```
+
+
+```{r}
+str(Hobby_proc)
+
+str(Hobby_Data2)
+```
+
+
+```{r}
+
+library(GGally)
+library(plotly)
+
+
+# Assuming 'pam.result' is the result from PAM clustering
+Hobby_Data2$cluster <- pam.result$clustering
+
+# Make sure 'cluster' is a factor
+Hobby_Data2$cluster <- as.factor(Hobby_Data2$cluster)
+
+# Create a parallel coordinate plot
+p <- ggparcoord(
+  data = Hobby_Data2,
+  columns = c(1:11),  # Assuming there are 11 columns in your data
+  groupColumn = "cluster",
+  scale = "std"
+) + labs(x = "Hobby characteristic", y = "value (in standard-deviation units)", title = "Clustering")
+
+# Convert the ggplot object to plotly
+p_plotly <- ggplotly(p)
+
+# Print the plot
+print(p_plotly)
+
+
+#--------------------------------------------------------------------------------------------------------
+library(GGally)
+library(plotly)
+
+Hobby_Data2$cluster <- as.factor(pam.result$cluster)
+
+p <- ggparcoord(data = Hobby_Data2, columns = c(1:11), groupColumn = "cluster", scale = "std") + labs(x = "milk constituent", y = "value (in standard-deviation units)", title = "Clustering")
+ggplotly(p)
+
+```
+
 The output of the code, displaying a silhouette plot of the PAM
 clusters, indicates that the clusters are relatively close to each
 other, with a slight overlap between two clusters. The silhouette plot
@@ -2307,15 +2372,18 @@ In conclusion, k=3 seems to be a reasonable choice. It has a good
 silhouette width, and its BCubed Precision and Recall values strike a
 balance.
 
-	K=2	K=3(BEST)	K=4
-Average Silhouette width	0.21	0.22	0.19
-total within-cluster sum of square	1059.6
-	833.5585
-	762.8895
 
-BCubed precision	0.0432	0.0488	0.0505
-BCubed recall	0.6252	0.4932	0.4101
-Visualization	In the figures above.
+```{r}
+library(GGally)
+library(plotly)
+
+Hobby_Data2$clustring <- as.factor(Hobby_Data2$cluster)
+
+p<- ggparcoord (data=Hobby_Data2, columns = c(1:11), groupColumn ="cluster", scale = "std")+ labs(x = "", y=""), title = "Parallel Coordinate Plot")
+ggplotly(p)
+```
+
+
 
 
 **Findings**
