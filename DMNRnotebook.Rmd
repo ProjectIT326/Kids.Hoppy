@@ -152,6 +152,9 @@ The histogram makes it evident that the mode is equal to 1, and we believe that 
 ```{r}
 find_mode(Hobby_Data$Grasp_pow)
 ```
+
+
+
 The histogram graph for "Grasp_pow" variable
 ```{r}
 hist(Hobby_Data$Grasp_pow)
@@ -398,14 +401,17 @@ Each method allows for a unique perspective on attribute importance, contributin
 
 **Clustering Techniques:**
 
-since the k-mean does not suitable to our data because the k-means algorithm is not applicable to categoricaldata clustering because it relies on the Euclidean distance metric tomeasure the similarity between data points.and other things we mention later,we decide to use k-medoids(PAM).
+since the k-mean does not suitable to our data because the k-means algorithm is not applicable to categorical data, because it relies on the Euclidean distance metric tomeasure the similarity between data points.and other things we mention later,we decide to use k-medoids(PAM).
 Unlike k-means, k-medoids does not rely on the mean as a representative centroid but employs medoids, which are actual data
 points within the clusters, and the algorithm defines clusters based on partitioning around medoids. This feature makes k-medoids particularly
-suitable for categorical data,thats we we use it insted of k-mean.
-first we convert type from factor columns to numeric then scaled all columns, then we make validation to determined how many clusters by using (Silhouette coefficient,Elbow method, average silhouette) method and
-second we apply codes for 3 number of cluster with calculation of(BCubed recall, BCubed precision,wws, average silhouette width)
+suitable for categorical data.
 
-third after we apply codes and method for every number of cluster, we compare the result and chose k=3 to be the best number of cluster based on our calculation and visuals.
+since clustering apply with a data set without ground truth we remove it before we start to make clustering,
+first we convert type from factor columns to numeric then scaled all columns, then we make validation to determined how many clusters by using (Silhouette coefficient,Elbow method, average silhouette) method 
+
+second we apply PAM for 3 number of cluster with calculation of (BCubed recall, BCubed precision,wws, average silhouette width)
+
+third after we apply PAM and some methods for every number of cluster, we compare the result and chose k=3 to be the best number of cluster based on our calculation and visuals.
 
 Packages Used: ggplot2: Enables visually appealing and customizable plots, widely used for data visualization in R. magrittr: Facilitates writing readable code by employing the pipe operator (%\>%) for data manipulation operations. dplyr: Offers tools for data manipulation and transformation, providing functions for filtering, selecting, and arranging data. factoextra: Useful for extracting and visualizing information from principal component analysis (PCA) and clustering results. cluster: Provides functions for clustering algorithms such as k-means. k-medoids, hierarchical clustering .
 
@@ -1687,6 +1693,13 @@ Across Three Training-Test Sizes: The accuracy rates -0.8944 for the 90:10 split
 +-----------------+-------------------+-------------------+-------------------+
 
 
+
+
+
+
+
+
+
 **#2#Clustering**
 
 first we use Hobby_proc that is version of Hobby data after pre-processing
@@ -2072,27 +2085,13 @@ tot_withinss <- sum(clusinfo[, "size"] * clusinfo[, "av_diss"]^2)
 # Print the result
 print(tot_withinss)
 ```
+
 The output suggests that the dataset may exhibit a degree of overlap or
 similarity among observations. The overlapping clusters may indicate
 challenges in achieving a clear separation among these groups. The
 placement of one cluster on top of two others implies that the medoid of
 this cluster might be near points belonging to those two neighboring
 clusters. This could be due to the nature of the data.
-
-```{r}
-cluster_assignments <- pam.result$clustering
-
-# Add cluster assignments to the original data
-Hobby_Data_with_clusters <- cbind(Hobby_Data3, Cluster = factor(cluster_assignments))
-
-# Example: Pair plot for the first four features
-pairs(Hobby_Data_with_clusters[, 1:4], col = cluster_assignments)
-
-
-```
-
-
-
  
 
 BCubed
@@ -2496,7 +2495,7 @@ The Gini index with a 90-10 attribute selection measure has emerged as the most 
 
 **7.2: the best partitioning method for clustering:**
 
-According to our research and attempt to cluster using k-means algorithm we figured that it is not applicable to our data because it relies on the Euclidean distance metric to measure the similarity between data points. However, even after Encoding and its application to categorical data pose significant challenges. Categorical variables often lack a meaningful numerical representation; for instance, taking the mean of categories like the feature \"favorite subject,\" aka \"Fav_sub\" (even after encoding), might not have any practical interpretation. And the distances calculated in the algorithm may not reflect the true dissimilarities between categorical values. The encoding process itself introduces artificial numerical relation that may mislead the algorithm. Moreover, k-means relies on the minimization of Euclidean distances, which might not accurately capture the dissimilarity structure in categorical data. Categorical variables inherently exhibit discrete and non-ordinal characteristics that are not well-suited for the continuous and linear assumptions of k-means. Alternative clustering techniques, specifically designed for categorical data, such as partitioning around medoids, are more appropriate for capturing the intrinsic patterns and relationships in categorical data sets.\ [9]
+According to our research and attempt to cluster using k-means algorithm we figured that it is not applicable to our data because it relies on the Euclidean distance metric to measure the similarity between data points. However, even after Encoding and its application to categorical data pose significant challenges. Categorical variables often lack a meaningful numerical representation; for instance, taking the mean of categories like the feature \"favorite subject,\" aka \"Fav_sub\" (even after encoding), might not have any practical interpretation. And the distances calculated in the algorithm may not reflect the true dissimilarities between categorical values. The encoding process itself introduces artificial numerical relation that may mislead the algorithm. Moreover, k-means relies on the minimization of Euclidean distances, which might not accurately capture the dissimilarity structure in categorical data. Categorical variables inherently exhibit discrete and non-ordinal characteristics that are not well-suited for the continuous and linear assumptions of k-means. Alternative clustering techniques, specifically designed for categorical data, such as partitioning around medoids, are more appropriate for capturing the intrinsic patterns and relationships in categorical data sets.\ [7]
 
 **7.3: Clustering Comparison:**
 
