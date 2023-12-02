@@ -202,7 +202,7 @@ sample(Hobby_Data)
 ```
 
 **#2#Second:Encoding:**
-This step includes a Converting categorical or non-numeric data into a numerical format, which is necessary for compatibility with subsequent steps in preprocessing.
+This step includes a Converting categorical or non-numeric data into a numerical format, which is necessary for compatibility with subsequent steps in preprocessing.[1]
 ```{r}
 Hobby_Data$Olympiad_Participation = factor(Hobby_Data$Olympiad_Participation,levels = c("No", "Yes"), labels = c(0, 1))
 Hobby_Data$Scholarship = factor(Hobby_Data$Scholarship , levels = c("No", "Yes"), labels = c(0, 1))
@@ -225,7 +225,7 @@ sample(Hobby_Data)
 
 **#3# Normalization and Discetization:**
 
-We don't need to use normalization and discetization in our dataset. Since our dataset doesn't have numeric attributes and normalization involves mathematical operations, which can result in meaningless values and errors, Also, applying discretization leads to a loss of information and creates intervals and relationships that don't exist between values.
+We don't need to use normalization and discetization in our dataset. Since our dataset doesn't have numeric attributes and normalization involves mathematical operations, which can result in meaningless values and errors, Also, applying discretization leads to a loss of information and creates intervals and relationships that don't exist between values.[2]
 
 **#4#Feature Selection:**
 
@@ -398,17 +398,16 @@ Each method allows for a unique perspective on attribute importance, contributin
 
 **Clustering Techniques:**
 
-K-Means: Validation: Used silhouette scores to find optimal clusters (k=3) but observed overlap, signaling challenges in categorical data clustering due to Euclidean distance limitations.
+since the k-mean does not suitable to our data because the k-means algorithm is not applicable to categoricaldata clustering because it relies on the Euclidean distance metric tomeasure the similarity between data points.and other things we mention later,we decide to use k-medoids(PAM).
+Unlike k-means, k-medoids does not rely on the mean as a representative centroid but employs medoids, which are actual data
+points within the clusters, and the algorithm defines clusters based on partitioning around medoids. This feature makes k-medoids particularly
+suitable for categorical data,thats we we use it insted of k-mean.
+first we convert type from factor columns to numeric then scaled all columns, then we make validation to determined how many clusters by using (Silhouette coefficient,Elbow method, average silhouette) method and
+second we apply codes for 3 number of cluster with calculation of(BCubed recall, BCubed precision,wws, average silhouette width)
 
-K-Medoids (PAM): Validation: Silhouette and elbow methods suggested k=3, but evaluation showed overlap and ambiguity in clusters. BCubed Metrics: Analyzed precision and recall, finding k=3 to strike a balance despite clustering challenges.
+third after we apply codes and method for every number of cluster, we compare the result and chose k=3 to be the best number of cluster based on our calculation and visuals.
 
-Insights: K-Means Limitations: Discussed challenges: categorical data's non-ordinal nature conflicts with k-means' assumptions. K-Medoids Suitability: Highlighted k-medoids as more fitting for categorical data due to medoids' usage.
-
-Conclusion: Despite limitations, k=3 was reasonably balanced among clustering techniques for this dataset. Takeaway: Clustering categorical data is challenging; k-medoids appears more appropriate than k-means for categorical data.
-
-Packages Used: ggplot2: Enables visually appealing and customizable plots, widely used for data visualization in R. magrittr: Facilitates writing readable code by employing the pipe operator (%\>%) for data manipulation operations. dplyr: Offers tools for data manipulation and transformation, providing functions for filtering, selecting, and arranging data. factoextra: Useful for extracting and visualizing information from principal component analysis (PCA) and clustering results. cluster: Provides functions for clustering algorithms such as k-means, k-medoids, hierarchical clustering .
-
-
+Packages Used: ggplot2: Enables visually appealing and customizable plots, widely used for data visualization in R. magrittr: Facilitates writing readable code by employing the pipe operator (%\>%) for data manipulation operations. dplyr: Offers tools for data manipulation and transformation, providing functions for filtering, selecting, and arranging data. factoextra: Useful for extracting and visualizing information from principal component analysis (PCA) and clustering results. cluster: Provides functions for clustering algorithms such as k-means. k-medoids, hierarchical clustering .
 
 
 
@@ -1766,7 +1765,7 @@ before putting the puzzle together. It's important because some
 clustering algorithms, like K-means, require such a parameter. In
 addition to that, it helps make the clustering more accurate and useful.
 If you know the right number beforehand, it saves time and helps make
-the whole process more efficient and the results more reliable.
+the whole process more efficient and the results more reliable.[8]
 
 **compute average silhouette for k clusters using silhouette() For k-mean**
 
@@ -1844,7 +1843,7 @@ characteristicsthat are not well-suited for the continuous and linear
 assumptions ofk-means. Alternative clustering techniques, specifically
 designed forcategorical data, such as partitioning around medoids, are
 moreappropriate for capturing the intrinsic patterns and relationships
-incategorical datasets.
+incategorical datasets.[7]
 
 
 
@@ -1868,7 +1867,7 @@ partitioning around medoids.
 
 First, we want to determine three different numbers of clusters by using
 a number of methods that will suggest the optimal number of clusters for
-k-mediods clustering with PAM.
+k-mediods clustering with PAM.[8]
 
 **Silhouette coefficient**
 
@@ -1877,7 +1876,7 @@ fviz_nbclust(Hobby_Data2, pam, method = "silhouette")+
   labs(subtitle = "Silhouette method")
 ```
 
-**Elbow method**
+**Elbow method**   
 
 ```{r}
 fviz_nbclust(Hobby_Data2, pam, method = "wss") +
@@ -1952,6 +1951,7 @@ pam.result <- pam(Hobby_Data3,3)
 plot(pam.result)
 ```
 
+wws
 ```{r}
 # Extract the clusinfo component
 clusinfo <- pam.result$clusinfo
@@ -2077,7 +2077,7 @@ pam.result <- pam(Hobby_Data3,4)
 plot(pam.result)
 ```
 
-
+wws
 ```{r}
 # Extract the clusinfo component
 clusinfo <- pam.result$clusinfo
@@ -2105,12 +2105,11 @@ Hobby_Data_with_clusters <- cbind(Hobby_Data3, Cluster = factor(cluster_assignme
 pairs(Hobby_Data_with_clusters[, 1:4], col = cluster_assignments)
 
 
-
 ```
 
 
 
-
+ 
 
 BCubed
 ```{r}
@@ -2198,7 +2197,7 @@ pam.result <- pam(Hobby_Data3,2)
 plot(pam.result)
 ```
 
-
+wws
 ```{r}
 # Extract the clusinfo component
 clusinfo <- pam.result$clusinfo
@@ -2370,7 +2369,7 @@ The observation of clusters being close to each other when plotted using PAM (Pa
 
 [2]“6.3. Preprocessing data — scikit-learn 0.23.1 documentation,” scikit-learn.org. https://scikit-learn.org/stable/modules/preprocessing.html#normalization
 
-[2]https://www.facebook.com/jason.brownlee.39, “Feature Selection with the Caret R Package,” Machine Learning Mastery, Aug. 22, 2019. https://machinelearningmastery.com/feature-selection-with-the-caret-r-package/
+[3]https://www.facebook.com/jason.brownlee.39, “Feature Selection with the Caret R Package,” Machine Learning Mastery, Aug. 22, 2019. https://machinelearningmastery.com/feature-selection-with-the-caret-r-package/
 
 [4]“RPubs - Decision Tree Using (Information Gain),” rpubs.com. https://rpubs.com/SameerMathur/DT_InformationGain_CCDefault (accessed Nov. 30, 2023).
 
