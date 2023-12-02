@@ -6,7 +6,6 @@ output: html_notebook
 ## **Kids Hobby Prediction Dataset**
 
 
-**\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\--**
 
 **1.Problem**
 
@@ -17,7 +16,11 @@ In this exploratory journey, we delve into the dataset to uncover patterns and i
 By analyzing this dataset, we hope to offer insightful information that will aid parents in guiding their kids toward the right hobbies. 
 
 
+
+
 **\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\--**
+
+
 
 
 **2.Data Mining Task**
@@ -26,7 +29,11 @@ By analyzing this dataset, we hope to offer insightful information that will aid
 The data mining task at hand revolves around predicting kids' hobbies based on a dataset named "Hobby_Data," obtained through specific questions posed to their parents regarding preferences, capabilities, and achievements. This dataset serves as the foundation for two primary data mining tasks: classification and clustering. In the classification process, the goal is to train a machine learning model to be capable of accurately predicting a child's hobby as either "academic," "art," or "sports." This requires using the data collected from parents to establish patterns and relationships that guide the model in making accurate predictions. Concurrently, the clustering process involves partitioning the dataset into meaningful clusters, grouping together children with similar characteristics or preferences. Through these dual approaches, the data mining task aims to develop a robust predictive model capable of accurately categorizing children's hobbies in order to uncover the inherent structures, patterns, and associations within the dataset, contributing to a deeper understanding of the diverse interests and engagement levels of the young population in academic, artistic, and sports-related activities.
  
  
+ 
+ 
  **\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\--**
+
+
 
 
 **3.Data**
@@ -2339,6 +2346,8 @@ balance.
 
 
 
+
+
 **6.Evaluation and Comparison**
 
 **#1#Classification with comparison criteria**
@@ -2378,7 +2387,11 @@ The observation of clusters being close to each other when plotted using PAM (Pa
 
 
 
+
+
 **\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\--**
+
+
 
 
 
@@ -2389,6 +2402,7 @@ The observation of clusters being close to each other when plotted using PAM (Pa
 **7.1: Classification Comparision:**
 
 In the classification task, the evaluation of 36 metrics revealed distinctive performance patterns across various criteria:
+
 
 1.  Accuracy:
 
@@ -2402,6 +2416,7 @@ Information Gain 70-30 and Gini 80-20 closely followed with accuracies around 89
 
 Information Gain 90-10 displayed a lower accuracy at 87.21%.
 
+
 2.  Sensitivity:
 
 Gini models consistently showed high sensitivity ranging from 91.19% (Gini 70-30) to 91.93% (Gini 90-10).
@@ -2410,6 +2425,7 @@ Ratio models followed with sensitivity levels around 89.15% to 90.25%.
 
 Information Gain models demonstrated slightly lower sensitivity, ranging from 85.66% (Information Gain 90-10) to 89.83% (Information Gain 80-20).
 
+
 3.  Specificity:
 
 Gini models showcased strong specificity, reaching from 95.15% (Gini 80-20) to 95.79% (Gini 90-10).
@@ -2417,6 +2433,7 @@ Gini models showcased strong specificity, reaching from 95.15% (Gini 80-20) to 9
 Ratio models exhibited specificity between 94.26% (Ratio 80-20) and 94.66% (Ratio 70-30).
 
 Information Gain models displayed specificity levels around 91.91% (Information Gain 90-10) to 93.78% (Information Gain 80-20).
+
 
 4.  Precision:
 
@@ -2430,6 +2447,7 @@ Overall, Gini models consistently showcased strong performance across most metri
 
 **Analyzing and Selecting the Best Trees from Each Method**
 
+
 1.  Gini Index:
 
 Best Tree: Gini 90-10
@@ -2442,11 +2460,13 @@ Best Tree: Gini 90-10
 
 -   Precision: 91.85%
 
+
 Explanation:
 
 The Gini 90-10 tree outperforms others, providing the highest accuracy and well-balanced sensitivity and specificity. This tree exhibits superior predictive power, making it an optimal choice for accurately categorizing children's hobbies.
 
 The most influential attributes in predicting hobbies within the Gini Index Decision Tree (90/10) are engagement in sports activities ('Career_sprt'), involvement in arts hobbies ('Fant_arts'), and the level of arts activity ('Time_art').
+
 
 Confusion Matrix for Gini 90-10:
 
@@ -2455,6 +2475,7 @@ Confusion Matrix for Gini 90-10:
 Actual Positive            True Positive (91.93%)         False Negative (8.07%)
 
 Actual Negative            False Positive (4.21%)         True Negative (95.79%)
+
 
 2.  Ratio:
 
@@ -2468,11 +2489,12 @@ Best Tree: Ratio 90-10
 
 -   Average Precision: 89.19%
 
-Explanation:
 
+Explanation:
 Among Ratio trees, the Ratio 90-10 tree stands out with competitive accuracy, sensitivity, and specificity. It strikes a balance between identifying positive cases and correctly predicting negative cases, making it a reliable choice for predicting children's hobbies.
 
 The primary attributes influencing hobby predictions in the Gain Ratio Decision Tree (90%/10%) are 'Career_sprt,' 'Fant_arts,' 'Won_arts,' 'Olympiad_Participation,' 'Grasp_pow,' 'Time_art,' and 'Act_sprt.'
+
 
 Confusion Matrix for Ratio 90-10:
 
@@ -2481,6 +2503,7 @@ Confusion Matrix for Ratio 90-10:
 Actual Positive            True Positive (89.15%)         False Negative (10.85%)
 
 Actual Negative            False Positive (5.34%)         True Negative (94.66%)
+
 
 3.  Information Gain:
 
@@ -2493,6 +2516,7 @@ Best Tree: Information Gain 80-20
 -   Specificity: 93.78%
 
 -   Precision: 89.83%
+
 
 Explanation:
 
@@ -2507,6 +2531,8 @@ Confusion Matrix for Information Gain 80-20:
 Actual Positive            True Positive (89.83%)          False Negative (10.17%)
 
 Actual Negative            False Positive (6.22%)          True Negative (93.78%)
+
+
 
 **Overall Analysis:**
 
@@ -2602,7 +2628,13 @@ The nature of the data types, which include a majority of Boolean and ordinal va
 The observation of clusters being close to each other when plotted using PAM (Partitioning Around Medoids) while achieving high accuracy in the classification model does influence the preference for classification over clustering. The close proximity and overlap in clusters suggest that the clustering algorithm may not effectively separate the data points based on the given attributes. On the other hand, the high accuracy of the classification model indicates that the chosen classification approach, particularly decision tree models, is successful in accurately predicting the hobby for each data point. This performance difference reinforces the suitability of classification for our dataset, where the goal is to precisely assign specific labels to each observation based on its attributes, and clustering may not provide the necessary separation for effective prediction.
 
 
+
+
+
 **\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\--**
+
+
+
 
 
 
