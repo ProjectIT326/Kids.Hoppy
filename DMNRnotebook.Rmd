@@ -229,7 +229,7 @@ We don't need to use normalization and discetization in our dataset. Since our d
 
 **#4#Feature Selection:**
 
-To improve the accuracy of our predictions for the target class "Predicted Hobby" and decrease the processing time of our classifier, we will utilize feature selection techniques. These techniques enable us to eliminate redundant or irrelevant attributes from the dataset, resulting in a more concise subset of features that provide the most valuable information for our predictions.
+To improve the accuracy of our predictions for the target class "Predicted Hobby" and decrease the processing time of our classifier, we will utilize feature selection techniques. These techniques enable us to eliminate redundant or irrelevant attributes from the dataset, resulting in a more concise subset of features that provide the most valuable information for our predictions.[3]
 
 Specifically, we will use two feature selection methods: Rank Features by Importance and Feature Selection Using Recursive Feature Elimination (RFE).
 
@@ -426,7 +426,7 @@ In the final steps, we utilize data visualization tools to create visual represe
 
 **Information Gain**
 
-Information Gain is particularly useful when dealing with categorical target variables using Information Gain for the initial partitioning of a dataset when building a decision tree It's based on the concept of entropy and aims to maximize the homogeneity of subsets after each split. This approach helps create an effective decision tree by selecting features that provide the most information for predicting the target variable.
+Information Gain is particularly useful when dealing with categorical target variables using Information Gain for the initial partitioning of a dataset when building a decision tree It's based on the concept of entropy and aims to maximize the homogeneity of subsets after each split. This approach helps create an effective decision tree by selecting features that provide the most information for predicting the target variable.[4]
 
 
 **1-Information Gain(70%,30%)**
@@ -806,7 +806,7 @@ In summary, the utilization of information gain as the selection measure, couple
 
 **Gini index**
 
-The Gini index, is a measure used in decision trees, specifically in the CART (Classification and Regression Trees) algorithm, to quantify how often a randomly chosen element would be incorrectly labeled if it was randomly labeled according to the distribution of labels in the subset. It reflects the probability of a particular variable being wrongly classified when it is randomly chosen.
+The Gini index, is a measure used in decision trees, specifically in the CART (Classification and Regression Trees) algorithm, to quantify how often a randomly chosen element would be incorrectly labeled if it was randomly labeled according to the distribution of labels in the subset. It reflects the probability of a particular variable being wrongly classified when it is randomly chosen.[5]   
 
 **1-Gini index(80%,20%)**
 
@@ -1252,7 +1252,7 @@ the accuracies of three data splits reveals distinct outcomes: the (90,10) split
 
 
 **Gain Ratio**
-The third criterion employed for building the decision tree is Gain Ratio. Gain Ratio stands out as a significant metric in decision tree algorithms, especially in scenarios involving categorical target variables. It normalizes the reduction in entropy by taking into account the potential information content of the feature. This normalization process makes Gain Ratio particularly suitable for datasets with categorical target variables. By factoring in the intrinsic information of a split, Gain Ratio effectively mitigates bias towards features with higher levels, ensuring a more balanced evaluation of different attributes.
+The third criterion employed for building the decision tree is Gain Ratio. Gain Ratio stands out as a significant metric in decision tree algorithms, especially in scenarios involving categorical target variables. It normalizes the reduction in entropy by taking into account the potential information content of the feature. This normalization process makes Gain Ratio particularly suitable for datasets with categorical target variables. By factoring in the intrinsic information of a split, Gain Ratio effectively mitigates bias towards features with higher levels, ensuring a more balanced evaluation of different attributes.[6]
 
 **1-Gain ratio(90%,10%)**
 
@@ -1951,6 +1951,18 @@ pam.result <- pam(Hobby_Data3,3)
 plot(pam.result)
 ```
 
+The output of the code, displaying a silhouette plot of the PAM
+clusters, indicates that the clusters are relatively close to each
+other, with a slight overlap between two clusters. The silhouette plot
+visually represents how well-defined and separated the clusters are.
+While the slight overlap suggests that the natural grouping within the
+dataset may not be entirely distinct, it does not negatively affect the
+overall quality of the clusters. In fact, the observed overlap might
+indicate shared characteristics between adjacent clusters, effectively
+capturing meaningful patterns and groupings that reflect the intricacies
+of real-world phenomena not confined to strict boundaries.
+
+
 wws
 ```{r}
 # Extract the clusinfo component
@@ -1964,35 +1976,7 @@ print(tot_withinss)
 ```
 
 
-```{r}
-str(Hobby_Data2)
-```
 
-**Data set without ground truth**
-
-```{r}
-Hobby_Data2 <- Hobby_proc[, !(colnames(Hobby_proc) %in% c("Predicted Hobby"))]
-```
-
-
-```{r}
-# Check the structure of pam.result$clustering
-str(pam.result$clustering)
-
-summary(Hobby_Data2)
-```
-
-
-The output of the code, displaying a silhouette plot of the PAM
-clusters, indicates that the clusters are relatively close to each
-other, with a slight overlap between two clusters. The silhouette plot
-visually represents how well-defined and separated the clusters are.
-While the slight overlap suggests that the natural grouping within the
-dataset may not be entirely distinct, it does not negatively affect the
-overall quality of the clusters. In fact, the observed overlap might
-indicate shared characteristics between adjacent clusters, effectively
-capturing meaningful patterns and groupings that reflect the intricacies
-of real-world phenomena not confined to strict boundaries.
 
 bCubed
 
@@ -2353,14 +2337,230 @@ balance.
 
 **Comparison of Classification and Clustering**
 
-Classification is better than clustering for our dataset because our problem involves predicting kids' hobbies based on specific attributes, and classification models are designed for precisely this kind of task. In contrast, clustering is useful for discovering natural groupings but doesn't necessarily assign them to predefined categories. Additionally, clustering might create groups that don't directly correspond to the desired hobby categories, making interpretation and application more challenging in this context. Hence, the structured nature of classification, where the model is trained on labeled data to predict specific outcomes, makes it more appropriate for our task. 
+Classification is better than clustering for our data set because our problem involves predicting kids' hobbies based on specific attributes, and classification models are designed for precisely this kind of task. In contrast, clustering is useful for discovering natural groupings but doesn't necessarily assign them to predefined categories. Additionally, clustering might create groups that don't directly correspond to the desired hobby categories, making interpretation and application more challenging in this context. Hence, the structured nature of classification, where the model is trained on labeled data to predict specific outcomes, makes it more appropriate for our task.
 
-The nature of the data types, which include a majority of Boolean and ordinal variables in our dataset influenced the preference for classification over clustering, since classification models, particularly decision trees, are adept at handling these data types. On the other hand, cluster’s application might be less straightforward when dealing with categorical and ordinal variables, especially if the goal is to predict predefined categories. making classification more appropriate for our dataset compared to clustering,which may not align with the structured prediction task in our case.
+The nature of the data types, which include a majority of Boolean and ordinal variables in our dataset influenced the preference for classification over clustering, since classification models, particularly decision trees, are adept at handling these data types. On the other hand, cluster\'s application might be less straightforward when dealing with categorical and ordinal variables, especially if the goal is to predict predefined categories. making classification more appropriate for our dataset compared to clustering, ‎which may not align with the structured prediction task in our case.
 
 The observation of clusters being close to each other when plotted using PAM (Partitioning Around Medoids) while achieving high accuracy in the classification model does influence the preference for classification over clustering. The close proximity and overlap in clusters suggest that the clustering algorithm may not effectively separate the data points based on the given attributes. On the other hand, the high accuracy of the classification model indicates that the chosen classification approach, particularly decision tree models, is successful in accurately predicting the hobby for each data point. This performance difference reinforces the suitability of classification for our dataset, where the goal is to precisely assign specific labels to each observation based on its attributes, and clustering may not provide the necessary separation for effective prediction.
 
 
 **7.Findings**
+
+**7.1: Classification Comparision:**
+
+In the classification task, the evaluation of 36 metrics revealed distinctive performance patterns across various criteria:
+
+1.  Accuracy:
+
+Gini 90-10 had the highest accuracy at 91.88%, closely followed by Gini 70-30 at 91.06%.
+
+Information Gain 80-20 also displayed strong accuracy at 90.57%, and Gini 80-20 had an accuracy of 90.62%.
+
+Ratio models had slightly lower accuracies ranging from 89.44% (Ratio 90-10) to 88.79% (Ratio 80-20 and 70-30).
+
+Information Gain 70-30 and Gini 80-20 closely followed with accuracies around 89.32% and 90.62% respectively.
+
+Information Gain 90-10 displayed a lower accuracy at 87.21%.
+
+2.  Sensitivity:
+
+Gini models consistently showed high sensitivity ranging from 91.19% (Gini 70-30) to 91.93% (Gini 90-10).
+
+Ratio models followed with sensitivity levels around 89.15% to 90.25%.
+
+Information Gain models demonstrated slightly lower sensitivity, ranging from 85.66% (Information Gain 90-10) to 89.83% (Information Gain 80-20).
+
+3.  Specificity:
+
+Gini models showcased strong specificity, reaching from 95.15% (Gini 80-20) to 95.79% (Gini 90-10).
+
+Ratio models exhibited specificity between 94.26% (Ratio 80-20) and 94.66% (Ratio 70-30).
+
+Information Gain models displayed specificity levels around 91.91% (Information Gain 90-10) to 93.78% (Information Gain 80-20).
+
+4.  Precision:
+
+Gini models maintained high precision, ranging from 90.46% (Gini 80-20) to 91.85% (Gini 90-10).
+
+Ratio models demonstrated precision between 88.11% (Ratio 80-20) and 89.19% (Ratio 90-10).
+
+Information Gain models exhibited precision around 85.66% (Information Gain 90-10) to 89.83% (Information Gain 80-20).
+
+Overall, Gini models consistently showcased strong performance across most metrics, especially in sensitivity and specificity, followed closely by Ratio models. Information Gain models, while competitive in accuracy, displayed slightly lower sensitivity and specificity compared to Gini and Ratio models.
+
+**Analyzing and Selecting the Best Trees from Each Method**
+
+1.  Gini Index:
+
+Best Tree: Gini 90-10
+
+-   Accuracy: 91.88%
+
+-   Sensitivity: 91.93%
+
+-   Specificity: 95.79%
+
+-   Precision: 91.85%
+
+Explanation:
+
+The Gini 90-10 tree outperforms others, providing the highest accuracy and well-balanced sensitivity and specificity. This tree exhibits superior predictive power, making it an optimal choice for accurately categorizing children's hobbies.
+
+The most influential attributes in predicting hobbies within the Gini Index Decision Tree (90/10) are engagement in sports activities ('Career_sprt'), involvement in arts hobbies ('Fant_arts'), and the level of arts activity ('Time_art').
+
+Confusion Matrix for Gini 90-10:
+
+                      Predicted Positive    Predicted Negative
+
+Actual Positive            True Positive (91.93%)         False Negative (8.07%)
+
+Actual Negative            False Positive (4.21%)         True Negative (95.79%)
+
+2.  Ratio:
+
+Best Tree: Ratio 90-10
+
+-   Overall Accuracy: 89.44%
+
+-   Average Sensitivity: 89.15%
+
+-   Average Specificity: 94.66%
+
+-   Average Precision: 89.19%
+
+Explanation:
+
+Among Ratio trees, the Ratio 90-10 tree stands out with competitive accuracy, sensitivity, and specificity. It strikes a balance between identifying positive cases and correctly predicting negative cases, making it a reliable choice for predicting children's hobbies.
+
+The primary attributes influencing hobby predictions in the Gain Ratio Decision Tree (90%/10%) are 'Career_sprt,' 'Fant_arts,' 'Won_arts,' 'Olympiad_Participation,' 'Grasp_pow,' 'Time_art,' and 'Act_sprt.'
+
+Confusion Matrix for Ratio 90-10:
+
+                      Predicted Positive    Predicted Negative
+
+Actual Positive            True Positive (89.15%)         False Negative (10.85%)
+
+Actual Negative            False Positive (5.34%)         True Negative (94.66%)
+
+3.  Information Gain:
+
+Best Tree: Information Gain 80-20
+
+-   Accuracy: 90.57%
+
+-   Sensitivity: 89.83%
+
+-   Specificity: 93.78%
+
+-   Precision: 89.83%
+
+Explanation:
+
+The Information Gain 80-20 tree exhibits strong accuracy and well-balanced sensitivity and specificity. It effectively utilizes information gain to predict children's hobbies, making it a favorable choice within the Information Gain method.
+
+The most influential attributes in predicting hobbies within the Information Gain Decision Tree (80/20) include engagement in sports activities ('Career_sprt'), involvement in arts hobbies ('Fant_arts'), and the level of arts activity ('Time_art').
+
+Confusion Matrix for Information Gain 80-20:
+
+                      Predicted Positive    Predicted Negative
+
+Actual Positive            True Positive (89.83%)          False Negative (10.17%)
+
+Actual Negative            False Positive (6.22%)          True Negative (93.78%)
+
+**Overall Analysis:**
+
+\- The Gini 90-10 tree excels in accuracy, sensitivity, and specificity within the Gini Index method.
+
+\- The Ratio 90-10 tree demonstrates competitive performance, particularly in accuracy and specificity within the Ratio method.
+
+\- The Information Gain 80-20 tree showcases strong accuracy and balanced sensitivity and specificity within the Information Gain method.
+
+The selection of the best tree depends on specific priorities. If a well-balanced model is crucial, Gini 90-10 stands out. For a balanced Ratio model, Ratio 90-10 is favorable. Information Gain 80-20 offers strong accuracy and balance within the Information Gain method.
+
+Best Tree Across All Methods:
+
+Best Tree: Gini 90-10
+
+Accuracy: 91.88%
+
+Sensitivity: 91.93%
+
+Specificity: 95.79%
+
+Precision: 91.85%
+
+The Gini 90-10 tree stands out as the best-performing tree across all methods, displaying superior accuracy, sensitivity, specificity, and precision. It excels in accurately predicting children's hobbies, making it the optimal choice among the evaluated trees.
+
+The Gini index with a 90-10 attribute selection measure has emerged as the most effective solution in our classification model for predicting children's hobbies. This particular attribute selection method prioritizes the most relevant features, ensuring that the decision tree focuses on the attributes that contribute significantly to the classification accuracy. The practical implications of this solution are substantial, as it prioritizes certain attributes, such as Olympiad participation, scholarship status, and favorite subject. The model offers valuable insights for parents and educators in guiding children toward activities aligned with their interests and strengths. Compared to other attribute selection measures, it leads to more accurate predictions and, consequently, more tailored recommendations for children's hobbies. This refined approach enhances the model's practical utility, making it a valuable tool for assisting parents in fostering an environment where children can explore and excel in activities that truly resonate with their individual preferences.
+
+**7.2: the best partitioning method for clustering:**
+
+According to our research and attempt to cluster using k-means algorithm we figured that it is not applicable to our data because it relies on the Euclidean distance metric to measure the similarity between data points. However, even after Encoding and its application to categorical data pose significant challenges. Categorical variables often lack a meaningful numerical representation; for instance, taking the mean of categories like the feature \"favorite subject,\" aka \"Fav_sub\" (even after encoding), might not have any practical interpretation. And the distances calculated in the algorithm may not reflect the true dissimilarities between categorical values. The encoding process itself introduces artificial numerical relation that may mislead the algorithm. Moreover, k-means relies on the minimization of Euclidean distances, which might not accurately capture the dissimilarity structure in categorical data. Categorical variables inherently exhibit discrete and non-ordinal characteristics that are not well-suited for the continuous and linear assumptions of k-means. Alternative clustering techniques, specifically designed for categorical data, such as partitioning around medoids, are more appropriate for capturing the intrinsic patterns and relationships in categorical data sets.\ [9]
+
+**7.3: Clustering Comparison:**
+
+In assessing and comparing the performance of 12 metrics in the clustering task, we observe notable variations in their effectiveness across different values of K. For K=2, the Average Silhouette Width of 0.21 indicates a moderate level of separation between clusters, while the BCubed precision and recall highlight challenges in precisely classifying data points. Moving to K=3, the Average Silhouette Width slightly improves to 0.22, suggesting enhanced cluster distinctiveness. The BCubed metrics, precision, and recall, also exhibit improvements, indicating a more balanced and accurate clustering. However, K=4 witnesses a decline in the Average Silhouette Width to 0.19, reflecting a potential decrease in separation between clusters. Despite this, the BCubed metrics continue to demonstrate reasonable precision and recall values, emphasizing the resilience of the clustering patterns. Overall, these metrics collectively offer insights into the trade-offs between cluster compactness and separation at different K values, guiding the selection of K=3 as the optimal choice for capturing meaningful clustering patterns within the data set. The fact that the actual class labels in our data set consist of three distinct classes aligns with the findings from the clustering analysis, particularly at K=3. This convergence strengthens the interpretation of the results, as it indicates that the clustering algorithm successfully identified and differentiated the inherent structure of the data. The agreement between the actual class labels and the clusters formed by the algorithm at K=3 suggests that the clustering patterns are meaningful and aligned with the underlying characteristics of the data set. It reinforces the relevance of using K=3 as the optimal choice, as it aligns with the inherent class structure in the data set, providing a more accurate representation of the underlying patterns in the children's hobbies.
+
+The chosen K holds significant implications for addressing the problem. In the context of guiding children towards suitable hobbies, it plays a pivotal role in optimizing the effectiveness of our model for parents in making informed choices. If K were set higher than 3, the categorization would lack the depth needed for insightful distinctions among preferences. On the other hand, if K were lower than 3, the model's accuracy could be compromised, as one or more class labels may not be adequately defined within the clusters. This deficiency would adversely impact the precision of predictions, hindering the model's ability to offer precise guidance to parents. By settling on K=3, we strike a balance that ensures meaningful and well-defined clusters, providing parents with a reliable tool to navigate and understand their child's inclinations effectively, offering a comprehensive categorization that aligns with the inherent structure of the dataset.[9]
+
+**7.4: Clustering Interpretation:**
+
+```{r}
+# Create a temporary data frame for clustering results
+clustered_data <- data.frame(Hobby_Data3, cluster = pam.result$clustering)
+
+# Show all data points in each cluster
+for (i in unique(pam.result$clustering)) {
+  cat("Cluster", i, ":\n")
+  print(clustered_data[clustered_data$cluster == i, -ncol(clustered_data)])
+  cat("\n")
+}
+```
+
+**Cluster 1:**
+
+Based on the data points, the students in cluster 1 are primarily interested in academics. They are more likely to have participated in Olympiads, have received scholarships, and they favor challenging courses, since there are 98 out of 150 of them chose science as their favorite subject. They also tend to spend more time on academics than on sports or arts.
+
+The predicted hobby for students in cluster 1 is **academics**. This is supported by the fact that they have the following characteristics:
+
+-   **High academic achievement:** They have participated in Olympiads, received scholarships, and favor challenging courses.
+
+-   **Strong focus on academics:** They spend more time on academics than on sports or arts.
+
+-   Within this cluster, there is a lower interest or participation in sports activities (Career_sprt), but there may be a significant focus on winning art competitions (Won_arts) and enjoying fantasy arts (Fant_arts).
+
+**Cluster 2:**
+
+Based on the data points, the students in cluster 2 are primarily interested in sports. They are more likely to have played sports in school and to be involved in sports activities in general. They also tend to spend more time on sports than on academics or arts.
+
+The predicted hobby for students in cluster 2 is **sports**. This is supported by the fact that they have the following characteristics:
+
+-   **High involvement in sports:** They played sports in school and are involved in sports activities now. This implies a strong interest and participation in sports activities (Olympiad_Participation, Act_sprt).
+
+-   **Strong focus on sports:** They spend more time on sports than on academics or arts (Time_sprt).
+
+-   There may be lower interest in fantasy arts (Fant_arts) within this cluster.
+
+**Cluster 3:**
+
+Based on the data points, the students in cluster 3 are primarily interested in arts. They tend to spend more time on arts than on academics or sports.
+
+The predicted hobby for students in cluster 3 is **arts**. This is supported by the fact that they have the following characteristics:
+
+-   **Strong focus on arts:** They tend to have a strong interest in creating fantasy paintings (Fant_arts), potentially winning art competitions (Won_arts), and dedicating time to artistic pursuits (Time_art).
+
+-   There may be lower interest or participation in sports activities (Career_sprt, Olympiad_Participation, Act_sprt) within this cluster.
+
+In conclusion, this analysis involved examination of clusters within our dataset, with a focus on understanding the shared characteristics of each cluster by considering variable importance ranks.This clustering approach and subsequent interpretation offer valuable insights into the diverse preferences and tendencies within our data set, understanding these clusters can be benificail in personalizing educational or recreational experiences based on individual interests and inclinations.[9]
+
+**7.5: Comparison of Classification and Clustering:**
+Classification is better than clustering for our data set because our problem involves predicting kids' hobbies based on specific attributes, and classification models are designed for precisely this kind of task. In contrast, clustering is useful for discovering natural groupings but doesn't necessarily assign them to predefined categories. Additionally, clustering might create groups that don't directly correspond to the desired hobby categories, making interpretation and application more challenging in this context. Hence, the structured nature of classification, where the model is trained on labeled data to predict specific outcomes, makes it more appropriate for our task.
+
+The nature of the data types, which include a majority of Boolean and ordinal variables in our dataset influenced the preference for classification over clustering, since classification models, particularly decision trees, are adept at handling these data types. On the other hand, cluster\'s application might be less straightforward when dealing with categorical and ordinal variables, especially if the goal is to predict predefined categories. making classification more appropriate for our dataset compared to clustering, ‎which may not align with the structured prediction task in our case.
+
+The observation of clusters being close to each other when plotted using PAM (Partitioning Around Medoids) while achieving high accuracy in the classification model does influence the preference for classification over clustering. The close proximity and overlap in clusters suggest that the clustering algorithm may not effectively separate the data points based on the given attributes. On the other hand, the high accuracy of the classification model indicates that the chosen classification approach, particularly decision tree models, is successful in accurately predicting the hobby for each data point. This performance difference reinforces the suitability of classification for our dataset, where the goal is to precisely assign specific labels to each observation based on its attributes, and clustering may not provide the necessary separation for effective prediction.[9]
+
 
 
 **8.References(Using IEEE format)**
