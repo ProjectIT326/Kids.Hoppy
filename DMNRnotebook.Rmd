@@ -6,38 +6,33 @@ output: html_notebook
 ## **Kids Hobby Prediction Dataset**
 
 
-**Problem**
+**1.Problem**
 
-Children often find themselves at a crossroads when it comes to discovering their passions or hobbies, be it in academics, arts, or sports. Recognizing the importance of guiding children towards activities they are passionate about; we have curated a dataset obtained through surveys conducted with parents. This dataset compiles valuable information about children's preferences, enabling the creation of a classification model aimed at predicting kids' hobbies. 
+       Children often find themselves at a crossroads when it comes to discovering their passions or hobbies, be it in academics, arts, or sports. Recognizing the importance of guiding children towards activities they are passionate about; we have curated a dataset obtained through surveys conducted with parents. This dataset compiles valuable information about children's preferences, enabling the creation of a classification model aimed at predicting kids' hobbies. 
 
-In this exploratory journey, we delve into the dataset to uncover patterns and insights that can assist parents in understanding their child's inclinations better. Through the application of clustering techniques, we aim to categorize children based on number of columns (Fav_sub , Scholarship, etc..). The ultimate goal is to provide parents with meaningful recommendations, fostering an environment where children can thrive in activities that genuinely resonate with their interests. 
+       In this exploratory journey, we delve into the dataset to uncover patterns and insights that can assist parents in understanding their child's inclinations better. Through the application of clustering techniques, we aim to categorize children based on number of columns (Fav_sub , Scholarship, etc..). The ultimate goal is to provide parents with meaningful recommendations, fostering an environment where children can thrive in activities that genuinely resonate with their interests. 
 
 By analyzing this dataset, we hope to offer insightful information that will aid parents in guiding their kids toward the right hobbies. 
 
 
-**Data Mining Task**
+**2.Data Mining Task**
 
-The data mining task at hand revolves around predicting kids' hobbies based on a dataset named "Hobby_Data," obtained through specific questions posed to their parents regarding preferences, capabilities, and achievements. This dataset serves as the foundation for two primary data mining tasks: classification and clustering. In the classification process, the goal is to train a machine learning model to be capable of accurately predicting a child's hobby as either "academic," "art," or "sports." This requires using the data collected from parents to establish patterns and relationships that guide the model in making accurate predictions. Concurrently, the clustering process involves partitioning the dataset into meaningful clusters, grouping together children with similar characteristics or preferences. Through these dual approaches, the data mining task aims to develop a robust predictive model capable of accurately categorizing children's hobbies in order to uncover the inherent structures, patterns, and associations within the dataset, contributing to a deeper understanding of the diverse interests and engagement levels of the young population in academic, artistic, and sports-related activities.
+        The data mining task at hand revolves around predicting kids' hobbies based on a dataset named "Hobby_Data," obtained through specific questions posed to their parents regarding preferences, capabilities, and achievements. This dataset serves as the foundation for two primary data mining tasks: classification and clustering. In the classification process, the goal is to train a machine learning model to be capable of accurately predicting a child's hobby as either "academic," "art," or "sports." This requires using the data collected from parents to establish patterns and relationships that guide the model in making accurate predictions. Concurrently, the clustering process involves partitioning the dataset into meaningful clusters, grouping together children with similar characteristics or preferences. Through these dual approaches, the data mining task aims to develop a robust predictive model capable of accurately categorizing children's hobbies in order to uncover the inherent structures, patterns, and associations within the dataset, contributing to a deeper understanding of the diverse interests and engagement levels of the young population in academic, artistic, and sports-related activities.
  
  
 
 
-**Data**
+**3.Data**
+        Following the selection of our data set ("Hobby_Data") which predicts kids' hobbies, that was collected by asking their parents specific questions about their kid's preferences, capabilities, and achievements. To help us train the machine to predict the kid's hobby. We will begin to preprocess and analyze the data.
 
 The source: https://www.kaggle.com/datasets/abtabm/hobby-prediction-basic 
 Number of objects: 1601 
-
 Number of attributes: 14 
 
 
-**Description:**
-Following the selection of our data set ("Hobby_Data") which predicts kids' hobbies, that was collected by asking their parents specific questions about their kid's preferences, capabilities, and achievements. To help us train the machine to predict the kid's hobby. We will begin to preprocess and analyze the data.
+**Attribute** 
 
-
-
-**Attribute** **Description:**
-
-| Attribute name         | **Description**                                               | **Data type** |
+| **Attribute name**         | **Description**                                               | **Data type** |
 |------------------------|---------------------------------------------------------------|---------------|
 | Olympiad_Participation | Has your child participated in any Science/Maths              | Boolean       |
 | Scholarship            | Has he/she received any scholarship?                          | Boolean       |
@@ -62,18 +57,17 @@ Following the selection of our data set ("Hobby_Data") which predicts kids' hobb
 str(Hobby_Data)
 ```
 
--   **samples of raw dataset:**
+**samples of raw dataset:**
 
 ```{r}
 sample(Hobby_Data)
 ```
 
--   **variables distribution:**
+**variables distribution:**
 
     In our dataset, numeric variables are not available; instead, we have three ordinal variables. Due to the nature of our data types, certain types of graphs, such as scatter plots and box plots, were not suitable for our analysis.
 
 variables distribution of Time_sprt:
-
 ```{r}
 install.packages("magrittr") # install only one time then put this command as comment after installation
 library(magrittr) ## for pipe operations
@@ -177,20 +171,17 @@ hist(Hobby_Data$Time_sprt)
 As shown in the histogram the rank 3 on a scale of 1 to 6 was likely the most chosen rank for assessing children's involvement in sports because it represents a balanced middle ground. Parents may have perceived rank 3 as indicating that their children are moderately involved in sports, not excessively committed or disinterested. This middle-of-the-road ranking reflects a common perspective that many parents may hold, considering that extreme rankings, such as 1 or 6, might suggest either a lack of involvement or an excessive focus on sports, which may not align with their perception of their child's overall well-rounded development.
 
 
-**Data preprocessing**
+**5.Data preprocessing**
 
 
-**#1# Data cleaning:**
+**#1#Data cleaning:**
 
 During the data cleaning stage, finding and fixing faults, inconsistencies, and errors in a dataset helps it be more reliable and of higher quality for analysis and modeling. There are methods for handling missing values, detecting outliers, resolving inconsistencies, and standardizing formats.
 
-import Dataset"Hobby_Data"
+view Dataset"Hobby_Data"
 
 ```{r}
-
 View(Hobby_Data)
-
-str(Hobby_Data)
 ```
 
 check missing value :
@@ -200,14 +191,10 @@ is.na(Hobby_Data)
 ```
 
 find the total null values in the dataset:
-
 ```{r}
 sum(is.na(Hobby_Data))
 ```
-
-Description:
-
-This stage involves checking and deleting for null and missing values because they might have a significant impact on the data and cause errors and negative effects in subsequent steps.We simply looked for missing values, and there are a missing values in our dataset. According to our investigation, the dataset does not contain any outliers since it doesn't have a numerical data type. Additionally, there are no inconsistent values or other errors.
+This stage involves checking and deleting for null and missing values because they might have a significant impact on the data and cause errors and negative effects in subsequent steps.We simply looked for missing values, and there are not missing values in our dataset. According to our investigation, the dataset does not contain any outliers since it doesn't have a numerical data type. Additionally, there are no inconsistent values or other errors.
 
 
 Dataset after cleaning step:
@@ -215,9 +202,8 @@ Dataset after cleaning step:
 sample(Hobby_Data)
 ```
 
-**#2#Encoding:**
+**#2#Second:Encoding:**
 This step includes a Converting categorical or non-numeric data into a numerical format, which is necessary for compatibility with subsequent steps in preprocessing.
-
 ```{r}
 Hobby_Data$Olympiad_Participation = factor(Hobby_Data$Olympiad_Participation,levels = c("No", "Yes"), labels = c(0, 1))
 Hobby_Data$Scholarship = factor(Hobby_Data$Scholarship , levels = c("No", "Yes"), labels = c(0, 1))
@@ -256,7 +242,6 @@ Ensure the results are repeatable by setting a seed:
 
 ```{r}
 set.seed(7)
-
 ```
 
 Load the necessary libraries:
@@ -369,7 +354,7 @@ Remove the specified columns from the Hobby_Kids dataset:
 Hobby_Data <- Hobby_Data[, !(colnames(Hobby_Data) %in% c("School", "Medals"))]
 ```
 
-Display the updated dataset after deleting columns:
+sample of our dataset after finishing from pre-processing:
 
 ```{r}
 sample(Hobby_Data)
@@ -391,19 +376,15 @@ if class_imbalance is close to 0, it suggests that the proportions of different 
 The calculated class imbalance value of 0.1805122 suggests that the distribution of classes in the "Predicted_Hobby" column of the dataset is relatively balanced. The class imbalance is a measure of the difference between the proportions of the most prevalent and least prevalent classes. In this case, the value is close to 0, indicating that there is a minimal difference between the proportions of different classes. A lower-class imbalance value is generally desirable, as it signifies a more even distribution of instances across classes, which can be beneficial for the training and performance of machine learning models.
 
 
-**Data Mining Technique**
+**5.Data Mining Technique AND Evaluation and Comparison**
 
-
-**Evaluation And Comparison**
-
-**--------------------------------------------------- Classification----------------------------------------------------**
+**#1#Classification**
 
 After preprocessing, we will proceed to the classification step. In this phase, as part of supervised learning, we will apply a classification algorithm to assign each data point into predefined categories based on its attributes. This involves selecting the most relevant features that have been cleaned and formatted during preprocessing. The selected model will then learn from training data, enabling it to predict the category of new, unseen data accurately. This step is essential for making informed decisions or predictions based on the data.
 
 We implement a decision tree on the dataset, which has been partitioned into Training and Test sets using the percentage split method. This method ensures that each subset is a randomized, representative sample of the entire dataset, thus minimizing bias and enabling consistent model performance evaluation. We choose three different split sizes: ("90%", "10%"), ("80%", "20%"), and ("70%", "30%"). These varying sizes are selected to provide insight into the model's performance with different amounts of data, which is vital for detecting unique patterns and confirming the model's consistency in various situations.
 
 In the final steps, we utilize data visualization tools to create visual representations of our decision trees. Additionally, we conduct an exhaustive evaluation of the model, employing a "Confusion Matrix" to illustrate the outcomes clearly.
-
 
 
 
@@ -1250,7 +1231,6 @@ install.packages("caret")
 Load necessary libraries
 
 ```{r}
-
 library(C50)
 library(printr)
 library(caret)
@@ -1674,10 +1654,6 @@ Across Three Training-Test Sizes: The accuracy rates -0.8944 for the 90:10 split
 
 
 
-
-
-
-
 **-------------------------------------------------Clustering-------------------------------------------------------------**
 
 
@@ -1981,31 +1957,6 @@ str(pam.result$clustering)
 summary(Hobby_Data2)
 ```
 
-
-```{r}
-str(Hobby_proc)
-
-str(Hobby_Data2)
-```
-
-
-# Convert the ggplot object to plotly
-p_plotly <- ggplotly(p)
-
-# Print the plot
-print(p_plotly)
-
-
-#--------------------------------------------------------------------------------------------------------
-library(GGally)
-library(plotly)
-
-Hobby_Data2$cluster <- as.factor(pam.result$cluster)
-
-p <- ggparcoord(data = Hobby_Data2, columns = c(1:11), groupColumn = "cluster", scale = "std") + labs(x = "milk constituent", y = "value (in standard-deviation units)", title = "Clustering")
-ggplotly(p)
-
-```
 
 The output of the code, displaying a silhouette plot of the PAM
 clusters, indicates that the clusters are relatively close to each
@@ -2394,8 +2345,6 @@ balance.
 
 since We used the Information Gain, Gini Index, and Gain Ratio as three important metrics in our categorical data classification approach to determine how important certain variables were in predicting hobby categories. The dataset was split into training and testing sets so that different subsets of the data could be used to train classification algorithms. Three metrics were used to evaluate the performance of the model: overall accuracy, recall, and precision.We examined accuracy at several measures of tree selection, Provide us with more accurate results, specifically at the pruning parameters of 0.90, 0.91, and 0.89, in order.The methodical evaluation yielded insightful information on how well each selection measure performed in producing precise predictions within the dataset. high accuracy strongly suggest that, for our dataset, classification is a better methodology than clustering, since the classification give us a good result then clustring.
 
-```{r}
-system("git status")
-```
+`
 
 
