@@ -375,7 +375,45 @@ if class_imbalance is close to 0, it suggests that the proportions of different 
 The calculated class imbalance value of 0.1805122 suggests that the distribution of classes in the "Predicted_Hobby" column of the dataset is relatively balanced. The class imbalance is a measure of the difference between the proportions of the most prevalent and least prevalent classes. In this case, the value is close to 0, indicating that there is a minimal difference between the proportions of different classes. A lower-class imbalance value is generally desirable, as it signifies a more even distribution of instances across classes, which can be beneficial for the training and performance of machine learning models.
 
 
-**5.Data Mining Technique AND Evaluation and Comparison**
+
+**5.Data Mining Technique**
+
+**Classification Technique:**
+
+In the realm of classification for data mining, the selection of attributes or features plays a pivotal role in building robust models. This process involves identifying the most informative attributes that aid in accurately predicting the target variable. Simultaneously, we choose three different split sizes: ("90%", "10%"), ("80%", "20%"), and ("70%", "30%"). These varying sizes are selected to provide insight into the model's performance with different amounts of data, which is vital for detecting unique patterns and confirming the model's consistency in various situations.
+
+1-Information Gain (IG): Information Gain serves as a criterion to determine the relevance of attributes by measuring the amount of information provided by each attribute. Higher Information Gain suggests attributes that are more influential in the classification process.
+
+R Packages and Methods: R Package: rpart Method: Decision Tree (implemented via rpart package) Procedure: Using the rpart package in R, the decision tree model is built by partitioning the dataset based on the attribute with the highest Information Gain. The parms = list(split = "information") parameter signifies the use of Information Gain for splitting.
+
+2-Gini Index: Gini Index, employed in decision tree algorithms like CART, quantifies the probability of misclassifying a randomly chosen element based on the distribution of labels in a subset. It identifies attributes that minimize misclassification and contribute significantly to the classification process.
+
+R Packages and Methods: R Package: rpart Method: Decision Tree (using rpart package) Procedure: Utilizing the rpart package, the decision tree model is constructed based on the Gini Index. The Gini Index helps determine attribute importance and guides the splitting of nodes in the tree for optimal classification.
+
+3-Gain Ratio: The Gain Ratio is an enhancement of Information Gain that addresses the bias towards attributes with a larger number of values. It normalizes the Information Gain by considering the intrinsic information of each attribute.
+
+R Packages and Methods: R Package: C50 Method: Decision Tree (via C50 package) Procedure: The C50 package in R facilitates the implementation of the Gain Ratio within a decision tree framework. By employing this package, the model accounts for attribute selection based on the Gain Ratio, ensuring a more balanced evaluation of attributes. In these techniques, the choice of methodology---Decision Trees based on different attribute selection measures---provides a versatile approach to classification. The selection of the most appropriate method often involves experimentation and comparative analysis to determine which attribute selection measure yields the most accurate and interpretable models for the given dataset.
+
+Each method allows for a unique perspective on attribute importance, contributing to the overall accuracy and robustness of the classification model. Experimentation with these techniques helps in understanding the impact of attribute selection on model performance, providing valuable insights into feature importance and classification accuracy.
+
+**Clustering Techniques:**
+
+K-Means: Validation: Used silhouette scores to find optimal clusters (k=3) but observed overlap, signaling challenges in categorical data clustering due to Euclidean distance limitations.
+
+K-Medoids (PAM): Validation: Silhouette and elbow methods suggested k=3, but evaluation showed overlap and ambiguity in clusters. BCubed Metrics: Analyzed precision and recall, finding k=3 to strike a balance despite clustering challenges.
+
+Insights: K-Means Limitations: Discussed challenges: categorical data's non-ordinal nature conflicts with k-means' assumptions. K-Medoids Suitability: Highlighted k-medoids as more fitting for categorical data due to medoids' usage.
+
+Conclusion: Despite limitations, k=3 was reasonably balanced among clustering techniques for this dataset. Takeaway: Clustering categorical data is challenging; k-medoids appears more appropriate than k-means for categorical data.
+
+Packages Used: ggplot2: Enables visually appealing and customizable plots, widely used for data visualization in R. magrittr: Facilitates writing readable code by employing the pipe operator (%\>%) for data manipulation operations. dplyr: Offers tools for data manipulation and transformation, providing functions for filtering, selecting, and arranging data. factoextra: Useful for extracting and visualizing information from principal component analysis (PCA) and clustering results. cluster: Provides functions for clustering algorithms such as k-means, k-medoids, hierarchical clustering .
+
+
+
+
+
+
+**6.Implement Classification and clustering**
 
 **#1#Classification**
 
@@ -1650,13 +1688,9 @@ Across Three Training-Test Sizes: The accuracy rates -0.8944 for the 90:10 split
 +-----------------+-------------------+-------------------+-------------------+
 
 
+**#2#Clustering**
 
-
-
-**-------------------------------------------------Clustering-------------------------------------------------------------**
-
-
-
+first we use Hobby_proc that is version of Hobby data after pre-processing
 ```{r}
 str(Hobby_proc)
 ```
@@ -1682,11 +1716,6 @@ Hobby_proc$Fant_arts <-as.numeric(Hobby_proc$Fant_arts)
 Hobby_proc$Won_arts <-as.numeric(Hobby_proc$Won_arts)
 
 Hobby_proc$`Predicted Hobby` <-as.numeric(Hobby_proc$`Predicted Hobby` )
-```
-
-
-```{r}
-str(Hobby_proc)
 ```
 
 **Scaled All Columns**
@@ -1728,12 +1757,9 @@ library(cluster)
 library(dplyr)
 ```
 
-
-
-**---------------------------------------------k-meansclustering------------------------------------------------**
+**k-mean clustering**
 
 **Validation:**
-
 Determining the right number of clusters before starting the clustering
 process is like making sure you have the correct-sized puzzle pieces
 before putting the puzzle together. It's important because some
@@ -1826,7 +1852,7 @@ incategorical datasets.
 
 
 
-**--------------------------------------------------k-mediods clustering with PAM--------------------------------------------**
+**k-mediods clustering with PAM**
 
 K-medoids clustering presents a robust alternative for analyzing
 categorical data by addressing the limitations posed by k-means
@@ -1902,7 +1928,7 @@ the clusters.
 
 
 
-**--------------------------------------------------group into k=3 clusters--------------------------------------------**
+**group into k=3 clusters**
 
 The sub-sampling and clustering approach is a helpful method to evaluate
 the robustness of the clustering results under various subsets and to
@@ -2033,7 +2059,7 @@ catch a good amount of actual similarities within clusters.
 
 
 
-**--------------------------------------------------group into k=4 clusters------------------------------------------------**
+**group into k=4 clusters**
 
 ```{r}
 set.seed(7)
@@ -2154,7 +2180,7 @@ underlying structure.
 
 
 
-**----------------------------------------------group into k=2 clusters--------------------------------------------**
+**group into k=2 clusters**
 
 ```{r}
 set.seed(7)
@@ -2192,8 +2218,7 @@ overlap, and it is evident that forming only two clusters may not be
 sufficient to represent the inherent structure of the dataset.
 
 
-#BCubed
-
+BCubed
 ```{r}
 cluster_assignments <- c(pam.result$cluster) 
  
@@ -2265,10 +2290,6 @@ points from different ground truth classes.
 
 
 
-
-
-
-
 **AS A Summary For clustring**
 Silhouette analysis measures how similar an object is to its own cluster
 (cohesion) compared to other clusters (separation). The silhouette width
@@ -2289,9 +2310,9 @@ BCubed is a clustering evaluation metric that considers both precision
 and recall. Precision measures the accuracy of the positive predictions,
 while recall measures the coverage of the actual positive instances.
 
-For k=3, BBCubed Precision = 0.0488 BCubed Recall = 0.4932
-For k=4,BCubed Precision = 0.0505 BCubed Recall = 0.4101
-For k=2, BCubedPrecision = 0.0432 BCubed Recall = 0.6252
+For k=3, BBCubed Precision = 0.0488 BCubed Recall = 0.4932.
+For k=4,BCubed Precision = 0.0505 BCubed Recall = 0.4101.
+For k=2, BCubedPrecision = 0.0432 BCubed Recall = 0.6252.
 
 These metrics measure how well the clustering aligns with the ground
 truth. Higher precision indicates fewer false positives, and higher
@@ -2302,41 +2323,10 @@ In conclusion, k=3 seems to be a reasonable choice. It has a good
 silhouette width, and its BCubed Precision and Recall values strike a
 balance.
 
-**Data Mining Technique**
 
-**Classification Technique:**
+**6.Evaluation and Comparison**
 
-In the realm of classification for data mining, the selection of attributes or features plays a pivotal role in building robust models. This process involves identifying the most informative attributes that aid in accurately predicting the target variable. Simultaneously, we choose three different split sizes: ("90%", "10%"), ("80%", "20%"), and ("70%", "30%"). These varying sizes are selected to provide insight into the model's performance with different amounts of data, which is vital for detecting unique patterns and confirming the model's consistency in various situations.
-
-1-Information Gain (IG): Information Gain serves as a criterion to determine the relevance of attributes by measuring the amount of information provided by each attribute. Higher Information Gain suggests attributes that are more influential in the classification process.
-
-R Packages and Methods: R Package: rpart Method: Decision Tree (implemented via rpart package) Procedure: Using the rpart package in R, the decision tree model is built by partitioning the dataset based on the attribute with the highest Information Gain. The parms = list(split = "information") parameter signifies the use of Information Gain for splitting.
-
-2-Gini Index: Gini Index, employed in decision tree algorithms like CART, quantifies the probability of misclassifying a randomly chosen element based on the distribution of labels in a subset. It identifies attributes that minimize misclassification and contribute significantly to the classification process.
-
-R Packages and Methods: R Package: rpart Method: Decision Tree (using rpart package) Procedure: Utilizing the rpart package, the decision tree model is constructed based on the Gini Index. The Gini Index helps determine attribute importance and guides the splitting of nodes in the tree for optimal classification.
-
-3-Gain Ratio: The Gain Ratio is an enhancement of Information Gain that addresses the bias towards attributes with a larger number of values. It normalizes the Information Gain by considering the intrinsic information of each attribute.
-
-R Packages and Methods: R Package: C50 Method: Decision Tree (via C50 package) Procedure: The C50 package in R facilitates the implementation of the Gain Ratio within a decision tree framework. By employing this package, the model accounts for attribute selection based on the Gain Ratio, ensuring a more balanced evaluation of attributes. In these techniques, the choice of methodology---Decision Trees based on different attribute selection measures---provides a versatile approach to classification. The selection of the most appropriate method often involves experimentation and comparative analysis to determine which attribute selection measure yields the most accurate and interpretable models for the given dataset.
-
-Each method allows for a unique perspective on attribute importance, contributing to the overall accuracy and robustness of the classification model. Experimentation with these techniques helps in understanding the impact of attribute selection on model performance, providing valuable insights into feature importance and classification accuracy.
-
-**Clustering Techniques:**
-
-K-Means: Validation: Used silhouette scores to find optimal clusters (k=3) but observed overlap, signaling challenges in categorical data clustering due to Euclidean distance limitations.
-
-K-Medoids (PAM): Validation: Silhouette and elbow methods suggested k=3, but evaluation showed overlap and ambiguity in clusters. BCubed Metrics: Analyzed precision and recall, finding k=3 to strike a balance despite clustering challenges.
-
-Insights: K-Means Limitations: Discussed challenges: categorical data's non-ordinal nature conflicts with k-means' assumptions. K-Medoids Suitability: Highlighted k-medoids as more fitting for categorical data due to medoids' usage.
-
-Conclusion: Despite limitations, k=3 was reasonably balanced among clustering techniques for this dataset. Takeaway: Clustering categorical data is challenging; k-medoids appears more appropriate than k-means for categorical data.
-
-Packages Used: ggplot2: Enables visually appealing and customizable plots, widely used for data visualization in R. magrittr: Facilitates writing readable code by employing the pipe operator (%\>%) for data manipulation operations. dplyr: Offers tools for data manipulation and transformation, providing functions for filtering, selecting, and arranging data. factoextra: Useful for extracting and visualizing information from principal component analysis (PCA) and clustering results. cluster: Provides functions for clustering algorithms such as k-means, k-medoids, hierarchical clustering .
-
-
-
-**Findings**
+**#1#Classification with comparison criteria**
 
 |                | 90%/10% | 90%/10%  |  90%/10%   | 80%/20% | 80%/20%  |  80%/20%   | 70%/30% | 70%/30%  |  70%/30%   |
 |:--------:|:------:|:------:|:------:|:------:|:------:|:------:|:------:|:------:|:------:|
@@ -2350,7 +2340,7 @@ Packages Used: ggplot2: Enables visually appealing and customizable plots, widel
 
 
 
-
+**#1#Clustering with comparison criteria**
 
 |                                        | k = 2  | k = 3(BEST) | k = 4    |
 |----------------------------------------|--------|-------------|----------|
@@ -2358,10 +2348,23 @@ Packages Used: ggplot2: Enables visually appealing and customizable plots, widel
 | **total within-cluster sum of square** | 1059.6 | 833.5585    | 762.8895 |
 | **BCubed precision**                   | 0.0432 | 0.0488      | 0.0505   |
 | **BCubed recall**                      | 0.6252 | 0.4932      | 0.4101   |
-| **Visualization**                      |        |             |          |
+| **Visualization**                      | -      |     -       |     -    |
+
+**note the Visualization In the implementaion of clustering above.**
+
+**Comparison of Classification and Clustering**
+
+Classification is better than clustering for our dataset because our problem involves predicting kids' hobbies based on specific attributes, and classification models are designed for precisely this kind of task. In contrast, clustering is useful for discovering natural groupings but doesn't necessarily assign them to predefined categories. Additionally, clustering might create groups that don't directly correspond to the desired hobby categories, making interpretation and application more challenging in this context. Hence, the structured nature of classification, where the model is trained on labeled data to predict specific outcomes, makes it more appropriate for our task. 
+
+The nature of the data types, which include a majority of Boolean and ordinal variables in our dataset influenced the preference for classification over clustering, since classification models, particularly decision trees, are adept at handling these data types. On the other hand, cluster’s application might be less straightforward when dealing with categorical and ordinal variables, especially if the goal is to predict predefined categories. making classification more appropriate for our dataset compared to clustering,which may not align with the structured prediction task in our case.
+
+The observation of clusters being close to each other when plotted using PAM (Partitioning Around Medoids) while achieving high accuracy in the classification model does influence the preference for classification over clustering. The close proximity and overlap in clusters suggest that the clustering algorithm may not effectively separate the data points based on the given attributes. On the other hand, the high accuracy of the classification model indicates that the chosen classification approach, particularly decision tree models, is successful in accurately predicting the hobby for each data point. This performance difference reinforces the suitability of classification for our dataset, where the goal is to precisely assign specific labels to each observation based on its attributes, and clustering may not provide the necessary separation for effective prediction.
 
 
-**References(Using IEEE format)**
+**7.Findings**
+
+
+**8.References(Using IEEE format)**
 [1]https://www.facebook.com/jason.brownlee.39, “Feature Selection with the Caret R Package,” Machine Learning Mastery, Aug. 22, 2019. https://machinelearningmastery.com/feature-selection-with-the-caret-r-package/
 [1]“RPubs - Decision Tree (Gini),” rpubs.com. 
 https://rpubs.com/SameerMathur/DT_Gini_CCDefault (accessed Dec. 01, 2023).
@@ -2372,11 +2375,6 @@ https://rpubs.com/SameerMathur/DT_Gini_CCDefault (accessed Dec. 01, 2023).
 [1]“6.3. Preprocessing data — scikit-learn 0.23.1 documentation,” scikit-learn.org. https://scikit-learn.org/stable/modules/preprocessing.html#normalization
 
 [1]A. Kassambara, “Determining The Optimal Number Of Clusters: 3 Must Know Methods - Datanovia,” Datanovia, 2018. https://www.datanovia.com/en/lessons/determining-the-optimal-number-of-clusters-3-must-know-methods/
-
-
-**What is the best for our dataset?**
-
-since We used the Information Gain, Gini Index, and Gain Ratio as three important metrics in our categorical data classification approach to determine how important certain variables were in predicting hobby categories. The dataset was split into training and testing sets so that different subsets of the data could be used to train classification algorithms. Three metrics were used to evaluate the performance of the model: overall accuracy, recall, and precision.We examined accuracy at several measures of tree selection, Provide us with more accurate results, specifically at the pruning parameters of 0.90, 0.91, and 0.89, in order.The methodical evaluation yielded insightful information on how well each selection measure performed in producing precise predictions within the dataset. high accuracy strongly suggest that, for our dataset, classification is a better methodology than clustering, since the classification give us a good result then clustring.
 
 `
 
