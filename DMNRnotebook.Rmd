@@ -2365,16 +2365,26 @@ The observation of clusters being close to each other when plotted using PAM (Pa
 
 
 **8.References(Using IEEE format)**
-[1]https://www.facebook.com/jason.brownlee.39, “Feature Selection with the Caret R Package,” Machine Learning Mastery, Aug. 22, 2019. https://machinelearningmastery.com/feature-selection-with-the-caret-r-package/
-[1]“RPubs - Decision Tree (Gini),” rpubs.com. 
-https://rpubs.com/SameerMathur/DT_Gini_CCDefault (accessed Dec. 01, 2023).
-[1]Luiz Fonseca, “Clustering Analysis in R using K-means,” Medium, Aug. 15, 2019. https://towardsdatascience.com/clustering-analysis-in-r-using-k-means-73eca4fb7967
 
 [1]SagarDhandare, “What Is Encoding? And Its Importance in Data Science!,” Medium, Mar. 28, 2022. https://medium.datadriveninvestor.com/what-is-encoding-and-its-importance-in-data-science-6a2b0cce8e8e
 
-[1]“6.3. Preprocessing data — scikit-learn 0.23.1 documentation,” scikit-learn.org. https://scikit-learn.org/stable/modules/preprocessing.html#normalization
+[2]“6.3. Preprocessing data — scikit-learn 0.23.1 documentation,” scikit-learn.org. https://scikit-learn.org/stable/modules/preprocessing.html#normalization
 
-[1]A. Kassambara, “Determining The Optimal Number Of Clusters: 3 Must Know Methods - Datanovia,” Datanovia, 2018. https://www.datanovia.com/en/lessons/determining-the-optimal-number-of-clusters-3-must-know-methods/
+[2]https://www.facebook.com/jason.brownlee.39, “Feature Selection with the Caret R Package,” Machine Learning Mastery, Aug. 22, 2019. https://machinelearningmastery.com/feature-selection-with-the-caret-r-package/
+
+[4]“RPubs - Decision Tree Using (Information Gain),” rpubs.com. https://rpubs.com/SameerMathur/DT_InformationGain_CCDefault (accessed Nov. 30, 2023).
+
+[5]“RPubs - Decision Tree (Gini),” rpubs.com. 
+https://rpubs.com/SameerMathur/DT_Gini_CCDefault (accessed Dec. 01, 2023).
+
+[6]“RPubs - Data Mining: Classification with Decision Trees,” rpubs.com. https://rpubs.com/kjmazidi/195428 (accessed Nov. 30, 2023).
+
+[7]“Clustering binary data with K-Means (should be avoided),” www.ibm.com, Apr. 16, 2020. https://www.ibm.com/support/pages/clustering-binary-data-k-means-should-be-avoided
+
+[8]A. Kassambara, “Determining The Optimal Number Of Clusters: 3 Must Know Methods - Datanovia,” Datanovia, 2018. https://www.datanovia.com/en/lessons/determining-the-optimal-number-of-clusters-3-must-know-methods/
+
+[9]Luiz Fonseca, “Clustering Analysis in R using K-means,” Medium, Aug. 15, 2019. https://towardsdatascience.com/clustering-analysis-in-r-using-k-means-73eca4fb7967
+
 
 `
 
