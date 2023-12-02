@@ -6,23 +6,33 @@ output: html_notebook
 ## **Kids Hobby Prediction Dataset**
 
 
-**1.Problem**
-       Children often find themselves at a crossroads when it comes to discovering their passions or hobbies, be it in academics, arts, or sports. Recognizing the importance of guiding children towards activities they are passionate about; we have curated a dataset obtained through surveys conducted with parents. This dataset compiles valuable information about children's preferences, enabling the creation of a classification model aimed at predicting kids' hobbies. 
+**\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\--**
 
-       In this exploratory journey, we delve into the dataset to uncover patterns and insights that can assist parents in understanding their child's inclinations better. Through the application of clustering techniques, we aim to categorize children based on number of columns (Fav_sub , Scholarship, etc..). The ultimate goal is to provide parents with meaningful recommendations, fostering an environment where children can thrive in activities that genuinely resonate with their interests. 
+**1.Problem**
+
+Children often find themselves at a crossroads when it comes to discovering their passions or hobbies, be it in academics, arts, or sports. Recognizing the importance of guiding children towards activities they are passionate about; we have curated a dataset obtained through surveys conducted with parents. This dataset compiles valuable information about children's preferences, enabling the creation of a classification model aimed at predicting kids' hobbies. 
+       
+In this exploratory journey, we delve into the dataset to uncover patterns and insights that can assist parents in understanding their child's inclinations better. Through the application of clustering techniques, we aim to categorize children based on number of columns (Fav_sub , Scholarship, etc..). The ultimate goal is to provide parents with meaningful recommendations, fostering an environment where children can thrive in activities that genuinely resonate with their interests. 
 
 By analyzing this dataset, we hope to offer insightful information that will aid parents in guiding their kids toward the right hobbies. 
 
 
+**\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\--**
+
+
 **2.Data Mining Task**
 
-        The data mining task at hand revolves around predicting kids' hobbies based on a dataset named "Hobby_Data," obtained through specific questions posed to their parents regarding preferences, capabilities, and achievements. This dataset serves as the foundation for two primary data mining tasks: classification and clustering. In the classification process, the goal is to train a machine learning model to be capable of accurately predicting a child's hobby as either "academic," "art," or "sports." This requires using the data collected from parents to establish patterns and relationships that guide the model in making accurate predictions. Concurrently, the clustering process involves partitioning the dataset into meaningful clusters, grouping together children with similar characteristics or preferences. Through these dual approaches, the data mining task aims to develop a robust predictive model capable of accurately categorizing children's hobbies in order to uncover the inherent structures, patterns, and associations within the dataset, contributing to a deeper understanding of the diverse interests and engagement levels of the young population in academic, artistic, and sports-related activities.
+
+The data mining task at hand revolves around predicting kids' hobbies based on a dataset named "Hobby_Data," obtained through specific questions posed to their parents regarding preferences, capabilities, and achievements. This dataset serves as the foundation for two primary data mining tasks: classification and clustering. In the classification process, the goal is to train a machine learning model to be capable of accurately predicting a child's hobby as either "academic," "art," or "sports." This requires using the data collected from parents to establish patterns and relationships that guide the model in making accurate predictions. Concurrently, the clustering process involves partitioning the dataset into meaningful clusters, grouping together children with similar characteristics or preferences. Through these dual approaches, the data mining task aims to develop a robust predictive model capable of accurately categorizing children's hobbies in order to uncover the inherent structures, patterns, and associations within the dataset, contributing to a deeper understanding of the diverse interests and engagement levels of the young population in academic, artistic, and sports-related activities.
  
  
+ **\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\--**
 
 
 **3.Data**
-        Following the selection of our data set ("Hobby_Data") which predicts kids' hobbies, that was collected by asking their parents specific questions about their kid's preferences, capabilities, and achievements. To help us train the machine to predict the kid's hobby. We will begin to preprocess and analyze the data.
+
+
+Following the selection of our data set ("Hobby_Data") which predicts kids' hobbies, that was collected by asking their parents specific questions about their kid's preferences, capabilities, and achievements. To help us train the machine to predict the kid's hobby. We will begin to preprocess and analyze the data.
 
 The source: https://www.kaggle.com/datasets/abtabm/hobby-prediction-basic 
 Number of objects: 1601 
@@ -171,6 +181,12 @@ The histogram graph for "Time_sprt" variable
 hist(Hobby_Data$Time_sprt)
 ```
 As shown in the histogram the rank 3 on a scale of 1 to 6 was likely the most chosen rank for assessing children's involvement in sports because it represents a balanced middle ground. Parents may have perceived rank 3 as indicating that their children are moderately involved in sports, not excessively committed or disinterested. This middle-of-the-road ranking reflects a common perspective that many parents may hold, considering that extreme rankings, such as 1 or 6, might suggest either a lack of involvement or an excessive focus on sports, which may not align with their perception of their child's overall well-rounded development.
+
+
+
+
+**\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\--**
+
 
 
 **5.Data preprocessing**
@@ -379,6 +395,11 @@ The calculated class imbalance value of 0.1805122 suggests that the distribution
 
 
 
+**\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\--**
+
+
+
+
 **5.Data Mining Technique**
 
 **Classification Technique:**
@@ -418,7 +439,13 @@ Packages Used: ggplot2: Enables visually appealing and customizable plots, widel
 
 
 
+**\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\--**
+
+
+
+
 **6.Implement Classification and clustering**
+
 
 **#1#Classification**
 
@@ -2306,6 +2333,12 @@ silhouette width, and its BCubed Precision and Recall values strike a
 balance.
 
 
+
+
+**\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\--**
+
+
+
 **6.Evaluation and Comparison**
 
 **#1#Classification with comparison criteria**
@@ -2332,7 +2365,8 @@ balance.
 | **BCubed recall**                      | 0.6252 | 0.4932      | 0.4101   |
 | **Visualization**                      | -      |     -       |     -    |
 
-**note the Visualization In the implementaion of clustering above.**
+**-note the Visualization In the implementaion of clustering above.-**
+
 
 **Comparison of Classification and Clustering**
 
@@ -2341,6 +2375,13 @@ Classification is better than clustering for our data set because our problem in
 The nature of the data types, which include a majority of Boolean and ordinal variables in our dataset influenced the preference for classification over clustering, since classification models, particularly decision trees, are adept at handling these data types. On the other hand, cluster\'s application might be less straightforward when dealing with categorical and ordinal variables, especially if the goal is to predict predefined categories. making classification more appropriate for our dataset compared to clustering, ‎which may not align with the structured prediction task in our case.
 
 The observation of clusters being close to each other when plotted using PAM (Partitioning Around Medoids) while achieving high accuracy in the classification model does influence the preference for classification over clustering. The close proximity and overlap in clusters suggest that the clustering algorithm may not effectively separate the data points based on the given attributes. On the other hand, the high accuracy of the classification model indicates that the chosen classification approach, particularly decision tree models, is successful in accurately predicting the hobby for each data point. This performance difference reinforces the suitability of classification for our dataset, where the goal is to precisely assign specific labels to each observation based on its attributes, and clustering may not provide the necessary separation for effective prediction.
+
+
+
+**\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\--**
+
+
+
 
 
 **7.Findings**
@@ -2559,6 +2600,10 @@ Classification is better than clustering for our data set because our problem in
 The nature of the data types, which include a majority of Boolean and ordinal variables in our dataset influenced the preference for classification over clustering, since classification models, particularly decision trees, are adept at handling these data types. On the other hand, cluster\'s application might be less straightforward when dealing with categorical and ordinal variables, especially if the goal is to predict predefined categories. making classification more appropriate for our dataset compared to clustering, ‎which may not align with the structured prediction task in our case.
 
 The observation of clusters being close to each other when plotted using PAM (Partitioning Around Medoids) while achieving high accuracy in the classification model does influence the preference for classification over clustering. The close proximity and overlap in clusters suggest that the clustering algorithm may not effectively separate the data points based on the given attributes. On the other hand, the high accuracy of the classification model indicates that the chosen classification approach, particularly decision tree models, is successful in accurately predicting the hobby for each data point. This performance difference reinforces the suitability of classification for our dataset, where the goal is to precisely assign specific labels to each observation based on its attributes, and clustering may not provide the necessary separation for effective prediction.
+
+
+**\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\--**
+
 
 
 
